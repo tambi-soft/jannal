@@ -45,24 +45,27 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += qt debug #release
 #CONFIG += qt release
 QT += widgets\
-      network
+      webkit\
+      webkitwidgets
 
 # Input
 HEADERS += \
     src/config.h \
     src/menubar.h \
     src/main_window.h \
-    src/q_canvas_widget.h
+    src/q_canvas_widget.h \
+    src/q_beamer_window.h
     
 SOURCES += \
     src/config.cpp \
     src/menubar.cpp \
     src/main_window.cpp \
     src/jannal.cpp \
-    src/q_canvas_widget.cpp
+    src/q_canvas_widget.cpp \
+    src/q_beamer_window.cpp
 
-#RESOURCES += \
-#    resources.qrc
+RESOURCES += \
+    resources.qrc
 
 release:DESTDIR = release
 release:OBJECTS_DIR = release/obj

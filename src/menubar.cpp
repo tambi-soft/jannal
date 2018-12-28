@@ -5,7 +5,6 @@ MenuBar::MenuBar(QDir *decks_paths, QMenuBar *parent)
     this->decks_paths = decks_paths;
     
     addFileMenu();
-    addSearchMenu();
 }
 
 void MenuBar::addFileMenu()
@@ -15,20 +14,10 @@ void MenuBar::addFileMenu()
     exitAction->setStatusTip("Exit application");
     connect(exitAction, &QAction::triggered, this, &MenuBar::quitApplication);
     
-    QMenu *fileMenu = addMenu("&Datei");
+    QMenu *fileMenu = addMenu("&File");
     fileMenu->addAction(exitAction);
 }
 
-void MenuBar::addSearchMenu()
-{
-    QAction *searchAction = new QAction(QIcon::fromTheme("system-search"), "&Search");
-    searchAction->setShortcut(QKeySequence::fromString("Ctrl+S"));
-    searchAction->setStatusTip("search for an item");
-    connect(searchAction, &QAction::triggered, this, &MenuBar::emitSearchTab);
-    
-    QMenu *searchMenu = addMenu("&Suche");
-    searchMenu->addAction(searchAction);
-}
 
 void MenuBar::quitApplication()
 {
@@ -38,9 +27,4 @@ void MenuBar::quitApplication()
 void MenuBar::emitNewDecksOverviewTab()
 {
     emit newDecksOverviewTab();
-}
-
-void MenuBar::emitSearchTab()
-{
-    emit newSearchTab();
 }

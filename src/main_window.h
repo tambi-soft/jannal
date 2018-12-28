@@ -8,13 +8,17 @@
 
 #include "menubar.h"
 #include "config.h"
+#include "q_canvas_widget.h"
+#include "q_beamer_window.h"
 
-class QMarboxMainWindow : public QMainWindow
+class QJannalMainWindow : public QMainWindow
 {
     Q_OBJECT
     
 public:
-    QMarboxMainWindow(QWidget *parent = 0);
+    QJannalMainWindow(QWidget *parent = 0);
+    
+    void showPresentation();
     
     bool eventFilter(QObject *watched, QEvent *event);
 private:
@@ -36,6 +40,7 @@ private:
     int tooltip_last_index;
     
 private slots:
+    void createNewBeamerTab();
     void activateNewTab();
     void closeTab(int tab_id);
     void onTabMoved(int from, int to);

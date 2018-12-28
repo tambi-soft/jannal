@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
-        
+        <file alias="test_json">assets/test_presentation.jannal.json</file>
+        <file alias="test_style">assets/style.css</file>
     </qresource>
 </RCC>

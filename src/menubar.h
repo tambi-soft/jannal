@@ -21,16 +21,13 @@ public:
 private:
     QDir *decks_paths;
     void addFileMenu();
-    void addSearchMenu();
     
 signals:
     void newDecksOverviewTab();
-    void newSearchTab();
     
 public slots:
     void quitApplication();
     void emitNewDecksOverviewTab();
-    void emitSearchTab();
 };
 
 #endif // Q_KULANDAY_MENUBAR_H

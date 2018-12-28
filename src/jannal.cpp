@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
     
     QApplication::setApplicationName("jannal");
     
-    QMarboxMainWindow mainWin;
+    QJannalMainWindow mainWin;
     
 #ifdef __linux__
 #else

@@ -1,7 +1,7 @@
 
 #include "main_window.h"
 
-QMarboxMainWindow::QMarboxMainWindow(QWidget *parent)
+QJannalMainWindow::QJannalMainWindow(QWidget *parent)
     : QMainWindow(parent)
     , tab_widget (new QTabWidget)
 {
@@ -17,23 +17,38 @@ QMarboxMainWindow::QMarboxMainWindow(QWidget *parent)
     this->menu_bar = new MenuBar(this->deckpath);
     setMenuBar(menu_bar);
     
-    connect(tab_widget, &QTabWidget::tabCloseRequested, this, &QMarboxMainWindow::closeTab);
+    connect(tab_widget, &QTabWidget::tabCloseRequested, this, &QJannalMainWindow::closeTab);
     
     QTabBar *tab_bar = tab_widget->tabBar();
-    //connect(tab_bar, &QTabBar::tabMoved, this, &QMarboxMainWindow::onTabMoved);
+    //connect(tab_bar, &QTabBar::tabMoved, this, &QJannalMainWindow::onTabMoved);
     
     //tab_bar->setMouseTracking(true);
     //tab_bar->installEventFilter(this);
     
     //showUsersOverviewTab();
+    createNewBeamerTab();
+    
+    showPresentation();
 }
 
-void QMarboxMainWindow::activateNewTab()
+void QJannalMainWindow::createNewBeamerTab()
+{
+    QCanvasWidget *canvas = new QCanvasWidget();
+    tab_widget->addTab(canvas, QString("testtab"));
+}
+
+void QJannalMainWindow::showPresentation()
+{
+    QBeamerWindow *beamer = new QBeamerWindow();
+    beamer->showFullScreen();
+}
+
+void QJannalMainWindow::activateNewTab()
 {
     tab_widget->setCurrentIndex(tab_widget->count()-1);
 }
 
-void QMarboxMainWindow::closeTab(int tab_id)
+void QJannalMainWindow::closeTab(int tab_id)
 {
     QWidget *tab_to_delete = tab_widget->widget(tab_id);
     tab_widget->removeTab(tab_id);
@@ -55,7 +70,7 @@ void QMarboxMainWindow::closeTab(int tab_id)
     }
 }
 
-void QMarboxMainWindow::onTabMoved(int from, int to)
+void QJannalMainWindow::onTabMoved(int from, int to)
 {
     // adjust the map to match the new tab ids
     for (auto k : this->deck_item_widgets.keys())
@@ -74,7 +89,7 @@ void QMarboxMainWindow::onTabMoved(int from, int to)
     }
 }
 
-bool QMarboxMainWindow::eventFilter(QObject *watched, QEvent *event)
+bool QJannalMainWindow::eventFilter(QObject *watched, QEvent *event)
 {
     /*
     if (watched == this->tab_widget->tabBar())
