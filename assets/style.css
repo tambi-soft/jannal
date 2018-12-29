@@ -1,29 +1,4 @@
 
-@font-face {
-    font-family: 'exo2';
-    src: url('../../rundbriefe/font/Exo2-Regular.otf');
-}
-
-@font-face {
-    font-family: 'exo2';
-    src: url('../../rundbriefe/font/Exo2-Bold.otf');
-    font-weight: bold;
-}
-
-@font-face {
-    font-family: 'exo2';
-    src: url('../../rundbriefe/font/Exo2-Italic.otf');
-    font-style: italic;
-}
-
-body {
-    /*font-family: exo2;*/
-    font-family: sans-serif;
-    color: white;
-    background-color: black;
-}
-
-
 :root {
     --orange-color: #f49100;
     --green-color: #005667;
@@ -36,6 +11,26 @@ body {
     --lila-color: #77358c;
 }
 
+body {
+    font-family: sans-serif;
+    color: white;
+    background-color: black;
+    
+    /* center horizontally und vertically */
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    
+    text-align: center;
+    font-size: 60px;
+    line-height: 1.5;
+    
+    /*margin: 0px;*/
+}
+
 h1, h2 {
     color: var(--orange-color);
     margin-top: 0px;
@@ -44,6 +39,9 @@ h1, h2 {
 h3, h4, h5 {
     color: var(--tuerkis-color);
     margin-bottom: 0px;
+}
+h1 {
+    font-size: 380px;
 }
 
 /* to get the bullets in the centering, too */
@@ -94,11 +92,7 @@ ul {
     margin-top: 0px;
 }
 
-#title h1 {
-    font-size: 170px;
-    transform: translateZ(50px);
-}
-
+/*
 .step {
     text-align: center;
     position: relative;
@@ -109,40 +103,4 @@ ul {
     font-size: 60px;
     line-height: 1.5;
 }
-
-.impress-enabled .step {
-    margin: 0;
-    opacity: 0.3;
-}
-
-.impress-enabled .step.active {
-    opacity: 1;
-}
-
-#overview {
-    /*display: none;*/
-    opacity: 1;
-}
-
-.impress-on-overview .step {
-    opacity: 1;
-    /*cursor: pointer;*/
-}
-
-/* ######################################## */
-
-.impress-enabled div#impress-toolbar {
-    position: fixed;
-    right: 1px;
-    bottom: 1px;
-    opacity: 0.6;
-}
-.impress-enabled div#impress-toolbar > span {
-    margin-right: 10px;
-}
-body.impress-mouse-timeout div#impress-toolbar {
-    display: none;
-}
-body.impress-mouse-timeout {
-    cursor: none;
-}
+*/

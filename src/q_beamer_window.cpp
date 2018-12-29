@@ -8,4 +8,8 @@ QBeamerWindow::QBeamerWindow(QDialog *parent)
     layout->setContentsMargins(0, 0, 0, 0);
     layout->addWidget(canvas);
     setLayout(layout);
+    
+    connect(canvas, &QCanvasWidget::deleteBeamerWindow, this, &QBeamerWindow::deleteLater);
+    
+    removeEventFilter(this);
 }

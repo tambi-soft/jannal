@@ -17,26 +17,26 @@
             ]
         },
         {
+            "parent": 1,
             "type": "frame-html",
             "id": 1,
-            "pos-x": 0,
-            "pos-y": 0,
-            "pos-z": 0,
+            "x": 0,
+            "y": 0,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
-            "html": "<center><h1>Mission</h1></center>"
+            "html": "<h1>Mission</h1>"
         },
         {
+            "parent": 1,
             "type": "frame-html",
-            "id": 1,
-            "pos-x": 0,
-            "pos-y": 200,
-            "pos-z": 0,
+            "id": 2,
+            "x": 0,
+            "y": 1.5,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
-            "html": "<center><h2>Mission ist untrennbar verbunden mit dem Christsein</h2></center>"
+            "html": "<h2>Mission ist untrennbar verbunden mit dem Christsein</h2>"
         },
         {
             "type": "line",
@@ -62,16 +62,19 @@
     "steps": [
         {
             "type": "frame",
-            "id": 0,
-            "frame": 1,
-            "scale": 1
+            "frame-id": 1,
+            "zoom": 1
+        },
+        {
+            "type": "frame",
+            "frame-id": 2,
+            "zoom": 1
         },
         {
             "type": "position",
-            "id": 1,
             "pos-x": 0,
             "pos-y": 1000,
-            "scale": 1
+            "zoom": 1
         }
     ]
 }

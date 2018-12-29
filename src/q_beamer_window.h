@@ -16,6 +16,9 @@ public:
 private:
     QVBoxLayout* layout;
     QCanvasWidget *canvas;
+    
+protected:
+    
 };
 
 #endif // Q_BEAMER_WINDOW_H

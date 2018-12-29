@@ -25,9 +25,7 @@ QJannalMainWindow::QJannalMainWindow(QWidget *parent)
     //tab_bar->setMouseTracking(true);
     //tab_bar->installEventFilter(this);
     
-    //showUsersOverviewTab();
-    createNewBeamerTab();
-    
+    //createNewBeamerTab();
     showPresentation();
 }
 
