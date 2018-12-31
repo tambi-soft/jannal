@@ -9,6 +9,10 @@ QCanvasWidget::QCanvasWidget(QWidget *parent)
 {
     connect(step_animator, &QStepAnimator::currentAnimationStepCoordinates, this, qOverload<QPoint>(&QCanvasWidget::scrollToPosition));
     
+    view->installEventFilter(this);
+    scene->installEventFilter(this);
+    //layout->installEventFilter(this);
+    
     this->resolution_width = 1920; // 480
     this->resolution_height = 1080; // 270
     
@@ -239,44 +243,47 @@ void QCanvasWidget::reloadAll()
     addJSON(this->current_path);
 }
 
-void QCanvasWidget::keyPressEvent(QKeyEvent *event)
+bool QCanvasWidget::eventFilter(QObject *target, QEvent *event)
 {
-    //qDebug() << "canvas";
-    switch (event->key())
+    if (event->type() == QEvent::KeyPress)
     {
-        case Qt::Key_1:
+        QKeyEvent *key_event = static_cast<QKeyEvent*>(event);
+        switch (key_event->key())
         {
-            stepBackward();
-            break;
-        }
-        case Qt::Key_2:
-        {
-            stepForward();
-            break;
-        }
-        case Qt::Key_PageUp:
-        {
-            stepBackward();
-            break;
-        }
-        case Qt::Key_PageDown:
-        {
-            stepForward();
-            break;
-        }
-        case Qt::Key_F5:
-        {
-            reloadAll();
-            break;
-        }
-        case Qt::Key_Escape:
-        {
-            if (!this->editMode)
+            case Qt::Key_Left:
             {
-                deleteLater();
-                emit deleteBeamerWindow();
+                stepBackward();
+                return true;
             }
-            break;
+            case Qt::Key_Right:
+            {
+                stepForward();
+                return true;
+            }
+            case Qt::Key_PageUp:
+            {
+                stepBackward();
+                return true;
+            }
+            case Qt::Key_PageDown:
+            {
+                stepForward();
+                return true;
+            }
+            case Qt::Key_F5:
+            {
+                reloadAll();
+                return true;
+            }
+            case Qt::Key_Escape:
+            {
+                if (!this->editMode)
+                {
+                    deleteLater();
+                    emit deleteBeamerWindow();
+                }
+                return true;
+            }
         }
     }
 }

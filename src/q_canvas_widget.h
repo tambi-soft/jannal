@@ -34,6 +34,7 @@
 
 #include <QPushButton>
 
+#include <QEvent>
 #include <QKeyEvent>
 #include <QMouseEvent>
 
@@ -86,7 +87,7 @@ signals:
 public slots:
     
 protected:
-    void keyPressEvent(QKeyEvent *event);
+    bool eventFilter(QObject *target, QEvent *event);
 };
 
 #endif // Q_CANVAS_WIDGET_H
