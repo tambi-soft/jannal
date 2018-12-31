@@ -54,7 +54,8 @@ HEADERS += \
     src/menubar.h \
     src/main_window.h \
     src/q_canvas_widget.h \
-    src/q_beamer_window.h
+    src/q_beamer_window.h \
+    src/q_step_animator.h
     
 SOURCES += \
     src/config.cpp \
@@ -62,7 +63,8 @@ SOURCES += \
     src/main_window.cpp \
     src/jannal.cpp \
     src/q_canvas_widget.cpp \
-    src/q_beamer_window.cpp
+    src/q_beamer_window.cpp \
+    src/q_step_animator.cpp
 
 RESOURCES += \
     resources.qrc

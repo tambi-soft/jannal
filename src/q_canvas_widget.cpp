@@ -5,7 +5,10 @@ QCanvasWidget::QCanvasWidget(QWidget *parent)
     , view (new QGraphicsView)
     , scene (new QGraphicsScene)
     , layout (new QVBoxLayout)
+    , step_animator (new QStepAnimator)
 {
+    connect(step_animator, &QStepAnimator::currentAnimationStepCoordinates, this, qOverload<QPoint>(&QCanvasWidget::scrollToPosition));
+    
     this->resolution_width = 1920; // 480
     this->resolution_height = 1080; // 270
     
@@ -36,6 +39,10 @@ QCanvasWidget::QCanvasWidget(QWidget *parent)
     
     
     //view->fitInView(scene->sceneRect());
+    
+    //qDebug() << scene->items();
+    
+    qDebug() << this->nodes_map;
 }
 
 void QCanvasWidget::addJSON(QString path)
@@ -54,15 +61,6 @@ void QCanvasWidget::addJSON(QString path)
     // handle the steps
     QJsonValue steps_val = json_document["steps"];
     this->steps_array = steps_val.toArray();
-    /*
-    for (int i=0; i < steps_arr.count(); ++i)
-    {
-        QJsonObject obj = steps_arr.at(i).toObject();
-        QString type = obj.value("type").toString();
-        
-        //steps.append()
-    }
-    */
     
     // handle the frames
     QJsonValue graph_val = json_document["graphics"];
@@ -81,7 +79,7 @@ void QCanvasWidget::addJSON(QString path)
                 obj.value("x").toDouble(),
                 obj.value("y").toDouble()
             );
-            this->nodes_map[obj.value("id").toInt()] = pos;
+            //this->nodes_map[obj.value("id").toInt()] = pos;
         }
         
         // draw the content
@@ -98,7 +96,6 @@ void QCanvasWidget::addJSON(QString path)
             );
         }
     }
-    qDebug() << nodes_map;
     
     
     
@@ -134,8 +131,8 @@ void QCanvasWidget::addHTML(int parent, int id, QString html, double dx, double 
     else
     {
         // get parent position
-        int par_x = int(this->nodes_map[parent].x());
-        int par_y = int(this->nodes_map[parent].y());
+        int par_x = int(this->nodes_map[parent]["pos"].toPointF().x());
+        int par_y = int(this->nodes_map[parent]["pos"].toPointF().y());
         // calculate new absolute position
         pos_x = int(par_x + dx * this->resolution_width);
         pos_y = int(par_y + dy * this->resolution_height);
@@ -151,6 +148,18 @@ void QCanvasWidget::addHTML(int parent, int id, QString html, double dx, double 
     web_view->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
     
     QGraphicsProxyWidget *proxy = scene->addWidget(web_view);
+    proxy->setRotation(rotate);
+    
+    QMap<QString, QVariant> props;
+    props["pos"] = QPointF(pos_x, pos_y);
+    props["parent"] = parent;
+    props["rotate"] = rotate;
+    props["scale"] = scale;
+    props["type"] = "frame-html";
+    props["widget"] = QVariant::fromValue(proxy);
+    this->nodes_map[id] = props;
+    
+    //qDebug() << qvariant_cast<QGraphicsProxyWidget*>(props["widget"]);
 }
 
 void QCanvasWidget::drawControlls()
@@ -163,18 +172,12 @@ void QCanvasWidget::stepForward()
     this->step_active++;
     
     // detect overflow to start over
-    if (this->step_active >= this->steps_array.count() - 1)
+    if (this->step_active > this->steps_array.count()-1)
     {
         this->step_active = 0;
     }
     
-    QJsonObject obj = this->steps_array.at(this->step_active).toObject();
-    QString type = obj.value("type").toString();
-    if (type == "frame")
-    {
-        int frame_id = obj.value("frame-id").toInt();
-        
-    }
+    stepHelper();
 }
 
 void QCanvasWidget::stepBackward()
@@ -182,18 +185,52 @@ void QCanvasWidget::stepBackward()
     this->step_active--;
     
     // detect underflow to start over
-    if (this->step_active <= 0)
+    if (this->step_active < 0)
     {
-        this->step_active = this->steps_array.count() - 1;
+        this->step_active = this->steps_array.count()-1;
     }
     
-    scrollToPosition(1920, 1080);
+    stepHelper();
+}
+
+void QCanvasWidget::stepHelper()
+{
+    QJsonObject obj = this->steps_array.at(this->step_active).toObject();
+    QString type = obj.value("type").toString();
+    QPointF pos_to;
+    if (type == "frame")
+    {
+        int frame_id = obj.value("frame-id").toInt();
+        pos_to = this->nodes_map[frame_id]["pos"].toPointF();
+    }
+    else if (type == "position")
+    {
+        pos_to.setX(obj.value("pos-x").toInt());
+        pos_to.setY(obj.value("pos-y").toInt());
+    }
+    
+    QPoint pos_from;
+    pos_from.setX(view->horizontalScrollBar()->value());
+    pos_from.setY(view->verticalScrollBar()->value());
+    
+    step_animator->quit();
+    step_animator->halt();
+    step_animator->setCoordinates(pos_from, QPoint(int(pos_to.x()), int(pos_to.y())));
+    step_animator->start();
 }
 
 void QCanvasWidget::scrollToPosition(int x, int y)
 {
     view->horizontalScrollBar()->setValue(x);
     view->verticalScrollBar()->setValue(y);
+}
+void QCanvasWidget::scrollToPosition(QPointF pos)
+{
+    scrollToPosition(int(pos.x()), int(pos.y()));
+}
+void QCanvasWidget::scrollToPosition(QPoint pos)
+{
+    scrollToPosition(pos.x(), pos.y());
 }
 
 void QCanvasWidget::reloadAll()
@@ -204,7 +241,7 @@ void QCanvasWidget::reloadAll()
 
 void QCanvasWidget::keyPressEvent(QKeyEvent *event)
 {
-    qDebug() << "canvas";
+    //qDebug() << "canvas";
     switch (event->key())
     {
         case Qt::Key_1:

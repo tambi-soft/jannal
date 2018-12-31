@@ -26,6 +26,7 @@
 #include <QPointF>
 #include <QMap>
 #include <QList>
+#include <QVariant>
 
 #include <QGraphicsItem>
 #include <QGraphicsLineItem>
@@ -37,6 +38,8 @@
 #include <QMouseEvent>
 
 #include <QDebug>
+
+#include "q_step_animator.h"
 
 class QCanvasWidget : public QWidget
 {
@@ -50,6 +53,8 @@ public:
     void addJSON(QString path);
     void addHTML(int parent, int id, QString html, double dx, double dy, int rotate, int scale);
     void scrollToPosition(int x, int y);
+    void scrollToPosition(QPointF pos);
+    void scrollToPosition(QPoint pos);
     
     void drawControlls();
     void stepForward();
@@ -61,14 +66,19 @@ private:
     int resolution_width;
     int resolution_height;
     
-    QMap<int, QPointF> nodes_map;
+    //QMap<int, QPointF> nodes_map;
+    QMap<int, QMap<QString, QVariant>> nodes_map;
     //QList<QPointF> steps;
     QJsonArray steps_array;
     int step_active = 0;
     
+    void stepHelper();
+    
     QGraphicsView* view;
     QGraphicsScene* scene;
     QVBoxLayout* layout;
+    
+    QStepAnimator* step_animator;
     
 signals:
     void deleteBeamerWindow();
