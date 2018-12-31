@@ -50,7 +50,6 @@ public:
     
     bool editMode = false;
     
-    QString current_path;
     void addJSON(QString path);
     void addHTML(int parent, int id, QString html, double dx, double dy, int rotate, int scale);
     void scrollToPosition(int x, int y);

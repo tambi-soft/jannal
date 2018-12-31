@@ -51,8 +51,6 @@ QCanvasWidget::QCanvasWidget(QWidget *parent)
 
 void QCanvasWidget::addJSON(QString path)
 {
-    this->current_path = path;
-    
     QString json_string;
     QFile file;
     file.setFileName(path);
@@ -266,7 +264,6 @@ bool QCanvasWidget::eventFilter(QObject *target, QEvent *event)
             }
             case Qt::Key_F5:
             {
-                //reloadAll();
                 emit reloadCanvas();
                 return true;
             }
