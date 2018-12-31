@@ -61,8 +61,6 @@ public:
     void stepForward();
     void stepBackward();
     
-    void reloadAll();
-    
 private:
     int resolution_width;
     int resolution_height;
@@ -82,6 +80,7 @@ private:
     QStepAnimator* step_animator;
     
 signals:
+    void reloadCanvas();
     void deleteBeamerWindow();
     
 public slots:

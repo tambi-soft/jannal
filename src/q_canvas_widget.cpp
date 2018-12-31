@@ -39,7 +39,7 @@ QCanvasWidget::QCanvasWidget(QWidget *parent)
     view->showFullScreen();
     
     //scrollToPosition(1000, 1000);
-    //view->scale(0.2, 0.2);
+    view->scale(0.1, 0.1);
     
     
     //view->fitInView(scene->sceneRect());
@@ -237,12 +237,6 @@ void QCanvasWidget::scrollToPosition(QPoint pos)
     scrollToPosition(pos.x(), pos.y());
 }
 
-void QCanvasWidget::reloadAll()
-{
-    scene->clear();
-    addJSON(this->current_path);
-}
-
 bool QCanvasWidget::eventFilter(QObject *target, QEvent *event)
 {
     if (event->type() == QEvent::KeyPress)
@@ -272,7 +266,8 @@ bool QCanvasWidget::eventFilter(QObject *target, QEvent *event)
             }
             case Qt::Key_F5:
             {
-                reloadAll();
+                //reloadAll();
+                emit reloadCanvas();
                 return true;
             }
             case Qt::Key_Escape:

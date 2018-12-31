@@ -10,6 +10,13 @@ QBeamerWindow::QBeamerWindow(QDialog *parent)
     setLayout(layout);
     
     connect(canvas, &QCanvasWidget::deleteBeamerWindow, this, &QBeamerWindow::deleteLater);
+    connect(canvas, &QCanvasWidget::reloadCanvas, this, &QBeamerWindow::reloadCanvas);
+}
+
+void QBeamerWindow::reloadCanvas()
+{
+    this->canvas->deleteLater();
     
-    removeEventFilter(this);
+    this->canvas = new QCanvasWidget;
+    this->layout->addWidget(canvas);
 }

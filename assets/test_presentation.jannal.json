@@ -31,31 +31,49 @@
             "parent": 1,
             "type": "frame-html",
             "id": 2,
-            "x": 1.0,
-            "y": 1.5,
+            "x": -2,
+            "y": 2,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
             "html": "<h2>Mission ist untrennbar verbunden mit dem Christsein</h2>"
         },
         {
+            "parent": 2,
+            "type": "frame-html",
+            "id": 3,
+            "x": -0.6,
+            "y": 1.5,
+            "rotate": 0,
+            "scale": 1,
+            "css": "/home/",
+            "html": "<div class=\"bible\"><div class=\"bible-quote-first\">„</div><br>Das Himmelreich gleicht einem Sauerteig, den eine Frau nahm und unter einen halben Zentner Mehl mengte, bis es ganz durchsäuert war.<br><div class=\"bible-quote-last\">“</div><div class=\"bible-passage\">Matthäus 13,33</div></div>"
+        },
+        {
+            "parent": 2,
+            "type": "frame-html",
+            "id": 4,
+            "x": 0.6,
+            "y": 1.5,
+            "rotate": 0,
+            "scale": 1,
+            "css": "/home/",
+            "html": "<div class=\"bible\"><div class=\"bible-quote-first\">„</div><br>Aber ihr seid ein ausgewähltes Geschlecht, eine königliche Priesterschaft, ein heiliges Volk, das Gott selbst gehört. Er hat euch aus der Finsternis in sein wunderbares Licht gerufen, damit ihr verkündigt, wie unübertrefflich er ist.<br><div class=\"bible-quote-last\">“</div><div class=\"bible-passage\">1. Petrus 2,9 </div></div>"
+        },
+        {
             "type": "line",
             "start-x": 0,
             "start-y": 0,
-            "start-z": 0,
             "stop-x": 10,
             "stop-y": 10,
-            "stop-z": 10,
             "width": 1
         },
         {
             "type": "arrow",
             "start-x": 0,
             "start-y": 0,
-            "start-z": 0,
             "stop-x": 10,
             "stop-y": 10,
-            "stop-z": 10,
             "width": 1
         }
     ],
@@ -68,6 +86,16 @@
         {
             "type": "frame",
             "frame-id": 2,
+            "zoom": 1
+        },
+        {
+            "type": "frame",
+            "frame-id": 3,
+            "zoom": 1
+        },
+        {
+            "type": "frame",
+            "frame-id": 4,
             "zoom": 1
         },
         {

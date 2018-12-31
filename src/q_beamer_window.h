@@ -13,6 +13,8 @@ class QBeamerWindow : public QDialog
 public:
     QBeamerWindow(QDialog *parent = nullptr);
     
+    void reloadCanvas();
+    
 private:
     QVBoxLayout* layout;
     QCanvasWidget *canvas;
