@@ -38,8 +38,11 @@
 #include <QKeyEvent>
 #include <QMouseEvent>
 
+#include <QTimeLine>
+
 #include <QDebug>
 
+#include "q_zoomable_graphics_view.h"
 #include "q_step_animator.h"
 
 class QCanvasWidget : public QWidget
@@ -51,10 +54,10 @@ public:
     bool editMode = false;
     
     void addJSON(QString path);
-    void addHTML(int parent, int id, QString html, double dx, double dy, int rotate, int scale);
-    void scrollToPosition(int x, int y);
-    void scrollToPosition(QPointF pos);
-    void scrollToPosition(QPoint pos);
+    void addHTML(int parent, int id, QString html, double dx, double dy, int rotate, double scale);
+    void scrollToPosition(int x, int y, double scale);
+    void scrollToPosition(QPointF pos, double scale);
+    void scrollToPosition(QPoint pos, double scale);
     
     void drawControlls();
     void stepForward();
@@ -72,6 +75,7 @@ private:
     
     void stepHelper();
     
+    QZoomableGraphicsView *view_zoomable;
     QGraphicsView* view;
     QGraphicsScene* scene;
     QVBoxLayout* layout;
@@ -85,7 +89,7 @@ signals:
 public slots:
     
 protected:
-    bool eventFilter(QObject *target, QEvent *event);
+    bool eventFilter(QObject */*target*/, QEvent *event);
 };
 
 #endif // Q_CANVAS_WIDGET_H

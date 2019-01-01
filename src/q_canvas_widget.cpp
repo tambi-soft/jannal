@@ -7,7 +7,12 @@ QCanvasWidget::QCanvasWidget(QWidget *parent)
     , layout (new QVBoxLayout)
     , step_animator (new QStepAnimator)
 {
-    connect(step_animator, &QStepAnimator::currentAnimationStepCoordinates, this, qOverload<QPoint>(&QCanvasWidget::scrollToPosition));
+    connect(step_animator, &QStepAnimator::currentAnimationStepCoordinates, this, qOverload<QPoint, double>(&QCanvasWidget::scrollToPosition));
+    
+    //this->view_zoomable = new QZoomableGraphicsView(view);
+    //this->view_zoomable->set_modifiers(Qt::NoModifier);
+    
+    view->setDragMode(QGraphicsView::ScrollHandDrag);
     
     view->installEventFilter(this);
     scene->installEventFilter(this);
@@ -39,14 +44,15 @@ QCanvasWidget::QCanvasWidget(QWidget *parent)
     view->showFullScreen();
     
     //scrollToPosition(1000, 1000);
-    view->scale(0.1, 0.1);
+    //view->scale(0.1, 0.1);
+    //view->scale(1.2, 1.2);
     
     
     //view->fitInView(scene->sceneRect());
     
     //qDebug() << scene->items();
     
-    qDebug() << this->nodes_map;
+    //qDebug() << this->nodes_map;
 }
 
 void QCanvasWidget::addJSON(QString path)
@@ -94,7 +100,7 @@ void QCanvasWidget::addJSON(QString path)
                 obj.value("x").toDouble(),
                 obj.value("y").toDouble(),
                 obj.value("rotate").toInt(),
-                obj.value("scale").toInt()
+                obj.value("scale").toDouble()
             );
         }
     }
@@ -103,7 +109,7 @@ void QCanvasWidget::addJSON(QString path)
     
 }
 
-void QCanvasWidget::addHTML(int parent, int id, QString html, double dx, double dy, int rotate, int scale)
+void QCanvasWidget::addHTML(int parent, int id, QString html, double dx, double dy, int rotate, double scale)
 {
     // read the stylesheet
     QString css;
@@ -143,7 +149,7 @@ void QCanvasWidget::addHTML(int parent, int id, QString html, double dx, double 
     QWebView *web_view = new QWebView();
     web_view->setHtml(html_full);
     web_view->setFixedSize(this->resolution_width, this->resolution_height);
-    web_view->setZoomFactor(scale);
+    //web_view->setZoomFactor(scale);
     web_view->move(pos_x, pos_y);
     
     web_view->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal, Qt::ScrollBarAlwaysOff);
@@ -151,6 +157,7 @@ void QCanvasWidget::addHTML(int parent, int id, QString html, double dx, double 
     
     QGraphicsProxyWidget *proxy = scene->addWidget(web_view);
     proxy->setRotation(rotate);
+    proxy->setScale(scale);
     
     QMap<QString, QVariant> props;
     props["pos"] = QPointF(pos_x, pos_y);
@@ -221,21 +228,32 @@ void QCanvasWidget::stepHelper()
     step_animator->start();
 }
 
-void QCanvasWidget::scrollToPosition(int x, int y)
+void QCanvasWidget::scrollToPosition(int x, int y, double scale)
 {
+    scale = 0.2;
+    //view->scale(scale, scale);
+    
+    /*
+    QPointF mapped = view->mapFromScene(QPointF(x, y));
+    x = int(mapped.x());
+    y = int(mapped.y());
+    */
+    
+    //this->view_zoomable->gentle_zoom(2);
+    
     view->horizontalScrollBar()->setValue(x);
     view->verticalScrollBar()->setValue(y);
 }
-void QCanvasWidget::scrollToPosition(QPointF pos)
+void QCanvasWidget::scrollToPosition(QPointF pos, double scale)
 {
-    scrollToPosition(int(pos.x()), int(pos.y()));
+    scrollToPosition(int(pos.x()), int(pos.y()), scale);
 }
-void QCanvasWidget::scrollToPosition(QPoint pos)
+void QCanvasWidget::scrollToPosition(QPoint pos, double scale)
 {
-    scrollToPosition(pos.x(), pos.y());
+    scrollToPosition(pos.x(), pos.y(), scale);
 }
 
-bool QCanvasWidget::eventFilter(QObject *target, QEvent *event)
+bool QCanvasWidget::eventFilter(QObject */*target*/, QEvent *event)
 {
     if (event->type() == QEvent::KeyPress)
     {
@@ -278,4 +296,11 @@ bool QCanvasWidget::eventFilter(QObject *target, QEvent *event)
             }
         }
     }
+    else if (event->type() == QEvent::MouseButtonPress)
+    {
+        QMouseEvent *mouse_event = static_cast<QMouseEvent*>(event);
+        qDebug() << view->mapToScene(mouse_event->pos());
+    }
+    
+    return false;
 }

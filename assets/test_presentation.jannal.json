@@ -86,7 +86,7 @@
         {
             "type": "frame",
             "frame-id": 2,
-            "zoom": 1
+            "zoom": 0.5
         },
         {
             "type": "frame",

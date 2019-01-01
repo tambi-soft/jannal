@@ -42,7 +42,8 @@ void QStepAnimator::run()
             return;
         }
         
-        emit currentAnimationStepCoordinates(pos_current);
+        double scale = 0.8;
+        emit currentAnimationStepCoordinates(pos_current, scale);
         
         if (pos_current == pos_to)
         {

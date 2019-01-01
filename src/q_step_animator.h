@@ -31,7 +31,7 @@ private:
     bool halt_thread = false;
     
 signals:
-    void currentAnimationStepCoordinates(QPoint position);
+    void currentAnimationStepCoordinates(QPoint position, double scale);
     
 public slots:
 };
