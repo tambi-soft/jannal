@@ -1,3 +1,5 @@
+# qt-creator-config
+*.pro.user
 # Prerequisites
 *.d
 

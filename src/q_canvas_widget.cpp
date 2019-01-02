@@ -13,15 +13,14 @@ QCanvasWidget::QCanvasWidget(QWidget *parent)
     //this->view_zoomable = new QZoomableGraphicsView(view);
     //this->view_zoomable->set_modifiers(Qt::NoModifier);
     
-    //view->setDragMode(QGraphicsView::ScrollHandDrag);
     view->setRenderHint(QPainter::Antialiasing);
     
     view->installEventFilter(this);
     scene->installEventFilter(this);
-    //layout->installEventFilter(this);
     
     this->resolution_width = 1920; // 480
     this->resolution_height = 1080; // 270
+    //this->scale_offset = 0.53;
     
     view->setScene(scene);
     
@@ -47,6 +46,10 @@ QCanvasWidget::QCanvasWidget(QWidget *parent)
     {
         view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    }
+    else
+    {
+        view->setDragMode(QGraphicsView::ScrollHandDrag);
     }
     
     //scrollToPosition(1000, 1000);
