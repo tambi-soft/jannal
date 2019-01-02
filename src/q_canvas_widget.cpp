@@ -34,18 +34,16 @@ QCanvasWidget::QCanvasWidget(QWidget *parent)
     QBrush blueBrush(Qt::blue);
     QPen outlinePen(Qt::black);
     outlinePen.setWidth(2);
-    
     //scene->addRect(100, 0, 80, 100, outlinePen, blueBrush);
     
     drawControlls();
-    
-    //view->show();
-    view->showFullScreen();
     
     if (!this->editMode)
     {
         view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        
+        view->showFullScreen();
     }
     else
     {
@@ -91,11 +89,13 @@ void QCanvasWidget::addJSON(QString path)
         if (type.startsWith("frame"))
         {
             // insert id -> position into this->nodes_list
+            /*
             QPointF pos;
             pos = QPointF(
                 obj.value("x").toDouble(),
                 obj.value("y").toDouble()
             );
+            */
             //this->nodes_map[obj.value("id").toInt()] = pos;
         }
         
@@ -110,6 +110,15 @@ void QCanvasWidget::addJSON(QString path)
                 obj.value("y").toDouble(),
                 obj.value("rotate").toInt(),
                 obj.value("scale").toDouble()
+            );
+        }
+        else if (type == "line")
+        {
+            drawLine(
+                QPoint(obj.value("start-x").toInt(), obj.value("start-y").toInt()),
+                QPoint(obj.value("stop-x").toInt(), obj.value("stop-y").toInt()),
+                obj.value("width").toInt(),
+                obj.value("color").toString()
             );
         }
     }
@@ -138,8 +147,8 @@ void QCanvasWidget::addHTML(int parent, int id, QString html, double dx, double 
     // calculate absolute position
     int pos_x = 0;
     int pos_y = 0;
-    if (parent == id)
     // if parent == id, we have no parent. that means: absolute positioning
+    if (parent == id)
     {
         pos_x = int(dx);
         pos_y = int(dy);
@@ -152,6 +161,11 @@ void QCanvasWidget::addHTML(int parent, int id, QString html, double dx, double 
         // calculate new absolute position
         pos_x = int(par_x + dx * this->resolution_width);
         pos_y = int(par_y + dy * this->resolution_height);
+        
+        // draw a line from parent to child
+        QPoint from(par_x + this->resolution_width/2, par_y + this->resolution_height);
+        QPoint to(pos_x + this->resolution_width/2, pos_y);
+        drawLine(from, to, 50, "#ff00ff00");
     }
     
     QWebView *web_view = new QWebView();
@@ -177,6 +191,22 @@ void QCanvasWidget::addHTML(int parent, int id, QString html, double dx, double 
     this->nodes_map[id] = props;
     
     //qDebug() << qvariant_cast<QGraphicsProxyWidget*>(props["widget"]);
+}
+
+void QCanvasWidget::drawLine(QPoint from, QPoint to, int width, QString color_str)
+{
+    
+    //QBrush greenBrush(Qt::green);
+    //QBrush blueBrush(Qt::blue);
+    //QPen outlinePen(Qt::green);
+    QColor color;
+    color.setNamedColor(color_str);
+    QPen pen;
+    pen.setColor(color);
+    pen.setWidth(width);
+    
+    //scene->addRect(100, 0, 80, 100, outlinePen, blueBrush);
+    scene->addLine(QLineF(from, to), pen);
 }
 
 void QCanvasWidget::drawControlls()

@@ -56,6 +56,7 @@ public:
     
     void addJSON(QString path);
     void addHTML(int parent, int id, QString html, double dx, double dy, int rotate, double scale);
+    void drawLine(QPoint from, QPoint to, int width, QString color_str);
     void scrollToPosition(int x, int y);
     void scrollToPosition(QPointF pos);
     void scrollToPosition(QPoint pos);

@@ -1,21 +1,10 @@
 {
     "config": {
-        "width": 1024,
-        "height": 768
+        "width": 1920,
+        "height": 1080,
+        "parent-child-marker": "line"
     },
     "graphics": [
-        {
-            "type": "frame",
-            "id": 0,
-            "pos-x": 0,
-            "pos-y": 0,
-            "pos-z": 0,
-            "rotate": 0,
-            "scale": 1,
-            "content": [
-                
-            ]
-        },
         {
             "parent": 1,
             "type": "frame-html",
@@ -42,7 +31,7 @@
             "parent": 2,
             "type": "frame-html",
             "id": 3,
-            "x": -0.6,
+            "x": -1.2,
             "y": 1.5,
             "rotate": 0,
             "scale": 1,
@@ -53,7 +42,7 @@
             "parent": 2,
             "type": "frame-html",
             "id": 4,
-            "x": 0.6,
+            "x": 0,
             "y": 1.5,
             "rotate": 0,
             "scale": 1,
@@ -61,12 +50,24 @@
             "html": "<div class=\"bible\"><div class=\"bible-quote-first\">„</div><br>Aber ihr seid ein ausgewähltes Geschlecht, eine königliche Priesterschaft, ein heiliges Volk, das Gott selbst gehört. Er hat euch aus der Finsternis in sein wunderbares Licht gerufen, damit ihr verkündigt, wie unübertrefflich er ist.<br><div class=\"bible-quote-last\">“</div><div class=\"bible-passage\">1. Petrus 2,9 </div></div>"
         },
         {
+            "parent": 2,
+            "type": "frame-html",
+            "id": 5,
+            "x": 1.2,
+            "y": 1.5,
+            "rotate": 0,
+            "scale": 1,
+            "css": "/home/",
+            "html": "<div class=\"bible\"><div class=\"bible-quote-first\">„</div><br>Darum geht zu allen Völkern und macht die Menschen zu meinen Jüngern. Dabei sollt ihr sie auf den Namen des Vaters, des Sohnes und des Heiligen Geistes taufen und sie belehren, alles zu befolgen, was ich euch geboten habe. Und seid gewiss: Ich bin jeden Tag bei euch, bis zum Ende der Zeit.<br><div class=\"bible-quote-last\">“</div><div class=\"bible-passage\">Matthäus 28 19-20</div></div>"
+        },
+        {
             "type": "line",
-            "start-x": 0,
-            "start-y": 0,
-            "stop-x": 10,
-            "stop-y": 10,
-            "width": 1
+            "start-x": 480,
+            "start-y": 1080,
+            "stop-x": -2880,
+            "stop-y": 2160,
+            "width": 50,
+            "color": "#00ff0000"
         },
         {
             "type": "arrow",
@@ -78,6 +79,12 @@
         }
     ],
     "steps": [
+        {
+            "type": "position",
+            "pos-x": 0,
+            "pos-y": 3000,
+            "zoom": 0.1
+        },
         {
             "type": "frame",
             "frame-id": 1,
@@ -96,12 +103,6 @@
         {
             "type": "frame",
             "frame-id": 4,
-            "zoom": 1
-        },
-        {
-            "type": "position",
-            "pos-x": 2000,
-            "pos-y": 1000,
             "zoom": 1
         }
     ]
