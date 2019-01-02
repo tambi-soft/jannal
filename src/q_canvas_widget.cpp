@@ -20,21 +20,8 @@ QCanvasWidget::QCanvasWidget(QWidget *parent)
     
     this->resolution_width = 1920; // 480
     this->resolution_height = 1080; // 270
-    /*
-    QApplication app = new QApplication();
-    QRect rec = QApplication::desktop()->screenGeometry();
-    height = rec.height();
-    width = rec.width();
-    */
-    /*
-    desktop = QtWidgets.QApplication.desktop()
-            last_screen = desktop.screenCount()
-            self.screen = last_screen-1
-            screen_rect = desktop.screenGeometry(self.screen)
-            */
-    //QScreen *screen = this->window()->windowHandle()->screen();
-    //QRect geometry = screen->geometry();
     
+    //this->window()->windowHandle()->screen();
     QRect geometry = QApplication::desktop()->screenGeometry();
     qDebug() << geometry;
     double scale_offset_width = geometry.width() / static_cast<double>(this->resolution_width);
@@ -84,8 +71,6 @@ QCanvasWidget::QCanvasWidget(QWidget *parent)
     //view->fitInView(scene->sceneRect());
     
     //qDebug() << scene->items();
-    
-    //qDebug() << this->nodes_map;
 }
 
 void QCanvasWidget::addJSON(QString path)

@@ -35,7 +35,7 @@
             "type": "frame-html",
             "id": 3,
             "x": -1.2,
-            "y": 0.2,
+            "y": 0.1,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
@@ -72,7 +72,7 @@
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
-            "html": "<h2>Formen der Mission</h2>"
+            "html": "<h2>Mission ist eine Lebensweise</h2>"
         },
         {
             "parent": 200,
