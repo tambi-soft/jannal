@@ -20,7 +20,10 @@ public:
     void setZoom(double zoom_from, double zoom_to);
     void halt();
     
-    double speed = 50;
+    double speed;
+    double default_speed;
+    void setSpeed(double speed);
+    void resetSpeed();
     
 protected:
     void run();

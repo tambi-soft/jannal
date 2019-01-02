@@ -3,6 +3,10 @@
 QStepAnimator::QStepAnimator(QThread *parent) : QThread(parent)
 {
     setTerminationEnabled(true);
+    
+    // seting up the default speed
+    this->default_speed = 50;
+    this->speed = default_speed;
 }
 
 void QStepAnimator::setCoordinates(QPoint pos_from, QPoint pos_to)
@@ -16,6 +20,16 @@ void QStepAnimator::setZoom(double zoom_from, double zoom_to)
 {
     this->zoom_from = zoom_from;
     this->zoom_to = zoom_to;
+}
+
+void QStepAnimator::setSpeed(double speed)
+{
+    this->speed = speed;
+}
+
+void QStepAnimator::resetSpeed()
+{
+    this->speed = default_speed;
 }
 
 void QStepAnimator::run()

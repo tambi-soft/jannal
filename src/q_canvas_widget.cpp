@@ -106,6 +106,8 @@ void QCanvasWidget::addJSON(QString path)
             );
         }
     }
+    
+    stepToStart();
 }
 
 void QCanvasWidget::addHTML(int parent, int id, QString html, double dx, double dy, int rotate, double scale)
@@ -175,6 +177,15 @@ void QCanvasWidget::drawControlls()
     
 }
 
+void QCanvasWidget::stepToStart()
+{
+    // fast-forward to the first step
+    this->animation_speed = 1000;
+    this->step_active = -1;
+    stepForward();
+    this->animation_speed = 50;
+}
+
 void QCanvasWidget::stepForward()
 {
     this->step_active++;
@@ -223,6 +234,7 @@ void QCanvasWidget::stepHelper()
     
     step_animator->quit();
     step_animator->halt();
+    step_animator->setSpeed(this->animation_speed);
     step_animator->setCoordinates(pos_from, QPoint(int(pos_to.x()), int(pos_to.y())));
     step_animator->setZoom(this->scale_factor, obj.value("zoom").toDouble());
     step_animator->start();

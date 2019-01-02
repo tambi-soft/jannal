@@ -61,11 +61,13 @@ public:
     void scrollToPosition(QPoint pos);
     
     void drawControlls();
+    void stepToStart();
     void stepForward();
     void stepBackward();
     
     void scaleView(double factor);
     double scale_factor = 1;
+    double animation_speed;
     
 private:
     int resolution_width;
