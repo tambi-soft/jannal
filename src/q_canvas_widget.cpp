@@ -106,9 +106,6 @@ void QCanvasWidget::addJSON(QString path)
             );
         }
     }
-    
-    
-    
 }
 
 void QCanvasWidget::addHTML(int parent, int id, QString html, double dx, double dy, int rotate, double scale)
@@ -221,8 +218,8 @@ void QCanvasWidget::stepHelper()
     }
     
     QPoint pos_from;
-    pos_from.setX(view->horizontalScrollBar()->value());
-    pos_from.setY(view->verticalScrollBar()->value());
+    pos_from.setX(int(view->sceneRect().x()));
+    pos_from.setY(int(view->sceneRect().y()));
     
     step_animator->quit();
     step_animator->halt();
@@ -241,16 +238,7 @@ void QCanvasWidget::scaleView(double factor)
 
 void QCanvasWidget::scrollToPosition(int x, int y)
 {
-    /*
-    QPointF mapped = view->mapFromScene(QPointF(x, y));
-    x = int(mapped.x());
-    y = int(mapped.y());
-    */
-    
-    //this->view_zoomable->gentle_zoom(2);
-    
-    view->horizontalScrollBar()->setValue(x);
-    view->verticalScrollBar()->setValue(y);
+    scene->setSceneRect(x, y, this->resolution_width, this->resolution_height);
 }
 void QCanvasWidget::scrollToPosition(QPointF pos)
 {
