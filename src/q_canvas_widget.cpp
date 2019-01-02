@@ -20,7 +20,7 @@ QCanvasWidget::QCanvasWidget(QWidget *parent)
     
     this->resolution_width = 1920; // 480
     this->resolution_height = 1080; // 270
-    //this->scale_offset = 0.53;
+    //this->scale_offset = 0.533333333;
     
     view->setScene(scene);
     
