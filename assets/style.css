@@ -43,6 +43,9 @@ h3, h4, h5 {
 h1 {
     font-size: 380px;
 }
+h2 {
+    font-size: 180px;
+}
 
 /* to get the bullets in the centering, too */
 ul {
