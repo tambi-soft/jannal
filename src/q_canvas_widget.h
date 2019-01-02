@@ -38,6 +38,7 @@
 #include <QKeyEvent>
 #include <QMouseEvent>
 
+#include <QTimer>
 #include <QTimeLine>
 
 #include <QDebug>
@@ -64,6 +65,7 @@ public:
     void stepBackward();
     
     void scaleView(double factor);
+    double scale_factor = 1;
     
 private:
     int resolution_width;

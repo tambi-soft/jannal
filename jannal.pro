@@ -56,7 +56,8 @@ HEADERS += \
     src/q_canvas_widget.h \
     src/q_beamer_window.h \
     src/q_step_animator.h \
-    src/q_zoomable_graphics_view.h
+    src/q_zoomable_graphics_view.h \
+    src/q_animation_zoom.h
     
 SOURCES += \
     src/config.cpp \
@@ -66,7 +67,8 @@ SOURCES += \
     src/q_canvas_widget.cpp \
     src/q_beamer_window.cpp \
     src/q_step_animator.cpp \
-    src/q_zoomable_graphics_view.cpp
+    src/q_zoomable_graphics_view.cpp \
+    src/q_animation_zoom.cpp
 
 RESOURCES += \
     resources.qrc

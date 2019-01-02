@@ -17,9 +17,10 @@ public:
     explicit QStepAnimator(QThread *parent = nullptr);
     
     void setCoordinates(QPoint pos_from, QPoint pos_to);
+    void setZoom(double zoom_from, double zoom_to);
     void halt();
     
-    double speed = 8;
+    double speed = 50;
     
 protected:
     void run();
@@ -27,12 +28,17 @@ protected:
     QPoint pos_from;
     QPoint pos_to;
     
+    double zoom_from, zoom_to;
+    
 private:
     bool halt_thread = false;
     
+    void stepCoordinates();
+    void stepZoom();
+    
 signals:
-    void currentAnimationStepCoordinates(QPoint position, double scale);
-    void currentAnimationStepScale(double factor);
+    void currentAnimationStepCoordinates(QPoint position);
+    void currentAnimationStepZoom(double factor);
     
 public slots:
 };

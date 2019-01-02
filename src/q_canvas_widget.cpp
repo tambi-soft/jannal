@@ -8,7 +8,7 @@ QCanvasWidget::QCanvasWidget(QWidget *parent)
     , step_animator (new QStepAnimator)
 {
     connect(step_animator, &QStepAnimator::currentAnimationStepCoordinates, this, qOverload<QPoint>(&QCanvasWidget::scrollToPosition));
-    connect(step_animator, &QStepAnimator::currentAnimationStepScale, this, &QCanvasWidget::scaleView);
+    connect(step_animator, &QStepAnimator::currentAnimationStepZoom, this, &QCanvasWidget::scaleView);
     
     //this->view_zoomable = new QZoomableGraphicsView(view);
     //this->view_zoomable->set_modifiers(Qt::NoModifier);
@@ -227,12 +227,15 @@ void QCanvasWidget::stepHelper()
     step_animator->quit();
     step_animator->halt();
     step_animator->setCoordinates(pos_from, QPoint(int(pos_to.x()), int(pos_to.y())));
+    step_animator->setZoom(this->scale_factor, obj.value("zoom").toDouble());
     step_animator->start();
 }
 
 void QCanvasWidget::scaleView(double factor)
 {
-    factor = 0.8;
+    this->scale_factor = factor;
+    
+    this->view->resetMatrix();
     view->scale(factor, factor);
 }
 
