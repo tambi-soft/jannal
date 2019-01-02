@@ -32,6 +32,7 @@ private:
     
 signals:
     void currentAnimationStepCoordinates(QPoint position, double scale);
+    void currentAnimationStepScale(double factor);
     
 public slots:
 };

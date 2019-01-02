@@ -7,12 +7,14 @@ QCanvasWidget::QCanvasWidget(QWidget *parent)
     , layout (new QVBoxLayout)
     , step_animator (new QStepAnimator)
 {
-    connect(step_animator, &QStepAnimator::currentAnimationStepCoordinates, this, qOverload<QPoint, double>(&QCanvasWidget::scrollToPosition));
+    connect(step_animator, &QStepAnimator::currentAnimationStepCoordinates, this, qOverload<QPoint>(&QCanvasWidget::scrollToPosition));
+    connect(step_animator, &QStepAnimator::currentAnimationStepScale, this, &QCanvasWidget::scaleView);
     
     //this->view_zoomable = new QZoomableGraphicsView(view);
     //this->view_zoomable->set_modifiers(Qt::NoModifier);
     
-    view->setDragMode(QGraphicsView::ScrollHandDrag);
+    //view->setDragMode(QGraphicsView::ScrollHandDrag);
+    view->setRenderHint(QPainter::Antialiasing);
     
     view->installEventFilter(this);
     scene->installEventFilter(this);
@@ -228,11 +230,14 @@ void QCanvasWidget::stepHelper()
     step_animator->start();
 }
 
-void QCanvasWidget::scrollToPosition(int x, int y, double scale)
+void QCanvasWidget::scaleView(double factor)
 {
-    scale = 0.2;
-    //view->scale(scale, scale);
-    
+    factor = 0.8;
+    view->scale(factor, factor);
+}
+
+void QCanvasWidget::scrollToPosition(int x, int y)
+{
     /*
     QPointF mapped = view->mapFromScene(QPointF(x, y));
     x = int(mapped.x());
@@ -244,13 +249,13 @@ void QCanvasWidget::scrollToPosition(int x, int y, double scale)
     view->horizontalScrollBar()->setValue(x);
     view->verticalScrollBar()->setValue(y);
 }
-void QCanvasWidget::scrollToPosition(QPointF pos, double scale)
+void QCanvasWidget::scrollToPosition(QPointF pos)
 {
-    scrollToPosition(int(pos.x()), int(pos.y()), scale);
+    scrollToPosition(int(pos.x()), int(pos.y()));
 }
-void QCanvasWidget::scrollToPosition(QPoint pos, double scale)
+void QCanvasWidget::scrollToPosition(QPoint pos)
 {
-    scrollToPosition(pos.x(), pos.y(), scale);
+    scrollToPosition(pos.x(), pos.y());
 }
 
 bool QCanvasWidget::eventFilter(QObject */*target*/, QEvent *event)

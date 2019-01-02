@@ -19,11 +19,11 @@ void QStepAnimator::run()
     
     QPoint pos_current = pos_from;
     
+    emit currentAnimationStepScale(0.8);
+    
     while (this->halt_thread == false)
     {
         usleep(2000);
-        //pos_current.setX(pos_current.x() + 5);
-        //pos_current.setY(pos_current.y() + 5);
         
         dx = pos_to.x() - pos_current.x();
         dy = pos_to.y() - pos_current.y();

@@ -55,13 +55,15 @@ public:
     
     void addJSON(QString path);
     void addHTML(int parent, int id, QString html, double dx, double dy, int rotate, double scale);
-    void scrollToPosition(int x, int y, double scale);
-    void scrollToPosition(QPointF pos, double scale);
-    void scrollToPosition(QPoint pos, double scale);
+    void scrollToPosition(int x, int y);
+    void scrollToPosition(QPointF pos);
+    void scrollToPosition(QPoint pos);
     
     void drawControlls();
     void stepForward();
     void stepBackward();
+    
+    void scaleView(double factor);
     
 private:
     int resolution_width;
