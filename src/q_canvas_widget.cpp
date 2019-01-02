@@ -31,8 +31,6 @@ QCanvasWidget::QCanvasWidget(QWidget *parent)
     
     addJSON(":test_json");
     
-    //view->scale(10, 10);
-    
     QBrush greenBrush(Qt::green);
     QBrush blueBrush(Qt::blue);
     QPen outlinePen(Qt::black);
@@ -44,6 +42,12 @@ QCanvasWidget::QCanvasWidget(QWidget *parent)
     
     //view->show();
     view->showFullScreen();
+    
+    if (!this->editMode)
+    {
+        view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    }
     
     //scrollToPosition(1000, 1000);
     //view->scale(0.1, 0.1);
@@ -245,7 +249,7 @@ void QCanvasWidget::scaleView(double factor)
     this->scale_factor = factor;
     
     this->view->resetMatrix();
-    view->scale(factor, factor);
+    view->scale(this->scale_offset * factor, this->scale_offset * factor);
 }
 
 void QCanvasWidget::scrollToPosition(int x, int y)

@@ -40,7 +40,6 @@ void QStepAnimator::run()
     
     QPoint pos_current = this->pos_from;
     double zoom_current = this->zoom_from;
-    qDebug() << pos_from;
     
     while (this->halt_thread == false)
     {
@@ -63,8 +62,6 @@ void QStepAnimator::run()
             pos_current.setX(int(pos_current.x() + vel_x));
             pos_current.setY(int(pos_current.y() + vel_y));
             zoom_current = zoom_current + vel_z;
-            
-            //qDebug() << pos_current;
             
             emit currentAnimationStepCoordinates(pos_current);
             emit currentAnimationStepZoom(zoom_current);
