@@ -20,7 +20,33 @@ QCanvasWidget::QCanvasWidget(QWidget *parent)
     
     this->resolution_width = 1920; // 480
     this->resolution_height = 1080; // 270
-    this->scale_offset = 1024 / static_cast<double>(this->resolution_width);
+    /*
+    QApplication app = new QApplication();
+    QRect rec = QApplication::desktop()->screenGeometry();
+    height = rec.height();
+    width = rec.width();
+    */
+    /*
+    desktop = QtWidgets.QApplication.desktop()
+            last_screen = desktop.screenCount()
+            self.screen = last_screen-1
+            screen_rect = desktop.screenGeometry(self.screen)
+            */
+    //QScreen *screen = this->window()->windowHandle()->screen();
+    //QRect geometry = screen->geometry();
+    
+    QRect geometry = QApplication::desktop()->screenGeometry();
+    qDebug() << geometry;
+    double scale_offset_width = geometry.width() / static_cast<double>(this->resolution_width);
+    double scale_offset_height = geometry.height() / static_cast<double>(this->resolution_height);
+    if (scale_offset_width > scale_offset_height)
+    {
+        this->scale_offset = scale_offset_height;
+    }
+    else
+    {
+        this->scale_offset = scale_offset_width;
+    }
     
     view->setScene(scene);
     
@@ -73,6 +99,10 @@ void QCanvasWidget::addJSON(QString path)
     
     QJsonDocument json_document = QJsonDocument::fromJson(json_string.toUtf8());
     
+    // get the global json-file configs
+    QJsonValue conf_val = json_document["config"];
+    this->conf_obj = conf_val.toObject();
+    
     // handle the steps
     QJsonValue steps_val = json_document["steps"];
     this->steps_array = steps_val.toArray();
@@ -85,19 +115,6 @@ void QCanvasWidget::addJSON(QString path)
     {
         QJsonObject obj = graph_arr.at(i).toObject();
         QString type = obj.value("type").toString();
-        
-        if (type.startsWith("frame"))
-        {
-            // insert id -> position into this->nodes_list
-            /*
-            QPointF pos;
-            pos = QPointF(
-                obj.value("x").toDouble(),
-                obj.value("y").toDouble()
-            );
-            */
-            //this->nodes_map[obj.value("id").toInt()] = pos;
-        }
         
         // draw the content
         if (type == "frame-html")
@@ -122,6 +139,10 @@ void QCanvasWidget::addJSON(QString path)
             );
         }
     }
+    
+    QColor color;
+    color.setNamedColor(this->conf_obj.value("background-color").toString());
+    view->setBackgroundBrush(QBrush(color, Qt::SolidPattern));
     
     stepToStart();
 }
@@ -163,9 +184,49 @@ void QCanvasWidget::addHTML(int parent, int id, QString html, double dx, double 
         pos_y = int(par_y + dy * this->resolution_height);
         
         // draw a line from parent to child
-        QPoint from(par_x + this->resolution_width/2, par_y + this->resolution_height);
-        QPoint to(pos_x + this->resolution_width/2, pos_y);
-        drawLine(from, to, 50, "#ff00ff00");
+        if (this->conf_obj.value("tree-edge-style").toString() == "line")
+        {
+            int dx = par_x - pos_x;
+            int dy = par_y - pos_y;
+            
+            QPoint from, to;
+            
+            // default from-value
+            from = QPoint(par_x + this->resolution_width/2, par_y + this->resolution_height);
+            
+            // is the child above or below the parent?
+            if (dy <= 0)
+            {
+                to = QPoint(pos_x + this->resolution_width/2, pos_y);
+            }
+            else
+            {
+                from = QPoint(par_x + this->resolution_width/2, par_y);
+                to = QPoint(pos_x + this->resolution_width/2, pos_y + this->resolution_height);
+            }
+            
+            // is the child more left or right of the parent (and not so much above or below)?
+            if (par_y + this->resolution_height >= pos_y &&
+                par_y - this->resolution_height <= pos_y)
+            {
+                if (dx <= 0)
+                {
+                    from = QPoint(par_x + this->resolution_width, par_y + this->resolution_height/2);
+                    to = QPoint(pos_x, pos_y + this->resolution_height/2);
+                }
+                else
+                {
+                    from = QPoint(par_x, par_y + this->resolution_height/2);
+                    to = QPoint(pos_x + this->resolution_width, pos_y + this->resolution_height/2);
+                }
+            }
+            
+            drawLine(from,
+                     to,
+                     this->conf_obj.value("tree-edge-width").toInt(),
+                     this->conf_obj.value("tree-edge-color").toString()
+                     );
+        }
     }
     
     QWebView *web_view = new QWebView();

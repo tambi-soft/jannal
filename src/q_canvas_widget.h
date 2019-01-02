@@ -3,6 +3,10 @@
 
 #include <QObject>
 #include <QWidget>
+#include <QWindow>
+#include <QScreen>
+#include <QApplication>
+#include <QDesktopWidget>
 
 #include <QGraphicsView>
 #include <QGraphicsScene>
@@ -79,6 +83,7 @@ private:
     QMap<int, QMap<QString, QVariant>> nodes_map;
     //QList<QPointF> steps;
     QJsonArray steps_array;
+    QJsonObject conf_obj;
     int step_active = 0;
     
     void stepHelper();

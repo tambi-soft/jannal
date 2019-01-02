@@ -38,6 +38,7 @@ h1, h2 {
 }
 h3, h4, h5 {
     color: var(--tuerkis-color);
+    margin-top: 0px;
     margin-bottom: 0px;
 }
 h1 {
@@ -45,6 +46,9 @@ h1 {
 }
 h2 {
     font-size: 180px;
+}
+h3 {
+    font-size: 160px;
 }
 
 /* to get the bullets in the centering, too */
