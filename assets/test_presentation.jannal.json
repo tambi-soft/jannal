@@ -94,13 +94,13 @@
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
-            "html": "<h2><s>Vollzeitlicher</s> Hauptberuflicher Dienst</h2>"
+            "html": "<h2>Weltmission</h2>"
         },
         {
-            "parent": 1000,
+            "parent": 200,
             "type": "frame-html",
             "id": 1010,
-            "x": 0,
+            "x": 3,
             "y": 4,
             "rotate": 0,
             "scale": 1,
