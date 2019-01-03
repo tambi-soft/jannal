@@ -56,7 +56,7 @@ class QCanvasWidget : public QWidget
 public:
     explicit QCanvasWidget(QWidget *parent = nullptr);
     
-    bool editMode = false;
+    bool editMode = true;
     
     void addJSON(QString path);
     void addHTML(int parent, int id, QString html, double dx, double dy, int rotate, double scale, QString tree_edge);

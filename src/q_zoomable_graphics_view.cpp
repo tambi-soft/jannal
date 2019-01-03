@@ -65,6 +65,16 @@ bool QZoomableGraphicsView::eventFilter(QObject *object, QEvent *event)
       }
     }
   }
+  else if (event->type() == QEvent::KeyPress)
+  {
+      qDebug() << "aieuiaeia";
+      QKeyEvent *key_event = static_cast<QKeyEvent*>(event);
+      if (key_event->key() == Qt::Key_Escape)
+      {
+          qDebug() << "quit";
+          QApplication::quit();
+      }
+  }
   Q_UNUSED(object)
   return false;
 }

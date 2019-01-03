@@ -10,6 +10,8 @@
     
     --tuerkis-color: #2cb8c5;
     --lila-color: #77358c;
+    --light-purple-color: #e5395a;
+    --light-red-color: #c1645a;
 }
 
 body {
@@ -50,6 +52,10 @@ h2 {
 }
 h3 {
     font-size: 160px;
+}
+h4 {
+    color: var(--light-red-color);
+    font-size: 140px;
 }
 
 /* to get the bullets in the centering, too */

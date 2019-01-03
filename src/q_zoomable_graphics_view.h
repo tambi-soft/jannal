@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QGraphicsView>
 
+#include <QDebug>
+
 /*!
  * https://stackoverflow.com/questions/19113532/qgraphicsview-zooming-in-and-out-under-mouse-position-using-mouse-wheel
  * 
