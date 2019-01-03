@@ -78,12 +78,56 @@
             "parent": 200,
             "type": "frame-html",
             "id": 210,
-            "x": 0,
-            "y": 2,
+            "x": -1.2,
+            "y": 3,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
             "html": "<div class=\"bible\"><div class=\"bible-quote-first\">„</div><br><b>Lasst Christus, den Herrn, die Mitte eures Lebens sein!' Und wenn man euch nach eurer Hoffnung fragt, seid immer zur Rechenschaft bereit.</b> Doch antwortet freundlich und mit dem gebotenen Respekt. Bewahrt euch ein reines Gewissen! Wenn die Leute euch dann etwas Böses nachsagen, werden sie beschämt werden, weil euer vorbildliches Leben mit Christus sie Lügen straft.<br><div class=\"bible-quote-last\">“</div><div class=\"bible-passage\">1. Petrus 3 15-22</div></div>"
+        },
+        {
+            "parent": 200,
+            "type": "frame-html",
+            "id": 220,
+            "x": 0,
+            "y": 3,
+            "rotate": 0,
+            "scale": 1,
+            "css": "/home/",
+            "html": "<ul><li>hauptsächlich verkündigen wir Jesus durch unsere Taten / Lebensweise</li><li>Zuerst vorleben, dann in Worten Predigen!</li><li>Mission muss in Demut geschehen</li><li>Mission muss auf Augenhöhe geschehen</li><li>Mission muss unter gegenseitigem Respekt und Verständnis geschehen</li></ul>"
+        },
+        {
+            "parent": 200,
+            "type": "frame-html",
+            "id": 300,
+            "x": 0,
+            "y": 3,
+            "rotate": 0,
+            "scale": 1,
+            "css": "/home/",
+            "html": "<h3>Demut</h3>"
+        },
+        {
+            "parent": 200,
+            "type": "frame-html",
+            "id": 305,
+            "x": 0,
+            "y": 4,
+            "rotate": 0,
+            "scale": 1,
+            "css": "/home/",
+            "html": "Gerade weil sie den Streit nicht scheut, muss die Verbreitung des Evangeliums in demütiger Weise geschehen. Diese Haltung entspricht dem Inhalt der Botschaft Jesu, verspottet und gekreuzigt und zugleich Gottessohn und König der Welt. (K. Funkschmidt)"
+        },
+        {
+            "parent": 300,
+            "type": "frame-html",
+            "id": 310,
+            "x": 0,
+            "y": 3,
+            "rotate": 0,
+            "scale": 1,
+            "css": "/home/",
+            "html": "<ul><li>Mission muss in Demut geschehen</li><li>Mission muss auf Augenhöhe geschehen</li><li>Mission muss unter gegenseitigem Respekt und Verständnis geschehen</li></ul>"
         },
         {
             "parent": 1,
@@ -341,6 +385,11 @@
             "type": "frame",
             "frame-id": 1860,
             "zoom": 2
+        },
+        {
+            "type": "frame",
+            "frame-id": 220,
+            "zoom": 1
         }
     ]
 }
