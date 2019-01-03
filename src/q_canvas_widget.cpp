@@ -10,9 +10,6 @@ QCanvasWidget::QCanvasWidget(QWidget *parent)
     connect(step_animator, &QStepAnimator::currentAnimationStepCoordinates, this, qOverload<QPoint>(&QCanvasWidget::scrollToPosition));
     connect(step_animator, &QStepAnimator::currentAnimationStepZoom, this, &QCanvasWidget::scaleView);
     
-    //this->view_zoomable = new QZoomableGraphicsView(view);
-    //this->view_zoomable->set_modifiers(Qt::NoModifier);
-    
     view->setRenderHint(QPainter::Antialiasing);
     
     view->installEventFilter(this);
@@ -60,6 +57,9 @@ QCanvasWidget::QCanvasWidget(QWidget *parent)
     }
     else
     {
+        this->view_zoomable = new QZoomableGraphicsView(view);
+        this->view_zoomable->set_modifiers(Qt::NoModifier);
+        
         view->setDragMode(QGraphicsView::ScrollHandDrag);
     }
     
@@ -111,7 +111,8 @@ void QCanvasWidget::addJSON(QString path)
                 obj.value("x").toDouble(),
                 obj.value("y").toDouble(),
                 obj.value("rotate").toInt(),
-                obj.value("scale").toDouble()
+                obj.value("scale").toDouble(),
+                obj.value("tree-edge").toString()
             );
         }
         else if (type == "line")
@@ -129,10 +130,13 @@ void QCanvasWidget::addJSON(QString path)
     color.setNamedColor(this->conf_obj.value("background-color").toString());
     view->setBackgroundBrush(QBrush(color, Qt::SolidPattern));
     
-    stepToStart();
+    if (!this->editMode)
+    {
+        stepToStart();
+    }
 }
 
-void QCanvasWidget::addHTML(int parent, int id, QString html, double dx, double dy, int rotate, double scale)
+void QCanvasWidget::addHTML(int parent, int id, QString html, double dx, double dy, int rotate, double scale, QString tree_edge)
 {
     // read the stylesheet
     QString css;
@@ -153,6 +157,8 @@ void QCanvasWidget::addHTML(int parent, int id, QString html, double dx, double 
     // calculate absolute position
     int pos_x = 0;
     int pos_y = 0;
+    int par_x = 0;
+    int par_y = 0;
     // if parent == id, we have no parent. that means: absolute positioning
     if (parent == id)
     {
@@ -162,56 +168,11 @@ void QCanvasWidget::addHTML(int parent, int id, QString html, double dx, double 
     else
     {
         // get parent position
-        int par_x = int(this->nodes_map[parent]["pos"].toPointF().x());
-        int par_y = int(this->nodes_map[parent]["pos"].toPointF().y());
+        par_x = int(this->nodes_map[parent]["pos"].toPointF().x());
+        par_y = int(this->nodes_map[parent]["pos"].toPointF().y());
         // calculate new absolute position
         pos_x = int(par_x + dx * this->resolution_width);
         pos_y = int(par_y + dy * this->resolution_height);
-        
-        // draw a line from parent to child
-        if (this->conf_obj.value("tree-edge-style").toString() == "line")
-        {
-            int dx = par_x - pos_x;
-            int dy = par_y - pos_y;
-            
-            QPoint from, to;
-            
-            // default from-value
-            from = QPoint(par_x + this->resolution_width/2, par_y + this->resolution_height);
-            
-            // is the child above or below the parent?
-            if (dy <= 0)
-            {
-                to = QPoint(pos_x + this->resolution_width/2, pos_y);
-            }
-            else
-            {
-                from = QPoint(par_x + this->resolution_width/2, par_y);
-                to = QPoint(pos_x + this->resolution_width/2, pos_y + this->resolution_height);
-            }
-            
-            // is the child more left or right of the parent (and not so much above or below)?
-            if (par_y + this->resolution_height >= pos_y &&
-                par_y - this->resolution_height <= pos_y)
-            {
-                if (dx <= 0)
-                {
-                    from = QPoint(par_x + this->resolution_width, par_y + this->resolution_height/2);
-                    to = QPoint(pos_x, pos_y + this->resolution_height/2);
-                }
-                else
-                {
-                    from = QPoint(par_x, par_y + this->resolution_height/2);
-                    to = QPoint(pos_x + this->resolution_width, pos_y + this->resolution_height/2);
-                }
-            }
-            
-            drawLine(from,
-                     to,
-                     this->conf_obj.value("tree-edge-width").toInt(),
-                     this->conf_obj.value("tree-edge-color").toString()
-                     );
-        }
     }
     
     QWebView *web_view = new QWebView();
@@ -234,9 +195,66 @@ void QCanvasWidget::addHTML(int parent, int id, QString html, double dx, double 
     props["scale"] = scale;
     props["type"] = "frame-html";
     props["widget"] = QVariant::fromValue(proxy);
+    props["tree-edge"] = tree_edge;
     this->nodes_map[id] = props;
     
     //qDebug() << qvariant_cast<QGraphicsProxyWidget*>(props["widget"]);
+    
+    if (parent != id)
+    {
+        drawTreeEdge(par_x, par_y, pos_x, pos_y, id);
+    }
+}
+
+void QCanvasWidget::drawTreeEdge(int par_x, int par_y, int pos_x, int pos_y, int id)
+{
+    //qDebug() << this->nodes_map[id];
+    //qDebug() << this->nodes_map[id]["tree-edge"].toString();
+    // draw a line from parent to child
+    if (this->conf_obj.value("tree-edge-style").toString() == "line" &&
+        !(this->nodes_map[id]["tree-edge"].toString() == "none"))
+    {
+        int dx = par_x - pos_x;
+        int dy = par_y - pos_y;
+        
+        QPoint from, to;
+        
+        // default from-value
+        from = QPoint(par_x + this->resolution_width/2, par_y + this->resolution_height);
+        
+        // is the child above or below the parent?
+        if (dy <= 0)
+        {
+            to = QPoint(pos_x + this->resolution_width/2, pos_y);
+        }
+        else
+        {
+            from = QPoint(par_x + this->resolution_width/2, par_y);
+            to = QPoint(pos_x + this->resolution_width/2, pos_y + this->resolution_height);
+        }
+        
+        // is the child more left or right of the parent (and not so much above or below)?
+        if (par_y + this->resolution_height >= pos_y &&
+            par_y - this->resolution_height <= pos_y)
+        {
+            if (dx <= 0)
+            {
+                from = QPoint(par_x + this->resolution_width, par_y + this->resolution_height/2);
+                to = QPoint(pos_x, pos_y + this->resolution_height/2);
+            }
+            else
+            {
+                from = QPoint(par_x, par_y + this->resolution_height/2);
+                to = QPoint(pos_x + this->resolution_width, pos_y + this->resolution_height/2);
+            }
+        }
+        
+        drawLine(from,
+                 to,
+                 this->conf_obj.value("tree-edge-width").toInt(),
+                 this->conf_obj.value("tree-edge-color").toString()
+                 );
+    }
 }
 
 void QCanvasWidget::drawLine(QPoint from, QPoint to, int width, QString color_str)

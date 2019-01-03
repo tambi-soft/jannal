@@ -2,6 +2,7 @@
 :root {
     --orange-color: #f49100;
     --green-color: #005667;
+    --light-green-color: #9fca75;
     --grey-color: #e0e0e0;
     
     --pink-color: #e8335e;
@@ -28,11 +29,11 @@ body {
     font-size: 60px;
     line-height: 1.5;
     
-    /*margin: 0px;*/
+    /*margin: 10px;*/
 }
 
 h1, h2 {
-    color: var(--orange-color);
+    color: var(--light-green-color);
     margin-top: 0px;
     margin-bottom: 0px;
 }

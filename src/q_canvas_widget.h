@@ -59,7 +59,8 @@ public:
     bool editMode = false;
     
     void addJSON(QString path);
-    void addHTML(int parent, int id, QString html, double dx, double dy, int rotate, double scale);
+    void addHTML(int parent, int id, QString html, double dx, double dy, int rotate, double scale, QString tree_edge);
+    void drawTreeEdge(int par_x, int par_y, int pos_x, int pos_y, int id);
     void drawLine(QPoint from, QPoint to, int width, QString color_str);
     void scrollToPosition(int x, int y);
     void scrollToPosition(QPointF pos);

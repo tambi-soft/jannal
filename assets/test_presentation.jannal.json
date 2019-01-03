@@ -83,7 +83,7 @@
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
-            "html": "<h2></h2>"
+            "html": "<div class=\"bible\"><div class=\"bible-quote-first\">„</div><br><b>Lasst Christus, den Herrn, die Mitte eures Lebens sein!' Und wenn man euch nach eurer Hoffnung fragt, seid immer zur Rechenschaft bereit.</b> Doch antwortet freundlich und mit dem gebotenen Respekt. Bewahrt euch ein reines Gewissen! Wenn die Leute euch dann etwas Böses nachsagen, werden sie beschämt werden, weil euer vorbildliches Leben mit Christus sie Lügen straft.<br><div class=\"bible-quote-last\">“</div><div class=\"bible-passage\">1. Petrus 3 15-22</div></div>"
         },
         {
             "parent": 1,
@@ -94,18 +94,73 @@
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
-            "html": "<h2>Vollzeitlicher Dienst</h2>"
+            "html": "<h2><s>Vollzeitlicher</s> Hauptberuflicher Dienst</h2>"
         },
         {
             "parent": 1000,
             "type": "frame-html",
             "id": 1010,
-            "x": -1,
-            "y": 2,
+            "x": 0,
+            "y": 4,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
-            "html": "<h3>Leben von Spenden<br>/<br> Zeltmacher</h3>"
+            "html": "<h3>Leben von Spenden<br>oder<br>als „Zeltmacher“</h3>"
+        },
+        {
+            "parent": 1010,
+            "type": "frame-html",
+            "id": 1020,
+            "x": -1.2,
+            "y": -1.2,
+            "rotate": 0,
+            "scale": 1,
+            "css": "/home/",
+            "html": "<div class=\"bible\"><div class=\"bible-quote-first\">„</div><br>Wenn wir geistlichen Samen unter euch ausgestreut haben, ist es dann zu viel erwartet, wenn wir natürliche Gaben von euch ernten?[...] Wisst ihr nicht, dass alle, die im Tempel Dienst tun, von den Einkünften des Tempels essen, und alle, die am Altar Dienst tun, ihren Anteil von den Opfergaben erhalten? So hat auch der Herr angeordnet, dass die, die das Evangelium verkündigen, auch vom Evangelium leben sollen.<br><div class=\"bible-quote-last\">“</div><div class=\"bible-passage\">1. Korinther 9 11-16</div></div>"
+        },
+        {
+            "parent": 1010,
+            "type": "frame-html",
+            "id": 1030,
+            "x": -1.2,
+            "y": 0,
+            "rotate": 0,
+            "scale": 1,
+            "css": "/home/",
+            "html": "<div class=\"bible\"><div class=\"bible-quote-first\">„</div><br>Aber wir haben keinen Gebrauch von unserem Recht gemacht. Wir nehmen lieber alle Mühen und Entbehrungen auf uns, damit wir dem Evangelium von Christus kein Hindernis in den Weg legen. <br><div class=\"bible-quote-last\">“</div><div class=\"bible-passage\">1. Korinther 9 11-16</div></div>"
+        },
+        {
+            "parent": 1010,
+            "type": "frame-html",
+            "id": 1040,
+            "x": -1.2,
+            "y": 1.2,
+            "rotate": 0,
+            "scale": 1,
+            "css": "/home/",
+            "html": "<div class=\"bible\"><div class=\"bible-quote-first\">„</div><br>Bleibt in diesem Haus, esst und trinkt, was sie euch vorsetzen; denn wer arbeitet, hat Anspruch auf Lohn.<br><div class=\"bible-quote-last\">“</div><div class=\"bible-passage\">Lukas 10 7</div></div>"
+        },
+        {
+            "parent": 1010,
+            "type": "frame-html",
+            "id": 1045,
+            "x": 0,
+            "y": 1.2,
+            "rotate": 0,
+            "scale": 1,
+            "css": "/home/",
+            "html": "<ul><li>Manchmal ist ein zusätzlicher Broterwerb hilfreich oder notwendig</li><li>Manche Missionsgebiete, wie z.B. die Bibelübersetzung erfordern qualifizierte Fachkräfte, von denen es nicht viele gibt. Es ist also oft sinnvoll, wenn diese Leute vollzeit an ihren Projekten arbeiten können.</li></ul>"
+        },
+        {
+            "parent": 1010,
+            "type": "frame-html",
+            "id": 1050,
+            "x": 1.2,
+            "y": 1.2,
+            "rotate": 0,
+            "scale": 1,
+            "css": "/home/",
+            "html": "<h5>Zusammenfassung</h5><ul><li>Leben von Spenden(geldern) ist absolut biblisch</li><li>Der Missionar ist damit kein Schmarotzer, sondern erhält lediglich einen Lohn für seine (oft sehr harte) Arbeit</li><li>Es gibt aber durchaus immer wieder Gründe, keine Spenden anzunehmen</li><li>Letztlich sollte man sich von Gott zeigen lassen, welches \"Geschäftsmodell\" im eigenen Leben das richtige ist</li></ul>"
         },
         {
             "parent": 1000,
@@ -123,11 +178,83 @@
             "type": "frame-html",
             "id": 1800,
             "x": 1.2,
-            "y": -0.2,
+            "y": 0,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
-            "html": "<h3>Wycliff</h3>"
+            "html": "<img width=\"900px\" src=\"http://localhost/vortrag_img/tmp_Logo_petrol.svg\">"
+        },
+        {
+            "parent": 1800,
+            "type": "frame-html",
+            "id": 1810,
+            "x": 0,
+            "y": 1,
+            "rotate": 0,
+            "scale": 0.5,
+            "css": "/home/",
+            "html": "<img width=\"1880px\" src=\"http://localhost/vortrag_img/sprachforschung.jpg\">",
+            "tree-edge": "none"
+        },
+        {
+            "parent": 1800,
+            "type": "frame-html",
+            "id": 1820,
+            "x": 0,
+            "y": 1.5,
+            "rotate": 0,
+            "scale": 0.5,
+            "css": "/home/",
+            "html": "<img width=\"1880px\" src=\"http://localhost/vortrag_img/schule_00.jpg\">",
+            "tree-edge": "none"
+        },
+        {
+            "parent": 1800,
+            "type": "frame-html",
+            "id": 1830,
+            "x": 0,
+            "y": 2,
+            "rotate": 0,
+            "scale": 0.5,
+            "css": "/home/",
+            "html": "<img width=\"1880px\" src=\"http://localhost/vortrag_img/bibel3.jpg\">",
+            "tree-edge": "none"
+        },
+        {
+            "parent": 1800,
+            "type": "frame-html",
+            "id": 1840,
+            "x": 0.5,
+            "y": 1,
+            "rotate": 0,
+            "scale": 0.5,
+            "css": "/home/",
+            "html": "<img width=\"1880px\" src=\"http://localhost/vortrag_img/gebaerdensprache.jpg\">",
+            "tree-edge": "none"
+        },
+        {
+            "parent": 1800,
+            "type": "frame-html",
+            "id": 1850,
+            "x": 0.5,
+            "y": 1.5,
+            "rotate": 0,
+            "scale": 0.5,
+            "css": "/home/",
+            "html": "<img width=\"1880px\" src=\"http://localhost/vortrag_img/technik.jpg\">",
+            "tree-edge": "none"
+        },
+        {
+            "parent": 1800,
+            "type": "frame-html",
+            "id": 1860,
+            "x": 0.5,
+            "y": 2,
+            "rotate": 0,
+            "scale": 0.5,
+            "css": "/home/",
+            "html": "<img width=\"1880px\" src=\"http://localhost/vortrag_img/musik32.jpg\">",
+            "tree-edge": "none"
         },
         {
             "type": "line",
@@ -173,6 +300,47 @@
             "type": "frame",
             "frame-id": 4,
             "zoom": 1
+        },
+        {
+            "type": "frame",
+            "frame-id": 1800,
+            "zoom": 1
+        },
+        {
+            "type": "position",
+            "pos-x": 8064,
+            "pos-y": 1350,
+            "zoom": 0.75
+        },
+        {
+            "type": "frame",
+            "frame-id": 1810,
+            "zoom": 2
+        },
+        {
+            "type": "frame",
+            "frame-id": 1820,
+            "zoom": 2
+        },
+        {
+            "type": "frame",
+            "frame-id": 1830,
+            "zoom": 2
+        },
+        {
+            "type": "frame",
+            "frame-id": 1840,
+            "zoom": 2
+        },
+        {
+            "type": "frame",
+            "frame-id": 1850,
+            "zoom": 2
+        },
+        {
+            "type": "frame",
+            "frame-id": 1860,
+            "zoom": 2
         }
     ]
 }
