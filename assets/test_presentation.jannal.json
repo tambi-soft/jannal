@@ -253,6 +253,17 @@
         {
             "parent": 1500,
             "type": "frame-html",
+            "id": 1600,
+            "x": 1.2,
+            "y": 0,
+            "rotate": 0,
+            "scale": 1,
+            "css": "/home/",
+            "html": "„Hat wohl ein Volk etwas Lieberes als die Sprache seiner Väter? In ihr wohnet sein ganzer Gedankenreichtum an Tradition, Geschichte, Religion und Grundsätzen des Lebens, alles, sein Herz und seine Seele” (Herder)"
+        },
+        {
+            "parent": 1600,
+            "type": "frame-html",
             "id": 1800,
             "x": 1.2,
             "y": 0,
