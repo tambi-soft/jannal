@@ -9,7 +9,7 @@
 #include "menubar.h"
 #include "config.h"
 #include "q_canvas_widget.h"
-#include "q_beamer_window.h"
+//#include "q_beamer_window.h"
 
 class QJannalMainWindow : public QMainWindow
 {

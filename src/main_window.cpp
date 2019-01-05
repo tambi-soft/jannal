@@ -5,7 +5,7 @@ QJannalMainWindow::QJannalMainWindow(QWidget *parent)
     : QMainWindow(parent)
     , tab_widget (new QTabWidget)
 {
-    resize(1024, 768);
+    resize(1800, 1000);
     
     Config *config = new Config();
     this->deckpath = config->getDecksPath();
@@ -25,20 +25,23 @@ QJannalMainWindow::QJannalMainWindow(QWidget *parent)
     //tab_bar->setMouseTracking(true);
     //tab_bar->installEventFilter(this);
     
-    //createNewBeamerTab();
+    createNewBeamerTab();
     showPresentation();
 }
 
 void QJannalMainWindow::createNewBeamerTab()
 {
-    QCanvasWidget *canvas = new QCanvasWidget();
+    QCanvasWidget *canvas = new QCanvasWidget(true);
     tab_widget->addTab(canvas, QString("testtab"));
 }
 
 void QJannalMainWindow::showPresentation()
 {
-    QBeamerWindow *beamer = new QBeamerWindow();
-    beamer->showFullScreen();
+    //QBeamerWindow *beamer = new QBeamerWindow();
+    //beamer->showFullScreen();
+    
+    QCanvasWidget *canvas = new QCanvasWidget(false);
+    canvas->showFullScreen();
 }
 
 void QJannalMainWindow::activateNewTab()

@@ -54,7 +54,6 @@ HEADERS += \
     src/menubar.h \
     src/main_window.h \
     src/q_canvas_widget.h \
-    src/q_beamer_window.h \
     src/q_step_animator.h \
     src/q_zoomable_graphics_view.h
     
@@ -64,7 +63,6 @@ SOURCES += \
     src/main_window.cpp \
     src/jannal.cpp \
     src/q_canvas_widget.cpp \
-    src/q_beamer_window.cpp \
     src/q_step_animator.cpp \
     src/q_zoomable_graphics_view.cpp
 

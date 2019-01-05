@@ -54,7 +54,7 @@ class QCanvasWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit QCanvasWidget(QWidget *parent = nullptr);
+    explicit QCanvasWidget(bool edit_mode, QWidget *parent = nullptr);
     
     bool editMode = true;
     

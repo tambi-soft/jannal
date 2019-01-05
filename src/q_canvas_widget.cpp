@@ -1,12 +1,14 @@
 #include "q_canvas_widget.h"
 
-QCanvasWidget::QCanvasWidget(QWidget *parent)
+QCanvasWidget::QCanvasWidget(bool edit_mode, QWidget *parent)
     : QWidget(parent)
     , view (new QGraphicsView)
     , scene (new QGraphicsScene)
     , layout (new QVBoxLayout)
     , step_animator (new QStepAnimator)
 {
+    this->editMode = edit_mode;
+    
     connect(step_animator, &QStepAnimator::currentAnimationStepCoordinates, this, qOverload<QPoint>(&QCanvasWidget::scrollToPosition));
     connect(step_animator, &QStepAnimator::currentAnimationStepZoom, this, &QCanvasWidget::scaleView);
     
