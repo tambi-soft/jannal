@@ -64,6 +64,17 @@
             "html": "<div class=\"bible\"><div class=\"bible-quote-first\">„</div><br>Darum geht zu allen Völkern und macht die Menschen zu meinen Jüngern. Dabei sollt ihr sie auf den Namen des Vaters, des Sohnes und des Heiligen Geistes taufen und sie belehren, alles zu befolgen, was ich euch geboten habe. Und seid gewiss: Ich bin jeden Tag bei euch, bis zum Ende der Zeit.<br><div class=\"bible-quote-last\">“</div><div class=\"bible-passage\">Matthäus 28 19-20</div></div>"
         },
         {
+            "parent": 2,
+            "type": "frame-html",
+            "id": 5,
+            "x": -2.4,
+            "y": 1.2,
+            "rotate": 0,
+            "scale": 1,
+            "css": "/home/",
+            "html": "<h5>Das Gleichnis mit den Dienern und den ihnen anvertrauten Talenten</h5><ul><li>Matthäus 25,14-30</li><li>Lukas 19,12-27</li></ul>"
+        },
+        {
             "parent": 1,
             "type": "frame-html",
             "id": 200,
@@ -121,7 +132,29 @@
         {
             "parent": 300,
             "type": "frame-html",
-            "id": 302,
+            "id": 310,
+            "x": 0,
+            "y": 3,
+            "rotate": 0,
+            "scale": 1,
+            "css": "/home/",
+            "html": "<div class=\"bible\"><div class=\"bible-quote-first\">„</div><br>Dann sprach er zu allen: „Wer mein Nachfolger sein will, der verleugne sich selbst und nehme Tag für Tag sein Kreuz auf sich und folge mir. Denn wer sein Leben retten will, der wird es verlieren; wer aber sein Leben um meinetwillen verliert, der wird es retten. Was nützt es einem Menschen, wenn er die ganze Welt gewinnt und dabei sich selbst verliert oder zu Schaden bringt?<br><div class=\"bible-quote-last\">“</div><div class=\"bible-passage\">Lukas 9 23-29</div></div>"
+        },
+        {
+            "parent": 300,
+            "type": "frame-html",
+            "id": 320,
+            "x": -3,
+            "y": 3,
+            "rotate": 0,
+            "scale": 1,
+            "css": "/home/",
+            "html": "<h5>Mission bedeutet, viele Opfer zu bringen, z.B.</h5><ul><li>Geld</li><li>Zeit</li><li>Gesundheit</li><li>Sicherheit</li><li>Familie</li></ul>"
+        },
+        {
+            "parent": 300,
+            "type": "frame-html",
+            "id": 340,
             "x": -1.2,
             "y": 0,
             "rotate": 0,
@@ -132,7 +165,7 @@
         {
             "parent": 300,
             "type": "frame-html",
-            "id": 305,
+            "id": 350,
             "x": -0.6,
             "y": 2,
             "rotate": 0,
@@ -143,7 +176,7 @@
         {
             "parent": 300,
             "type": "frame-html",
-            "id": 310,
+            "id": 360,
             "x": 0.6,
             "y": 2,
             "rotate": 0,
@@ -154,7 +187,7 @@
         {
             "parent": 300,
             "type": "frame-html",
-            "id": 320,
+            "id": 370,
             "x": 0,
             "y": 3.2,
             "rotate": 0,
@@ -259,7 +292,7 @@
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
-            "html": "<img style=\"background-color: white;\" width=\1920px\" src=\"http://localhost/vortrag_img/gesellschaften/collage.svg.png\">"
+            "html": "<img style=\"background-color: white;\" width=\"1920px\" src=\"http://localhost/vortrag_img/gesellschaften/collage.svg.png\">"
         },
         {
             "parent": 1500,
@@ -378,6 +411,39 @@
             "html": "<h4>Kollonisation</h4>"
         },
         {
+            "parent": 4010,
+            "type": "frame-html",
+            "id": 4011,
+            "x": 0,
+            "y": 1.2,
+            "rotate": 0,
+            "scale": 1,
+            "css": "/home/",
+            "html": "<h5>Teurer Segen. Christliche Mission und Kolonialismus</h5>Missionare waren Verbündete des Kolonialismus, oft sogar grausame. Sie halfen, alte Kulturen zu zerstören, Menschen zu entwurzeln, Familien und ganze Völker zu spalten. Sie förderten und billigten ein System, das unzählige Millionen in drei Erdteilen verelenden ließ, ihnen Hunger und Krankheiten brachte. die vielgepriesenen Missionsschulen erzogen die „Heiden“ zu Menschen zweiter Klasse, anstatt sie auf Selbstverantwortung, Unabhängigkeit und die moderne Welt vorzubereiten. An der Fehlentwicklung Lateinamerikas, Afrikas und Asiens, dem Hauptproblem der Gegenwart, tragen Missionare und Kirchen aller Richtungen und Konfessionen Mitschuld. (Gert Franz-Joseph von Paczensky)"
+        },
+        {
+            "parent": 4010,
+            "type": "frame-html",
+            "id": 4012,
+            "x": -5,
+            "y": 1.2,
+            "rotate": 0,
+            "scale": 1,
+            "css": "/home/",
+            "html": "<ul><li>Das Zeitalter des Kolonialismus beginnt c.a. 1492; Endgültig vorbei 1945</li><li>Die Beziehungen zwischen Missionaren, Kolonialherren, Händlern, der Kolonialvewaltung und den Einheimischen war in all diesen Jahrhunderten teilweise sehr unterschiedlich und uneinheitlich</li><li>Nicht selten waren die Missionare von den anderen Europäischen Gruppen sehr ungern gesehen und aktiv behindert</li></ul>"
+        },
+        {
+            "parent": 4012,
+            "type": "frame-html",
+            "id": 4013,
+            "x": 0,
+            "y": 1.2,
+            "rotate": 0,
+            "scale": 1,
+            "css": "/home/",
+            "html": "<ul><li>Einige frühe Herrnhuter Missionare wollten sich gar selbst als Sklaven verkaufen, um den Sklaven in den Kolonien auf Augenhöhe begegnen zu können</li><li>Sicherlich wurden in der Vergangenheit auch von Missionaren Fehler gemacht</li><li>Andererseits gibt es durchaus Gemeinden in ehemaligen Missionsgebieten, die heute noch sehr dankbar sind für den Einsatz „ihrer“ Missionare</li><li>Eine einseitig verallgemeinernde Sichtweise wird weder den einheimischen Opfern, noch den Missionaren, die zum Teil alles hingegeben haben, gerecht!</li></ul>"
+        },
+        {
             "parent": 4000,
             "type": "frame-html",
             "id": 4020,
@@ -387,6 +453,28 @@
             "scale": 1,
             "css": "/home/",
             "html": "<h4>Zerstörung fremder Kulturen</h4>"
+        },
+        {
+            "parent": 4020,
+            "type": "frame-html",
+            "id": 4030,
+            "x": 0,
+            "y": 1.2,
+            "rotate": 0,
+            "scale": 1,
+            "css": "/home/",
+            "html": "<ul><li>Heutzutage gibt es quasi keine „unberührten Völker“ mehr</li><li>Fast alle naturnahen, isolierten Völker werden entweder vom Tourismus ausgebeutet, oder leben in Konflikt mit Holzfällern, Bauern, Minengesellschasften, etc. pp.</li><li>Natürlich ist es wichtig, die Interessen und Wünsche der Völker zu Wahren</li><li>Problem: Wer darf was entscheiden? Darf ein Häuptling diese Entscheidung allen seinen Untertanen aufzwingen?</li><li>Die letzten verbliebenen Naturvölker am liebsten in einen Zoo sperren zu wollen ist jedenfalls eine sehr arrogante und selbstgerechte Sichtweise</li></ul>"
+        },
+        {
+            "parent": 4020,
+            "type": "frame-html",
+            "id": 4040,
+            "x": 2,
+            "y": 1.2,
+            "rotate": 0,
+            "scale": 1,
+            "css": "/home/",
+            "html": "<ul><li>Bei Wycliff arbeitet man bevorzugt mit lokalen Kirchen und Gemeinden zusammen</li><li>Idealerweise „gehört“ das Projekt den Einheimischen, die ausländischen Missionare stehen ihnen lediglich unterstützend und beratend zur Seite</li><li>Führt zudem zu einer weitaus besseren Akzeptanz des Endproduktes und zu einer deutlich motivierteren Befolgung der biblischen Lehren</li></ul>"
         },
         {
             "type": "line",

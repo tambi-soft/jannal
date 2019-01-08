@@ -63,6 +63,7 @@ QCanvasWidget::QCanvasWidget(bool edit_mode, QWidget *parent)
         this->view_zoomable->set_modifiers(Qt::NoModifier);
         
         view->setDragMode(QGraphicsView::ScrollHandDrag);
+        view->scale(0.3, 0.3);
     }
     
     //scrollToPosition(1000, 1000);
