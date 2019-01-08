@@ -63,14 +63,13 @@ QCanvasWidget::QCanvasWidget(bool edit_mode, QWidget *parent)
         this->view_zoomable->set_modifiers(Qt::NoModifier);
         
         view->setDragMode(QGraphicsView::ScrollHandDrag);
+        
+        //fitInView();
     }
     
     //scrollToPosition(1000, 1000);
     //view->scale(0.1, 0.1);
     //view->scale(1.2, 1.2);
-    
-    
-    //view->fitInView(scene->sceneRect());
     
     //qDebug() << scene->items();
 }
@@ -114,7 +113,8 @@ void QCanvasWidget::addJSON(QString path)
                 obj.value("y").toDouble(),
                 obj.value("rotate").toInt(),
                 obj.value("scale").toDouble(),
-                obj.value("tree-edge").toString()
+                obj.value("tree-edge").toString(),
+                obj.value("scroll-bars").toBool()
             );
         }
         else if (type == "line")
@@ -138,7 +138,7 @@ void QCanvasWidget::addJSON(QString path)
     }
 }
 
-void QCanvasWidget::addHTML(int parent, int id, QString html, double dx, double dy, int rotate, double scale, QString tree_edge)
+void QCanvasWidget::addHTML(int parent, int id, QString html, double dx, double dy, int rotate, double scale, QString tree_edge, bool show_scroll_bars)
 {
     // read the stylesheet
     QString css;
@@ -154,7 +154,8 @@ void QCanvasWidget::addHTML(int parent, int id, QString html, double dx, double 
             "<meta charset=\"utf-8\" />"
             "<style>" + css + "</style>"
         "</head>"
-        "<body>" + html + "</body>";
+        "<body><div class=\"abs\"><div class=\"cell\">" + html + "</div></div></body>"
+        "</html>";
     
     // calculate absolute position
     int pos_x = 0;
@@ -183,8 +184,11 @@ void QCanvasWidget::addHTML(int parent, int id, QString html, double dx, double 
     //web_view->setZoomFactor(scale);
     web_view->move(pos_x, pos_y);
     
-    web_view->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal, Qt::ScrollBarAlwaysOff);
-    web_view->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
+    if (!show_scroll_bars)
+    {
+        web_view->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal, Qt::ScrollBarAlwaysOff);
+        web_view->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
+    }
     
     QGraphicsProxyWidget *proxy = scene->addWidget(web_view);
     proxy->setRotation(rotate);
@@ -353,7 +357,7 @@ void QCanvasWidget::scaleView(double factor)
 
 void QCanvasWidget::scrollToPosition(int x, int y)
 {
-    scene->setSceneRect(x, y, this->resolution_width, this->resolution_height);
+    view->setSceneRect(x, y, this->resolution_width, this->resolution_height);
 }
 void QCanvasWidget::scrollToPosition(QPointF pos)
 {
@@ -414,4 +418,13 @@ bool QCanvasWidget::eventFilter(QObject */*target*/, QEvent *event)
     }
     
     return false;
+}
+
+void QCanvasWidget::showEvent(QShowEvent *)
+{
+    if (this->editMode)
+    {
+        view->fitInView(scene->sceneRect(), Qt::KeepAspectRatio);
+        //scene->setSceneRect(scene->sceneRect());
+    }
 }

@@ -22,10 +22,9 @@ body {
     /* center horizontally und vertically */
     position: absolute;
     top: 50%;
-    transform: translate(0, -50%);
     left: 50%;
     margin-right: -50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%) translateY(-50%);
     
     text-align: center;
     font-size: 60px;
@@ -73,8 +72,8 @@ ul {
 }
 
 .bible {
-    width: 1400px;
-    padding-top: 0px;
+    min-width: 1400px;
+    padding-top: 80px;
     padding-right: 60px;
     padding-bottom: 40px;
     padding-left: 60px;

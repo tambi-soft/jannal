@@ -26,13 +26,16 @@ QJannalMainWindow::QJannalMainWindow(QWidget *parent)
     //tab_bar->installEventFilter(this);
     
     createNewBeamerTab();
-    showPresentation();
+    //showPresentation();
 }
 
 void QJannalMainWindow::createNewBeamerTab()
 {
     QCanvasWidget *canvas = new QCanvasWidget(true);
     tab_widget->addTab(canvas, QString("testtab"));
+    
+    //canvas->show();
+    //canvas->fitInView();
 }
 
 void QJannalMainWindow::showPresentation()

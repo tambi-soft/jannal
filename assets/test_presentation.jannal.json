@@ -78,7 +78,7 @@
             "parent": 200,
             "type": "frame-html",
             "id": 210,
-            "x": -2.4,
+            "x": -3,
             "y": 3,
             "rotate": 0,
             "scale": 1,
@@ -99,8 +99,20 @@
         {
             "parent": 210,
             "type": "frame-html",
-            "id": 220,
+            "scroll-bars": true,
+            "id": 218,
             "x": 0,
+            "y": 2,
+            "rotate": 0,
+            "scale": 1,
+            "css": "/home/",
+            "html": "<div class=\"bible\"><div class=\"bible-quote-first\">„</div><br>Ihr seid das Salz der Erde. Wenn das Salz aber seine Wirkung verliert, womit soll man es wieder salzig machen? Es taugt zu nichts anderem mehr, als auf den Weg geschüttet, um von den Leuten zertreten zu werden. Ihr seid das Licht der Welt. Eine Stadt, die auf einem Berg liegt, kann nicht verborgen bleiben. Man zündet auch nicht eine Lampe an und stellt sie unter den Eimer, im Gegenteil, man stellt sie auf den Lampenständer, damit sie allen im Haus Licht gibt. So soll euer Licht vor den Menschen leuchten: Sie sollen eure guten Werke sehen und euren Vater im Himmel preisen.<br><div class=\"bible-quote-last\">“</div><div class=\"bible-passage\">Matthäus 5, 13-16</div></div>"
+        },
+        {
+            "parent": 210,
+            "type": "frame-html",
+            "id": 220,
+            "x": 1.2,
             "y": 2,
             "rotate": 0,
             "scale": 1,
@@ -364,12 +376,23 @@
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
-            "html": "<h4>Kollonisation</h4>"
+            "html": "<h4>Kolonialismus</h4>"
+        },
+        {
+            "parent": 4010,
+            "type": "frame-html",
+            "id": 4020,
+            "x": 0,
+            "y": 1.2,
+            "rotate": 0,
+            "scale": 1,
+            "css": "/home/",
+            "html": "<h4>Kolonialismus</h4>"
         },
         {
             "parent": 4000,
             "type": "frame-html",
-            "id": 4020,
+            "id": 4500,
             "x": 1.2,
             "y": 0,
             "rotate": 0,
