@@ -26,7 +26,7 @@ QJannalMainWindow::QJannalMainWindow(QWidget *parent)
     //tab_bar->installEventFilter(this);
     
     createNewBeamerTab();
-    //showPresentation();
+    showPresentation();
 }
 
 void QJannalMainWindow::createNewBeamerTab()

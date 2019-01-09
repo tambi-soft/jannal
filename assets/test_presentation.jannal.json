@@ -24,7 +24,7 @@
             "type": "frame-html",
             "id": 2,
             "x": -3,
-            "y": 2,
+            "y": 1.2,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
@@ -66,9 +66,9 @@
         {
             "parent": 2,
             "type": "frame-html",
-            "id": 5,
-            "x": -2.4,
-            "y": 1.2,
+            "id": 60,
+            "x": 0,
+            "y": -1.2,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
@@ -79,18 +79,18 @@
             "type": "frame-html",
             "id": 200,
             "x": 0,
-            "y": 2,
+            "y": 3,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
-            "html": "<h2>Mission ist eine Lebensweise</h2>"
+            "html": "<h2>Mission ist eine Lebensweise<br>/<br>Leben als Christ</h2>"
         },
         {
             "parent": 200,
             "type": "frame-html",
             "id": 210,
             "x": -3,
-            "y": 3,
+            "y": 1,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
@@ -101,7 +101,7 @@
             "type": "frame-html",
             "id": 215,
             "x": -1.2,
-            "y": 2,
+            "y": 1.2,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
@@ -113,7 +113,7 @@
             "scroll-bars": true,
             "id": 218,
             "x": 0,
-            "y": 2,
+            "y": 1.2,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
@@ -122,43 +122,31 @@
 {
             "parent": 210,
             "type": "frame-html",
-            "scroll-bars": true,
-            "id": 219,
-            "x": 0,
-            "y": 2,
+            "id": 220,
+            "x": 1.2,
+            "y": 1.2,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
             "html": "<ul><li>hauptsächlich verkündigen wir Jesus durch unsere Taten / Lebensweise</li><li>Zuerst vorleben, dann in Worten Predigen!</li></ul>"
         },
-1	{
+        {
             "parent": 200,
             "type": "frame-html",
             "id": 300,
-            "x": 0,
-            "y": 3,
+            "x": -3,
+            "y": 6,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
             "html": "<h3>Demut</h3>"
         },
         {
-            "parent": 210,
-            "type": "frame-html",
-            "id": 220,
-            "x": 1.2,
-            "y": 2,
-            "rotate": 0,
-            "scale": 1,
-            "css": "/home/",
-            "html": "<ul><li>hauptsächlich verkündigen wir Jesus durch unsere Taten / Lebensweise</li><li>Zuerst vorleben, dann in Worten Predigen!</li></ul>"
-        },
-        {
             "parent": 300,
             "type": "frame-html",
             "id": 310,
-            "x": 0,
-            "y": 3,
+            "x": -1.2,
+            "y": -1.2,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
@@ -168,8 +156,8 @@
             "parent": 300,
             "type": "frame-html",
             "id": 320,
-            "x": -3,
-            "y": 3,
+            "x": -1.2,
+            "y": 0,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
@@ -180,7 +168,7 @@
             "type": "frame-html",
             "id": 340,
             "x": -1.2,
-            "y": 0,
+            "y": 1.2,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
@@ -190,8 +178,8 @@
             "parent": 300,
             "type": "frame-html",
             "id": 350,
-            "x": -0.6,
-            "y": 2,
+            "x": 1.2,
+            "y": 1.2,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
@@ -201,8 +189,8 @@
             "parent": 300,
             "type": "frame-html",
             "id": 360,
-            "x": 0.6,
-            "y": 2,
+            "x": 1.2,
+            "y": 0,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
@@ -212,8 +200,8 @@
             "parent": 300,
             "type": "frame-html",
             "id": 370,
-            "x": 0,
-            "y": 3.2,
+            "x": 1.2,
+            "y": -1.2,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
@@ -223,8 +211,8 @@
             "parent": 1,
             "type": "frame-html",
             "id": 1000,
-            "x": 3,
-            "y": 2,
+            "x": 5,
+            "y": 1.2,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
@@ -234,8 +222,8 @@
             "parent": 200,
             "type": "frame-html",
             "id": 1010,
-            "x": 3,
-            "y": 5,
+            "x": 1,
+            "y": 6,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
@@ -300,8 +288,8 @@
             "parent": 1000,
             "type": "frame-html",
             "id": 1500,
-            "x": 0,
-            "y": -2,
+            "x": 2.4,
+            "y": 1.2,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
@@ -311,8 +299,8 @@
             "parent": 1500,
             "type": "frame-html",
             "id": 1510,
-            "x": 0,
-            "y": -2,
+            "x": -0.6,
+            "y": 1.2,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
@@ -322,8 +310,8 @@
             "parent": 1500,
             "type": "frame-html",
             "id": 1600,
-            "x": 1.2,
-            "y": 0,
+            "x": 0.6,
+            "y": 1.2,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
@@ -333,8 +321,8 @@
             "parent": 1600,
             "type": "frame-html",
             "id": 1800,
-            "x": 1.2,
-            "y": 0,
+            "x": -1.2,
+            "y": 6,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
@@ -344,79 +332,79 @@
             "parent": 1800,
             "type": "frame-html",
             "id": 1810,
-            "x": 0,
-            "y": 1,
+            "x": -1.2,
+            "y": -1.2,
             "rotate": 0,
-            "scale": 0.5,
+            "scale": 1,
             "css": "/home/",
             "html": "<img width=\"1880px\" src=\"http://localhost/vortrag_img/sprachforschung.jpg\">",
-            "tree-edge": "none"
+            "tree-edge": "line"
         },
         {
             "parent": 1800,
             "type": "frame-html",
             "id": 1820,
-            "x": 0,
-            "y": 1.5,
+            "x": -1.2,
+            "y": 0,
             "rotate": 0,
-            "scale": 0.5,
+            "scale": 1,
             "css": "/home/",
             "html": "<img width=\"1880px\" src=\"http://localhost/vortrag_img/schule_00.jpg\">",
-            "tree-edge": "none"
+            "tree-edge": "line"
         },
         {
             "parent": 1800,
             "type": "frame-html",
             "id": 1830,
-            "x": 0,
-            "y": 2,
+            "x": -1.2,
+            "y": 1.2,
             "rotate": 0,
-            "scale": 0.5,
+            "scale": 1,
             "css": "/home/",
             "html": "<img width=\"1880px\" src=\"http://localhost/vortrag_img/bibel3.jpg\">",
-            "tree-edge": "none"
+            "tree-edge": "line"
         },
         {
             "parent": 1800,
             "type": "frame-html",
             "id": 1840,
-            "x": 0.5,
-            "y": 1,
+            "x": 1.2,
+            "y": -1.2,
             "rotate": 0,
-            "scale": 0.5,
+            "scale": 1,
             "css": "/home/",
             "html": "<img width=\"1880px\" src=\"http://localhost/vortrag_img/gebaerdensprache.jpg\">",
-            "tree-edge": "none"
+            "tree-edge": "line"
         },
         {
             "parent": 1800,
             "type": "frame-html",
             "id": 1850,
-            "x": 0.5,
-            "y": 1.5,
+            "x": 1.2,
+            "y": 0,
             "rotate": 0,
-            "scale": 0.5,
+            "scale": 1,
             "css": "/home/",
             "html": "<img width=\"1880px\" src=\"http://localhost/vortrag_img/technik.jpg\">",
-            "tree-edge": "none"
+            "tree-edge": "line"
         },
         {
             "parent": 1800,
             "type": "frame-html",
             "id": 1860,
-            "x": 0.5,
-            "y": 2,
+            "x": 1.2,
+            "y": 1.2,
             "rotate": 0,
-            "scale": 0.5,
+            "scale": 1,
             "css": "/home/",
             "html": "<img width=\"1880px\" src=\"http://localhost/vortrag_img/musik32.jpg\">",
-            "tree-edge": "none"
+            "tree-edge": "line"
         },
         {
             "parent": 1000,
             "type": "frame-html",
             "id": 4000,
-            "x": 0,
+            "x": -1.2,
             "y": 1.2,
             "rotate": 0,
             "scale": 1,
@@ -427,7 +415,7 @@
             "parent": 4000,
             "type": "frame-html",
             "id": 4010,
-            "x": 0,
+            "x": -0.6,
             "y": 1.2,
             "rotate": 0,
             "scale": 1,
@@ -438,18 +426,19 @@
             "parent": 4010,
             "type": "frame-html",
             "id": 4011,
-            "x": 0,
-            "y": 1.2,
+            "x": -1.2,
+            "y": 0,
             "rotate": 0,
             "scale": 1,
+            "scroll-bars": false,
             "css": "/home/",
-            "html": "<h5>Teurer Segen. Christliche Mission und Kolonialismus</h5>Missionare waren Verbündete des Kolonialismus, oft sogar grausame. Sie halfen, alte Kulturen zu zerstören, Menschen zu entwurzeln, Familien und ganze Völker zu spalten. Sie förderten und billigten ein System, das unzählige Millionen in drei Erdteilen verelenden ließ, ihnen Hunger und Krankheiten brachte. die vielgepriesenen Missionsschulen erzogen die „Heiden“ zu Menschen zweiter Klasse, anstatt sie auf Selbstverantwortung, Unabhängigkeit und die moderne Welt vorzubereiten. An der Fehlentwicklung Lateinamerikas, Afrikas und Asiens, dem Hauptproblem der Gegenwart, tragen Missionare und Kirchen aller Richtungen und Konfessionen Mitschuld. (Gert Franz-Joseph von Paczensky)"
+            "html": "<h5>Teurer Segen. Christliche Mission und Kolonialismus</h5><font size=\"40px\">Missionare waren Verbündete des Kolonialismus, oft sogar grausame. Sie halfen, alte Kulturen zu zerstören, Menschen zu entwurzeln, Familien und ganze Völker zu spalten. Sie förderten und billigten ein System, das unzählige Millionen in drei Erdteilen verelenden ließ, ihnen Hunger und Krankheiten brachte. die vielgepriesenen Missionsschulen erzogen die „Heiden“ zu Menschen zweiter Klasse, anstatt sie auf Selbstverantwortung, Unabhängigkeit und die moderne Welt vorzubereiten. An der Fehlentwicklung Lateinamerikas, Afrikas und Asiens, dem Hauptproblem der Gegenwart, tragen Missionare und Kirchen aller Richtungen und Konfessionen Mitschuld. <br>(Gert Franz-Joseph von Paczensky)</font>"
         },
         {
             "parent": 4010,
             "type": "frame-html",
             "id": 4012,
-            "x": -5,
+            "x": -1.2,
             "y": 1.2,
             "rotate": 0,
             "scale": 1,
@@ -460,8 +449,8 @@
             "parent": 4012,
             "type": "frame-html",
             "id": 4013,
-            "x": 0,
-            "y": 1.2,
+            "x": 1.2,
+            "y": 0,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
@@ -471,8 +460,8 @@
             "parent": 4000,
             "type": "frame-html",
             "id": 4020,
-            "x": 1.2,
-            "y": 0,
+            "x": 0.6,
+            "y": 1.2,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
@@ -487,13 +476,13 @@
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
-            "html": "<ul><li>Heutzutage gibt es quasi keine „unberührten Völker“ mehr</li><li>Fast alle naturnahen, isolierten Völker werden entweder vom Tourismus ausgebeutet, oder leben in Konflikt mit Holzfällern, Bauern, Minengesellschasften, etc. pp.</li><li>Natürlich ist es wichtig, die Interessen und Wünsche der Völker zu Wahren</li><li>Problem: Wer darf was entscheiden? Darf ein Häuptling solch eine Entscheidung allen seinen Untertanen aufzwingen?</li><li>Die letzten verbliebenen Naturvölker am liebsten in einen Zoo sperren zu wollen ist jedenfalls eine sehr arrogante und selbstgerechte Sichtweise</li><li>Insbesondere darf man etwaige Fehler der Vergangenheit nicht als Grund sehen, jetzt überhaupt nicht mehr das Evangelium weiter verbreiten zu dürfen.</li></ul>"
+            "html": "<font size=\"40px\"><ul><li>Heutzutage gibt es quasi keine „unberührten Völker“ mehr</li><li>Fast alle naturnahen, isolierten Völker werden entweder vom Tourismus ausgebeutet, oder leben in Konflikt mit Holzfällern, Bauern, Minengesellschasften, etc. pp.</li><li>Natürlich ist es wichtig, die Interessen und Wünsche der Völker zu Wahren</li><li>Problem: Wer darf was entscheiden? Darf ein Häuptling solch eine Entscheidung allen seinen Untertanen aufzwingen?</li><li>Die letzten verbliebenen Naturvölker am liebsten in einen Zoo sperren zu wollen ist jedenfalls eine sehr arrogante und selbstgerechte Sichtweise</li><li>Insbesondere darf man etwaige Fehler der Vergangenheit nicht als Grund sehen, jetzt überhaupt nicht mehr das Evangelium weiter verbreiten zu dürfen.</li></ul></font>"
         },
         {
             "parent": 4020,
             "type": "frame-html",
             "id": 4040,
-            "x": 2,
+            "x": 1.2,
             "y": 1.2,
             "rotate": 0,
             "scale": 1,
@@ -526,14 +515,16 @@
             "zoom": 0.1
         },
         {
+            "__comment": "title",
             "type": "frame",
             "frame-id": 1,
             "zoom": 1
         },
         {
+            "__comment": "begin untrennbar",
             "type": "frame",
             "frame-id": 2,
-            "zoom": 0.2
+            "zoom": 0.28
         },
         {
             "type": "frame",
@@ -547,49 +538,126 @@
         },
         {
             "type": "frame",
-            "frame-id": 1800,
+            "frame-id": 5,
             "zoom": 1
         },
         {
-            "type": "position",
-            "pos-x": 8064,
-            "pos-y": 1350,
-            "zoom": 0.75
+            "type": "frame",
+            "frame-id": 60,
+            "zoom": 1
+        },
+        {
+            "__comment": "end untrennbar",
+            "type": "frame",
+            "frame-id": 2,
+            "zoom": 0.28
+        },
+        {
+            "__comment": "begin Kritik",
+            "type": "frame",
+            "frame-id": 4000,
+            "zoom": 0.2
+        },
+        {
+            "type": "frame",
+            "frame-id": 4010,
+            "zoom": 0.5
+        },
+        {
+            "type": "frame",
+            "frame-id": 4011,
+            "zoom": 1
+        },
+        {
+            "type": "frame",
+            "frame-id": 4012,
+            "zoom": 1
+        },
+        {
+            "type": "frame",
+            "frame-id": 4013,
+            "zoom": 1
+        },
+        {
+            "type": "frame",
+            "frame-id": 4020,
+            "zoom": 0.5
+        },
+        {
+            "type": "frame",
+            "frame-id": 4030,
+            "zoom": 1
+        },
+        {
+            "type": "frame",
+            "frame-id": 4040,
+            "zoom": 1
+        },
+        {
+            "__comment": "end kritik",
+            "type": "frame",
+            "frame-id": 4000,
+            "zoom": 0.2
+        },
+        {
+            "__comment": "begin missinosgesellschaften",
+            "type": "frame",
+            "frame-id": 1500,
+            "zoom": 1
+        },
+        {
+            "type": "frame",
+            "frame-id": 1510,
+            "zoom": 1
+        },
+        {
+            "type": "frame",
+            "frame-id": 1600,
+            "zoom": 1
+        },
+        {
+            "__comment": "begin wycliff",
+            "type": "frame",
+            "frame-id": 1800,
+            "zoom": 0.28
         },
         {
             "type": "frame",
             "frame-id": 1810,
-            "zoom": 2
+            "zoom": 1
         },
         {
             "type": "frame",
             "frame-id": 1820,
-            "zoom": 2
+            "zoom": 1
         },
         {
             "type": "frame",
             "frame-id": 1830,
-            "zoom": 2
+            "zoom": 1
         },
         {
             "type": "frame",
             "frame-id": 1840,
-            "zoom": 2
+            "zoom": 1
         },
         {
             "type": "frame",
             "frame-id": 1850,
-            "zoom": 2
+            "zoom": 1
         },
         {
+            "__comment": "end wycliff",
             "type": "frame",
             "frame-id": 1860,
-            "zoom": 2
+            "zoom": 1
         },
         {
-            "type": "frame",
-            "frame-id": 220,
-            "zoom": 1
+            "__comment": "",
+            "type": "position",
+            "pos-x": 4,
+            "pos-y": 4,
+            "zoom": 0.1
         }
     ]
 }
