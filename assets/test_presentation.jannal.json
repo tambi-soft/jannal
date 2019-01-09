@@ -288,7 +288,7 @@
             "parent": 1000,
             "type": "frame-html",
             "id": 1500,
-            "x": 2.4,
+            "x": 1.2,
             "y": 1.2,
             "rotate": 0,
             "scale": 1,
@@ -299,7 +299,7 @@
             "parent": 1500,
             "type": "frame-html",
             "id": 1510,
-            "x": -0.6,
+            "x": 0,
             "y": 1.2,
             "rotate": 0,
             "scale": 1,
@@ -307,10 +307,10 @@
             "html": "<img style=\"background-color: white;\" width=\"1920px\" src=\"http://localhost/vortrag_img/gesellschaften/collage.svg.png\">"
         },
         {
-            "parent": 1500,
+            "parent": 1510,
             "type": "frame-html",
             "id": 1600,
-            "x": 0.6,
+            "x": 0,
             "y": 1.2,
             "rotate": 0,
             "scale": 1,
@@ -322,7 +322,7 @@
             "type": "frame-html",
             "id": 1800,
             "x": -1.2,
-            "y": 6,
+            "y": 4.2,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
@@ -428,7 +428,7 @@
             "parent": 1000,
             "type": "frame-html",
             "id": 4000,
-            "x": -1.2,
+            "x": -2,
             "y": 1.2,
             "rotate": 0,
             "scale": 1,
@@ -748,6 +748,12 @@
             "pos-x": 0,
             "pos-y": 1.2,
             "zoom": 0.2
+        },
+        {
+            "__comment": "overview weltmission",
+            "type": "frame",
+            "frame-id": 1000,
+            "zoom": 0.28
         },
         {
             "__comment": "begin missinosgesellschaften",
