@@ -577,6 +577,122 @@
             "zoom": 0.28
         },
         {
+            "__comment": "overview lebensweise",
+            "type": "frame",
+            "frame-id": 200,
+            "zoom": 0.2
+        },
+        {
+            "__comment": "begin heiligung",
+            "type": "frame",
+            "frame-id": 210,
+            "zoom": 1
+        },
+        {
+            "type": "frame",
+            "frame-id": 215,
+            "zoom": 1
+        },
+        {
+            "type": "frame",
+            "frame-id": 218,
+            "zoom": 1
+        },
+        {
+            "__comment": "end heiligung",
+            "type": "frame",
+            "frame-id": 220,
+            "zoom": 1
+        },
+        {
+            "__comment": "overview heiligung",
+            "type": "frame",
+            "frame-id": 210,
+            "zoom": 0.28
+        },
+        {
+            "__comment": "begin demut",
+            "type": "frame",
+            "frame-id": 300,
+            "zoom": 0.28
+        },
+        {
+            "type": "frame",
+            "frame-id": 310,
+            "zoom": 1
+        },
+        {
+            "type": "frame",
+            "frame-id": 320,
+            "zoom": 1
+        },
+        {
+            "type": "frame",
+            "frame-id": 340,
+            "zoom": 1
+        },
+        {
+            "type": "frame",
+            "frame-id": 350,
+            "zoom": 1
+        },
+        {
+            "type": "frame",
+            "frame-id": 360,
+            "zoom": 1
+        },
+        {
+            "__comment": "end demut",
+            "type": "frame",
+            "frame-id": 370,
+            "zoom": 1
+        },
+        {
+            "__comment": "overview demut",
+            "type": "frame",
+            "frame-id": 300,
+            "zoom": 0.28
+        },
+        {
+            "__comment": "overview spenden",
+            "type": "frame",
+            "frame-id": 1010,
+            "zoom": 0.28
+        },
+        {
+            "__comment": "begin spenden",
+            "type": "frame",
+            "frame-id": 1020,
+            "zoom": 1
+        },
+        {
+            "type": "frame",
+            "frame-id": 1030,
+            "zoom": 1
+        },
+        {
+            "type": "frame",
+            "frame-id": 1040,
+            "zoom": 1
+        },
+        {
+            "type": "frame",
+            "frame-id": 1045,
+            "zoom": 1
+        },
+        {
+            "__comment": "end spenden",
+            "type": "frame",
+            "frame-id": 1050,
+            "zoom": 1
+        },
+        {
+            "__comment": "overview spenden",
+            "type": "frame",
+            "frame-id": 1010,
+            "zoom": 0.28
+        },
+        {
             "__comment": "begin Kritik",
             "type": "frame",
             "frame-id": 4000,
