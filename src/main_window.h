@@ -18,7 +18,7 @@ class QJannalMainWindow : public QMainWindow
 public:
     QJannalMainWindow(QWidget *parent = 0);
     
-    void showPresentation();
+    void runPresentation();
     
     bool eventFilter(QObject *watched, QEvent *event);
 private:

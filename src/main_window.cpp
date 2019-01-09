@@ -18,6 +18,7 @@ QJannalMainWindow::QJannalMainWindow(QWidget *parent)
     setMenuBar(menu_bar);
     
     connect(tab_widget, &QTabWidget::tabCloseRequested, this, &QJannalMainWindow::closeTab);
+    connect(menu_bar, &MenuBar::runPresentation, this, &QJannalMainWindow::runPresentation);
     
     QTabBar *tab_bar = tab_widget->tabBar();
     //connect(tab_bar, &QTabBar::tabMoved, this, &QJannalMainWindow::onTabMoved);
@@ -26,7 +27,7 @@ QJannalMainWindow::QJannalMainWindow(QWidget *parent)
     //tab_bar->installEventFilter(this);
     
     createNewBeamerTab();
-    showPresentation();
+    //runPresentation();
 }
 
 void QJannalMainWindow::createNewBeamerTab()
@@ -38,10 +39,11 @@ void QJannalMainWindow::createNewBeamerTab()
     //canvas->fitInView();
 }
 
-void QJannalMainWindow::showPresentation()
+void QJannalMainWindow::runPresentation()
 {
-    //QBeamerWindow *beamer = new QBeamerWindow();
-    //beamer->showFullScreen();
+    int current_tab_index = this->tab_widget->currentIndex();
+    
+    
     
     QCanvasWidget *canvas = new QCanvasWidget(false);
     canvas->showFullScreen();

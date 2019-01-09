@@ -330,6 +330,19 @@ void QCanvasWidget::stepHelper()
     {
         int frame_id = obj.value("frame-id").toInt();
         pos_to = this->nodes_map[frame_id]["pos"].toPointF();
+        
+        qDebug() << pos_to;
+        
+        // maybe there is an offset defined
+        double offset_x = obj.value("pos-x").toDouble();
+        double offset_y = obj.value("pos-y").toDouble();
+        
+        pos_to.setX(pos_to.x() + offset_x * this->resolution_width);
+        pos_to.setY(pos_to.y() + offset_y * this->resolution_height);
+        
+        //qDebug() << offset_x << " " << offset_y;
+        qDebug() << pos_to;
+        qDebug() << "";
     }
     else if (type == "position")
     {

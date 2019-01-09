@@ -216,7 +216,7 @@
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
-            "html": "<h2>Weltmission</h2>"
+            "html": "<h2>Auslandsmission<br>/<br>Weltmission</h2>"
         },
         {
             "parent": 200,
@@ -444,7 +444,7 @@
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
-            "html": "<h4>Kolonialismus</h4>"
+            "html": "<h4>Kolonialismus</h4>(historische Kritik)"
         },
         {
             "parent": 4010,
@@ -489,7 +489,7 @@
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
-            "html": "<h4>Zerstörung fremder Kulturen</h4>"
+            "html": "<h4>Zerstörung fremder Kulturen</h4>(in der Gegenwart)"
         },
         {
             "parent": 4020,
@@ -693,9 +693,17 @@
             "zoom": 0.28
         },
         {
+            "__comment": "overview weltmission",
+            "type": "frame",
+            "frame-id": 1000,
+            "zoom": 0.28
+        },
+        {
             "__comment": "begin Kritik",
             "type": "frame",
             "frame-id": 4000,
+            "pos-x": 0,
+            "pos-y": 1.2,
             "zoom": 0.2
         },
         {
@@ -737,6 +745,8 @@
             "__comment": "end kritik",
             "type": "frame",
             "frame-id": 4000,
+            "pos-x": 0,
+            "pos-y": 1.2,
             "zoom": 0.2
         },
         {

@@ -5,6 +5,7 @@ MenuBar::MenuBar(QDir *decks_paths, QMenuBar *parent)
     this->decks_paths = decks_paths;
     
     addFileMenu();
+    addPresentationMenu();
 }
 
 void MenuBar::addFileMenu()
@@ -18,6 +19,17 @@ void MenuBar::addFileMenu()
     fileMenu->addAction(exitAction);
 }
 
+void MenuBar::addPresentationMenu()
+{
+    QAction *presentationAction = new QAction(QIcon::fromTheme("video-display"), "&Run Presentation");
+    presentationAction->setShortcut(QKeySequence::fromString("F5"));
+    presentationAction->setStatusTip("run presentation");
+    connect(presentationAction, &QAction::triggered, this, &MenuBar::emitRunPresentation);
+    
+    QMenu *presentationMenu = addMenu("&Presentation");
+    presentationMenu->addAction(presentationAction);
+}
+
 
 void MenuBar::quitApplication()
 {
@@ -27,4 +39,9 @@ void MenuBar::quitApplication()
 void MenuBar::emitNewDecksOverviewTab()
 {
     emit newDecksOverviewTab();
+}
+
+void MenuBar::emitRunPresentation()
+{
+    emit runPresentation();
 }
