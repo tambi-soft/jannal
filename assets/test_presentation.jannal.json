@@ -401,6 +401,30 @@
             "tree-edge": "line"
         },
         {
+            "parent": 1800,
+            "type": "frame-html",
+            "id": 1870,
+            "x": 0,
+            "y": -1.2,
+            "rotate": 0,
+            "scale": 1,
+            "css": "/home/",
+            "html": "<h5>Heute werden etwa 7099 Sprachen gesprochen</h5><img height=\"800px\" src=\"http://localhost/vortrag_img/diagramm_sprachen.png\">",
+            "tree-edge": "line"
+        },
+        {
+            "parent": 1800,
+            "type": "frame-html",
+            "id": 1880,
+            "x": 0,
+            "y": 1.2,
+            "rotate": 0,
+            "scale": 1,
+            "css": "/home/",
+            "html": "<h5>Tschad</h5><img height=\"800px\" src=\"http://localhost/vortrag_img/tschad.png\">",
+            "tree-edge": "line"
+        },
+        {
             "parent": 1000,
             "type": "frame-html",
             "id": 4000,
@@ -487,7 +511,7 @@
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
-            "html": "<ul><li>Bei Wycliff arbeitet man bevorzugt mit lokalen Kirchen und Gemeinden zusammen</li><li>Idealerweise „gehört“ das Projekt den Einheimischen, die ausländischen Missionare stehen ihnen lediglich unterstützend und beratend zur Seite</li><li>Führt zudem zu einer weitaus besseren Akzeptanz des Endproduktes und zu einer deutlich motivierteren Befolgung der biblischen Lehren</li></ul>"
+            "html": "<ul><li>Bei Wycliff arbeitet man bevorzugt mit lokalen Kirchen und Gemeinden zusammen</li><li>Idealerweise „gehört“ das Projekt den Einheimischen, die ausländischen Missionare stehen ihnen lediglich unterstützend und beratend zur Seite</li><li>Führt zudem zu einer weitaus besseren Akzeptanz des Endproduktes und zu einer deutlich motivierteren Befolgung der biblischen Lehren</li><li>Gerade Wycliff engagiert sich in besonderer Weise für Minderheiten und der Erhaltung ihrer Identität</li></ul>"
         },
         {
             "type": "line",
@@ -510,9 +534,9 @@
     "steps": [
         {
             "type": "position",
-            "pos-x": 0,
-            "pos-y": 3000,
-            "zoom": 0.1
+            "pos-x": 2000,
+            "pos-y": 6000,
+            "zoom": 0.08
         },
         {
             "__comment": "title",
@@ -647,9 +671,19 @@
             "zoom": 1
         },
         {
-            "__comment": "end wycliff",
             "type": "frame",
             "frame-id": 1860,
+            "zoom": 1
+        },
+        {
+            "type": "frame",
+            "frame-id": 1870,
+            "zoom": 1
+        },
+        {
+            "__comment": "end wycliff",
+            "type": "frame",
+            "frame-id": 1880,
             "zoom": 1
         },
         {
