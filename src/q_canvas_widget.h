@@ -56,7 +56,7 @@ class QCanvasWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit QCanvasWidget(bool edit_mode, QWidget *parent = nullptr);
+    explicit QCanvasWidget(QString filepath, bool edit_mode, QWidget *parent = nullptr);
     
     bool editMode = true;
     

@@ -32,21 +32,30 @@ QJannalMainWindow::QJannalMainWindow(QWidget *parent)
 
 void QJannalMainWindow::createNewBeamerTab()
 {
+    /*
     QCanvasWidget *canvas = new QCanvasWidget(true);
     tab_widget->addTab(canvas, QString("testtab"));
+    */
     
-    //canvas->show();
-    //canvas->fitInView();
+    QBeamerProxy *proxy = new QBeamerProxy();
+    proxy->initPresentation(":test_json");
+    
+    tab_widget->addTab(proxy, QString("beamer proxy"));
 }
 
 void QJannalMainWindow::runPresentation()
 {
-    int current_tab_index = this->tab_widget->currentIndex();
+    //int current_tab_index = this->tab_widget->currentIndex();
+    QBeamerProxy *proxy = qobject_cast<QBeamerProxy*>(this->tab_widget->currentWidget());
     
+    proxy->runPresentation();
     
-    
+    /*
     QCanvasWidget *canvas = new QCanvasWidget(false);
     canvas->showFullScreen();
+    */
+    
+    
 }
 
 void QJannalMainWindow::activateNewTab()
