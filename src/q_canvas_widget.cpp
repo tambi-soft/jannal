@@ -23,6 +23,13 @@ QCanvasWidget::QCanvasWidget(QString filepath, bool edit_mode, QWidget *parent)
     //this->window()->windowHandle()->screen();
     QRect geometry = QApplication::desktop()->screenGeometry();
     
+    if (!this->editMode)
+    {
+        QDesktopWidget *desktop = QApplication::desktop();
+        QRect screen_rect = desktop->screenGeometry(1);
+        move(screen_rect.left(), screen_rect.top());
+    }
+    
     double scale_offset_width = geometry.width() / static_cast<double>(this->resolution_width);
     double scale_offset_height = geometry.height() / static_cast<double>(this->resolution_height);
     if (scale_offset_width > scale_offset_height)
