@@ -18,6 +18,8 @@ QJannalMainWindow::QJannalMainWindow(QWidget *parent)
     setMenuBar(menu_bar);
     
     connect(tab_widget, &QTabWidget::tabCloseRequested, this, &QJannalMainWindow::closeTab);
+    
+    connect(menu_bar, &MenuBar::openFile, this, &QJannalMainWindow::openFile);
     connect(menu_bar, &MenuBar::runPresentation, this, &QJannalMainWindow::runPresentation);
     
     QTabBar *tab_bar = tab_widget->tabBar();
@@ -26,11 +28,11 @@ QJannalMainWindow::QJannalMainWindow(QWidget *parent)
     //tab_bar->setMouseTracking(true);
     //tab_bar->installEventFilter(this);
     
-    createNewBeamerTab();
+    createNewBeamerTab(":test_json");
     //runPresentation();
 }
 
-void QJannalMainWindow::createNewBeamerTab()
+void QJannalMainWindow::createNewBeamerTab(QString filepath)
 {
     /*
     QCanvasWidget *canvas = new QCanvasWidget(true);
@@ -38,7 +40,7 @@ void QJannalMainWindow::createNewBeamerTab()
     */
     
     QBeamerProxy *proxy = new QBeamerProxy();
-    proxy->initPresentation(":test_json");
+    proxy->initPresentation(filepath);
     
     tab_widget->addTab(proxy, QString("beamer proxy"));
 }
@@ -126,4 +128,9 @@ bool QJannalMainWindow::eventFilter(QObject *watched, QEvent *event)
     }
     */
     return QWidget::eventFilter(watched, event);
+}
+
+void QJannalMainWindow::openFile(QString filepath)
+{
+    createNewBeamerTab(filepath);
 }

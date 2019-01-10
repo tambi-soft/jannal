@@ -5,7 +5,8 @@
         "background-color": "#132136",
         "tree-edge-color": "#5aced3",
         "tree-edge-style": "line",
-        "tree-edge-width": 50
+        "tree-edge-width": 50,
+        "css-file": "style.css"
     },
     "graphics": [
         {
@@ -756,7 +757,7 @@
             "zoom": 0.28
         },
         {
-            "__comment": "begin missinosgesellschaften",
+            "__comment": "begin missionsgesellschaften",
             "type": "frame",
             "frame-id": 1500,
             "zoom": 1

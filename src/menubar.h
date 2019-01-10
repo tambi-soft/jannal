@@ -10,6 +10,8 @@
 #include <QTransform>
 #include <QImage>
 #include <QMessageBox>
+#include <QFileDialog>
+
 #include <QDebug>
 
 class MenuBar : public QMenuBar
@@ -24,10 +26,12 @@ private:
     void addPresentationMenu();
     
 signals:
+    void openFile(QString filepath);
     void newDecksOverviewTab();
     void runPresentation();
     
 public slots:
+    void emitOpenFile();
     void quitApplication();
     void emitNewDecksOverviewTab();
     void emitRunPresentation();

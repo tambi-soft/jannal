@@ -10,12 +10,18 @@ MenuBar::MenuBar(QDir *decks_paths, QMenuBar *parent)
 
 void MenuBar::addFileMenu()
 {
+    QAction *openAction = new QAction(QIcon::fromTheme("document-open"), "&Open");
+    openAction->setShortcut(QKeySequence::fromString("Ctrl+O"));
+    openAction->setStatusTip("Open file");
+    connect(openAction, &QAction::triggered, this, &MenuBar::emitOpenFile);
+    
     QAction *exitAction = new QAction(QIcon::fromTheme("application-exit"), "&Exit");
     exitAction->setShortcut(QKeySequence::fromString("Ctrl+Q"));
     exitAction->setStatusTip("Exit application");
     connect(exitAction, &QAction::triggered, this, &MenuBar::quitApplication);
     
     QMenu *fileMenu = addMenu("&File");
+    fileMenu->addAction(openAction);
     fileMenu->addAction(exitAction);
 }
 
@@ -44,4 +50,12 @@ void MenuBar::emitNewDecksOverviewTab()
 void MenuBar::emitRunPresentation()
 {
     emit runPresentation();
+}
+
+void MenuBar::emitOpenFile()
+{
+    QString default_path = QDir::homePath();
+    QString filepath = QFileDialog::getOpenFileName(this, ("Open File"), default_path, ("*.json"));
+    
+    emit openFile(filepath);
 }

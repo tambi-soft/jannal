@@ -15,8 +15,9 @@ class QJannalMainWindow : public QMainWindow
     Q_OBJECT
     
 public:
-    QJannalMainWindow(QWidget *parent = 0);
+    QJannalMainWindow(QWidget *parent = nullptr);
     
+    void openFile(QString filepath);
     void runPresentation();
     
     bool eventFilter(QObject *watched, QEvent *event);
@@ -39,7 +40,7 @@ private:
     int tooltip_last_index;
     
 private slots:
-    void createNewBeamerTab();
+    void createNewBeamerTab(QString filepath);
     void activateNewTab();
     void closeTab(int tab_id);
     void onTabMoved(int from, int to);
