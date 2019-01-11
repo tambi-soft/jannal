@@ -18,9 +18,12 @@ public:
     
     void initPresentation(QString filepath);
     void runPresentation();
+    void moveEditorToPosititon(QPoint position, double zoom);
     
     //QCanvasWidget *canvas;
     QString filepath;
+    
+    QCanvasWidget *canvas_edit;
     
 private:
     QVBoxLayout *layout;

@@ -63,12 +63,12 @@ void QStepAnimator::run()
             pos_current.setY(int(pos_current.y() + vel_y));
             zoom_current = zoom_current + vel_z;
             
-            emit currentAnimationStepCoordinates(pos_current);
+            emit currentAnimationStepCoordinates(pos_current, zoom_current);
             emit currentAnimationStepZoom(zoom_current);
         }
         else
         {
-            emit currentAnimationStepCoordinates(this->pos_to);
+            emit currentAnimationStepCoordinates(this->pos_to, this->zoom_to);
             emit currentAnimationStepZoom(this->zoom_to);
             
             return;

@@ -40,7 +40,7 @@ private:
     void stepZoom();
     
 signals:
-    void currentAnimationStepCoordinates(QPoint position);
+    void currentAnimationStepCoordinates(QPoint position, double zoom);
     void currentAnimationStepZoom(double factor);
     
 public slots:

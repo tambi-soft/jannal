@@ -10,7 +10,7 @@ QCanvasWidget::QCanvasWidget(QString filepath, bool edit_mode, int screen_number
     this->editMode = edit_mode;
     this->screen_number = screen_number;
     
-    connect(step_animator, &QStepAnimator::currentAnimationStepCoordinates, this, qOverload<QPoint>(&QCanvasWidget::scrollToPosition));
+    connect(step_animator, &QStepAnimator::currentAnimationStepCoordinates, this, qOverload<QPoint, double>(&QCanvasWidget::scrollToPosition));
     connect(step_animator, &QStepAnimator::currentAnimationStepZoom, this, &QCanvasWidget::scaleView);
     
     view->setRenderHint(QPainter::Antialiasing);
@@ -372,17 +372,41 @@ void QCanvasWidget::scaleView(double factor)
     view->scale(this->scale_offset * factor, this->scale_offset * factor);
 }
 
-void QCanvasWidget::scrollToPosition(int x, int y)
+void QCanvasWidget::scrollToPosition(int x, int y, double zoom)
 {
     view->setSceneRect(x, y, this->resolution_width, this->resolution_height);
+    emit currentAnimationStepCoordinates(QPoint(x, y), zoom);
 }
-void QCanvasWidget::scrollToPosition(QPointF pos)
+void QCanvasWidget::scrollToPosition(QPointF pos, double zoom)
 {
-    scrollToPosition(int(pos.x()), int(pos.y()));
+    scrollToPosition(int(pos.x()), int(pos.y()), zoom);
 }
-void QCanvasWidget::scrollToPosition(QPoint pos)
+void QCanvasWidget::scrollToPosition(QPoint pos, double zoom)
 {
-    scrollToPosition(pos.x(), pos.y());
+    scrollToPosition(pos.x(), pos.y(), zoom);
+}
+
+void QCanvasWidget::movePresentationMarker(QPoint position, double scale)
+{
+    QBrush greenBrush(Qt::green);
+    QBrush blueBrush(Qt::blue);
+    QBrush transparentBrush(Qt::transparent);
+    QPen outlinePen(Qt::red);
+    outlinePen.setWidth(50);
+    
+    scene->removeItem(this->stepMarker);
+    delete this->stepMarker;
+    
+    double marker_width = 1 / scale * this->resolution_width;
+    double marker_height = 1 / scale * this->resolution_height;
+    this->stepMarker = scene->addRect(
+                position.x() - ((1-scale) * (marker_width / 2)),
+                position.y() - ((1-scale) * (marker_height / 2)),
+                marker_width,
+                marker_height,
+                outlinePen,
+                transparentBrush
+                );
 }
 
 bool QCanvasWidget::eventFilter(QObject */*target*/, QEvent *event)

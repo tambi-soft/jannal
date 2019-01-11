@@ -64,9 +64,11 @@ public:
     void addHTML(int parent, int id, QString html, double dx, double dy, int rotate, double scale, QString tree_edge, bool show_scroll_bars);
     void drawTreeEdge(int par_x, int par_y, int pos_x, int pos_y, int id);
     void drawLine(QPoint from, QPoint to, int width, QString color_str);
-    void scrollToPosition(int x, int y);
-    void scrollToPosition(QPointF pos);
-    void scrollToPosition(QPoint pos);
+    void scrollToPosition(int x, int y, double zoom);
+    void scrollToPosition(QPointF pos, double zoom);
+    void scrollToPosition(QPoint pos, double zoom);
+    void movePresentationMarker(QPoint position, double scale);
+    QGraphicsItem *stepMarker = nullptr;
     
     void drawControlls();
     void stepToStart();
@@ -103,6 +105,8 @@ private:
 signals:
     void reloadCanvas();
     void deleteBeamerWindow();
+    void currentAnimationStepCoordinates(QPoint position, double zoom);
+    void currentAnimationStepZoom(double factor);
     
 public slots:
     

@@ -11,12 +11,20 @@ QBeamerProxy::QBeamerProxy(QWidget *parent)
 void QBeamerProxy::initPresentation(QString filepath)
 {
     this->filepath = filepath;
-    QCanvasWidget *canvas = new QCanvasWidget(filepath, true, 0);
-    this->layout->addWidget(canvas);
+    this->canvas_edit = new QCanvasWidget(filepath, true, 0);
+    this->layout->addWidget(this->canvas_edit);
 }
 
 void QBeamerProxy::runPresentation()
 {
     QCanvasWidget *canvas = new QCanvasWidget(this->filepath, false, 1);
     canvas->showFullScreen();
+    
+    connect(canvas, &QCanvasWidget::currentAnimationStepCoordinates, this, &QBeamerProxy::moveEditorToPosititon);
+}
+
+void QBeamerProxy::moveEditorToPosititon(QPoint position, double zoom)
+{
+    this->canvas_edit->movePresentationMarker(position, zoom);
+    this->canvas_edit->scrollToPosition(position, zoom);
 }

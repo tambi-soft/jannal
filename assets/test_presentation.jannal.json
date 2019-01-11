@@ -818,13 +818,6 @@
             "type": "frame",
             "frame-id": 1880,
             "zoom": 1
-        },
-        {
-            "__comment": "",
-            "type": "position",
-            "pos-x": 4,
-            "pos-y": 4,
-            "zoom": 0.1
         }
     ]
 }
