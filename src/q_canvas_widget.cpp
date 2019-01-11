@@ -18,8 +18,8 @@ QCanvasWidget::QCanvasWidget(QString filepath, bool edit_mode, int screen_number
     view->installEventFilter(this);
     scene->installEventFilter(this);
     
-    this->resolution_width = 1920; // 480
-    this->resolution_height = 1080; // 270
+    this->resolution_width = 1920;
+    this->resolution_height = 1080;
     
     //this->window()->windowHandle()->screen();
     QRect geometry = QApplication::desktop()->screenGeometry(this->screen_number);
