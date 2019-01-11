@@ -11,12 +11,12 @@ QBeamerProxy::QBeamerProxy(QWidget *parent)
 void QBeamerProxy::initPresentation(QString filepath)
 {
     this->filepath = filepath;
-    QCanvasWidget *canvas = new QCanvasWidget(filepath, true);
+    QCanvasWidget *canvas = new QCanvasWidget(filepath, true, 0);
     this->layout->addWidget(canvas);
 }
 
 void QBeamerProxy::runPresentation()
 {
-    QCanvasWidget *canvas = new QCanvasWidget(this->filepath, false);
+    QCanvasWidget *canvas = new QCanvasWidget(this->filepath, false, 1);
     canvas->showFullScreen();
 }

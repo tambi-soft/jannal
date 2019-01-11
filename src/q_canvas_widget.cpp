@@ -1,6 +1,6 @@
 #include "q_canvas_widget.h"
 
-QCanvasWidget::QCanvasWidget(QString filepath, bool edit_mode, QWidget *parent)
+QCanvasWidget::QCanvasWidget(QString filepath, bool edit_mode, int screen_number, QWidget *parent)
     : QWidget(parent)
     , view (new QGraphicsView)
     , scene (new QGraphicsScene)
@@ -8,6 +8,7 @@ QCanvasWidget::QCanvasWidget(QString filepath, bool edit_mode, QWidget *parent)
     , step_animator (new QStepAnimator)
 {
     this->editMode = edit_mode;
+    this->screen_number = screen_number;
     
     connect(step_animator, &QStepAnimator::currentAnimationStepCoordinates, this, qOverload<QPoint>(&QCanvasWidget::scrollToPosition));
     connect(step_animator, &QStepAnimator::currentAnimationStepZoom, this, &QCanvasWidget::scaleView);
@@ -21,12 +22,12 @@ QCanvasWidget::QCanvasWidget(QString filepath, bool edit_mode, QWidget *parent)
     this->resolution_height = 1080; // 270
     
     //this->window()->windowHandle()->screen();
-    QRect geometry = QApplication::desktop()->screenGeometry();
+    QRect geometry = QApplication::desktop()->screenGeometry(this->screen_number);
     
     if (!this->editMode)
     {
         QDesktopWidget *desktop = QApplication::desktop();
-        QRect screen_rect = desktop->screenGeometry(1);
+        QRect screen_rect = desktop->screenGeometry(this->screen_number);
         move(screen_rect.left(), screen_rect.top());
     }
     

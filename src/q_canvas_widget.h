@@ -56,7 +56,7 @@ class QCanvasWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit QCanvasWidget(QString filepath, bool edit_mode, QWidget *parent = nullptr);
+    explicit QCanvasWidget(QString filepath, bool edit_mode, int screen_number, QWidget *parent = nullptr);
     
     bool editMode = true;
     
@@ -77,6 +77,8 @@ public:
     double scale_factor = 1;
     double scale_offset = 1; // e.g. for smaller or larger displays than the specified resolution
     double animation_speed;
+    
+    int screen_number = 0;
     
 private:
     int resolution_width;
