@@ -50,12 +50,6 @@ QCanvasWidget::QCanvasWidget(QString filepath, bool edit_mode, int screen_number
     
     addJSON(filepath);
     
-    QBrush greenBrush(Qt::green);
-    QBrush blueBrush(Qt::blue);
-    QPen outlinePen(Qt::black);
-    outlinePen.setWidth(2);
-    //scene->addRect(100, 0, 80, 100, outlinePen, blueBrush);
-    
     drawControlls();
     
     if (!this->editMode)
