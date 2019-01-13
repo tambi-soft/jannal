@@ -26,6 +26,7 @@
 #include <QWebFrame>
 #include <QUrl>
 #include <QScrollBar>
+#include <QPushButton>
 
 #include <QPointF>
 #include <QMap>
@@ -77,7 +78,7 @@ public:
     
     void scaleView(double factor);
     double scale_factor = 1;
-    double scale_offset = 1; // e.g. for smaller or larger displays than the specified resolution
+    double scale_offset = 1; // for smaller or larger displays than the specified resolution
     double animation_speed;
     
     int screen_number = 0;

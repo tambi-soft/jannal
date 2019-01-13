@@ -162,7 +162,7 @@
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
-            "html": "<h5>Mission bedeutet, viele Opfer zu bringen, z.B.</h5><ul><li>Geld</li><li>Zeit</li><li>Gesundheit</li><li>Sicherheit</li><li>Familie</li></ul>"
+            "html": "<h5>Mission bedeutet, viele Opfer zu bringen, z.B.</h5><ul><li>Geld</li><li>Zeit</li><li>Gesundheit</li><li>Sicherheit</li><li>Komfortzone</li></ul>"
         },
         {
             "parent": 300,
@@ -173,7 +173,7 @@
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
-            "html": "Wir geben Gottes Heiligen Geist nicht weiter, wie eine Ware, sondern er lebt in uns und er begleitet uns auf der Reise. Mission prägt und verändert in ertser Linie auch den Missionar selbst"
+            "html": "Wir geben Gottes Heiligen Geist nicht weiter, wie eine Ware, sondern er lebt in uns und er begleitet uns auf der Reise. Mission prägt und verändert in erster Linie auch den Missionar selbst"
         },
         {
             "parent": 300,
@@ -272,7 +272,7 @@
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
-            "html": "<ul><li>Manchmal ist ein zusätzlicher Broterwerb hilfreich oder notwendig</li><li>Manche Missionsgebiete, wie z.B. die Bibelübersetzung erfordern qualifizierte Fachkräfte, von denen es nicht viele gibt. Es ist also oft sinnvoll, wenn diese Leute vollzeit an ihren Projekten arbeiten können.</li></ul>"
+            "html": "<ul><li>Manchmal ist ein weltlicher Broterwerb hilfreich oder notwendig</li><li>Manche Missionsgebiete, wie z.B. die Bibelübersetzung erfordern qualifizierte Fachkräfte, von denen es nicht viele gibt. Es ist also oft sinnvoll, wenn diese Leute vollzeit an ihren Projekten arbeiten können.</li></ul>"
         },
         {
             "parent": 1010,

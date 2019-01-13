@@ -218,8 +218,6 @@ void QCanvasWidget::addHTML(int parent, int id, QString html, double dx, double 
 
 void QCanvasWidget::drawTreeEdge(int par_x, int par_y, int pos_x, int pos_y, int id)
 {
-    //qDebug() << this->nodes_map[id];
-    //qDebug() << this->nodes_map[id]["tree-edge"].toString();
     // draw a line from parent to child
     if (this->conf_obj.value("tree-edge-style").toString() == "line" &&
         !(this->nodes_map[id]["tree-edge"].toString() == "none"))
@@ -269,17 +267,12 @@ void QCanvasWidget::drawTreeEdge(int par_x, int par_y, int pos_x, int pos_y, int
 
 void QCanvasWidget::drawLine(QPoint from, QPoint to, int width, QString color_str)
 {
-    
-    //QBrush greenBrush(Qt::green);
-    //QBrush blueBrush(Qt::blue);
-    //QPen outlinePen(Qt::green);
     QColor color;
     color.setNamedColor(color_str);
     QPen pen;
     pen.setColor(color);
     pen.setWidth(width);
     
-    //scene->addRect(100, 0, 80, 100, outlinePen, blueBrush);
     scene->addLine(QLineF(from, to), pen);
 }
 
