@@ -23,7 +23,7 @@
         {
             "parent": 1,
             "type": "frame-html",
-            "id": 2,
+            "id": 20,
             "x": -3,
             "y": 1.2,
             "rotate": 0,
@@ -32,9 +32,21 @@
             "html": "<h2>Mission ist untrennbar verbunden mit dem Christsein</h2>"
         },
         {
-            "parent": 2,
+            "parent": 20,
             "type": "frame-html",
-            "id": 3,
+            "id": 25,
+            "x": 1.2,
+            "y": 0,
+            "rotate": 0,
+            "scale": 1,
+            "css": "/home/",
+            "html": "<div class=\"bible\" style=\"font-size: 40px;\">
+            <img src=\"http://localhost/vortrag_img/Daniels-Vision_cropped.png\" style=\"float: right; padding-left: 20px; height: 100%;\"></img>     <div class=\"bible-quote-first\">„</div><br>In der Zeit dieser Königreiche wird der Gott des Himmels ein Reich errichten, das niemals untergehen wird. Dieses Reich wird nie einem anderen Volk überlassen werden, im Gegenteil: Es wird alle diese Königreiche zermalmen und zum Verschwinden bringen, selbst aber ewig bestehen. Das hast du in dem Stein gesehen, der ohne menschliches Zutun losbrach und Eisen, Bronze, Ton, Silber und Gold zermalmte. Ein großer Gott hat den König wissen lassen, was nach dieser Zeit geschehen wird. Der Traum sagt die Wahrheit und seine Deutung ist zuverlässig.<br><div class=\"bible-quote-last\">“</div><div class=\"bible-passage\">Daniel 2 44-45</div></div>"
+        },
+        {
+            "parent": 20,
+            "type": "frame-html",
+            "id": 30,
             "x": -1.2,
             "y": -1.2,
             "rotate": 0,
@@ -43,9 +55,9 @@
             "html": "<div class=\"bible\"><div class=\"bible-quote-first\">„</div><br>Das Himmelreich gleicht einem Sauerteig, den eine Frau nahm und unter einen halben Zentner Mehl mengte, bis es ganz durchsäuert war.<br><div class=\"bible-quote-last\">“</div><div class=\"bible-passage\">Matthäus 13,33</div></div>"
         },
         {
-            "parent": 2,
+            "parent": 20,
             "type": "frame-html",
-            "id": 4,
+            "id": 40,
             "x": -1.2,
             "y": 0,
             "rotate": 0,
@@ -54,9 +66,9 @@
             "html": "<div class=\"bible\"><div class=\"bible-quote-first\">„</div><br>Aber ihr seid ein ausgewähltes Geschlecht, eine königliche Priesterschaft, ein heiliges Volk, das Gott selbst gehört. Er hat euch aus der Finsternis in sein wunderbares Licht gerufen, damit ihr verkündigt, wie unübertrefflich er ist.<br><div class=\"bible-quote-last\">“</div><div class=\"bible-passage\">1. Petrus 2,9 </div></div>"
         },
         {
-            "parent": 2,
+            "parent": 20,
             "type": "frame-html",
-            "id": 5,
+            "id": 50,
             "x": -1.2,
             "y": 1.2,
             "rotate": 0,
@@ -65,7 +77,7 @@
             "html": "<div class=\"bible\"><div class=\"bible-quote-first\">„</div><br>Darum geht zu allen Völkern und macht die Menschen zu meinen Jüngern. Dabei sollt ihr sie auf den Namen des Vaters, des Sohnes und des Heiligen Geistes taufen und sie belehren, alles zu befolgen, was ich euch geboten habe. Und seid gewiss: Ich bin jeden Tag bei euch, bis zum Ende der Zeit.<br><div class=\"bible-quote-last\">“</div><div class=\"bible-passage\">Matthäus 28 19-20</div></div>"
         },
         {
-            "parent": 2,
+            "parent": 20,
             "type": "frame-html",
             "id": 60,
             "x": 0,
@@ -74,6 +86,17 @@
             "scale": 1,
             "css": "/home/",
             "html": "<h5>Das Gleichnis mit den Dienern und den ihnen anvertrauten Talenten</h5><ul><li>Matthäus 25,14-30</li><li>Lukas 19,12-27</li></ul>"
+        },
+        {
+            "parent": 20,
+            "type": "frame-html",
+            "id": 70,
+            "x": 0,
+            "y": 1.2,
+            "rotate": 0,
+            "scale": 1,
+            "css": "/home/",
+            "html": "<h5>Wir sind dazu berufen, Gottes Herrlichkeit und Vergebung zu bezeugen, wo auch immer wir uns gerade befinden</h5>"
         },
         {
             "parent": 1,
@@ -102,7 +125,7 @@
             "type": "frame-html",
             "id": 215,
             "x": -1.2,
-            "y": 1.2,
+            "y": 0,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
@@ -113,12 +136,24 @@
             "type": "frame-html",
             "scroll-bars": true,
             "id": 218,
-            "x": 0,
+            "x": -1.2,
             "y": 1.2,
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
             "html": "<div class=\"bible\"><div class=\"bible-quote-first\">„</div><br>Ihr seid das Salz der Erde. Wenn das Salz aber seine Wirkung verliert, womit soll man es wieder salzig machen? Es taugt zu nichts anderem mehr, als auf den Weg geschüttet, um von den Leuten zertreten zu werden. Ihr seid das Licht der Welt. Eine Stadt, die auf einem Berg liegt, kann nicht verborgen bleiben. Man zündet auch nicht eine Lampe an und stellt sie unter den Eimer, im Gegenteil, man stellt sie auf den Lampenständer, damit sie allen im Haus Licht gibt. So soll euer Licht vor den Menschen leuchten: Sie sollen eure guten Werke sehen und euren Vater im Himmel preisen.<br><div class=\"bible-quote-last\">“</div><div class=\"bible-passage\">Matthäus 5, 13-16</div></div>"
+        },
+        {
+            "parent": 210,
+            "type": "frame-html",
+            "scroll-bars": false,
+            "id": 219,
+            "x": 0,
+            "y": 1.2,
+            "rotate": 0,
+            "scale": 1,
+            "css": "/home/",
+            "html": "<div class=\"bible\"><div class=\"bible-quote-first\">„</div><br>Wir alle aber, mit aufgedecktem Angesicht die Herrlichkeit des Herrn anschauend, werden verwandelt nach demselben Bilde von Herrlichkeit zu Herrlichkeit, als durch den Herrn, den Geist.<br><div class=\"bible-quote-last\">“</div><div class=\"bible-passage\">2. Korinther 3 18</div></div>"
         },
 {
             "parent": 210,
@@ -283,7 +318,7 @@
             "rotate": 0,
             "scale": 1,
             "css": "/home/",
-            "html": "<h5>Zusammenfassung</h5><ul><li>Leben von Spenden(geldern) ist absolut biblisch</li><li>Der Missionar ist damit kein Schmarotzer, sondern erhält lediglich einen Lohn für seine (oft sehr harte) Arbeit</li><li>Es gibt aber durchaus immer wieder Gründe, keine Spenden anzunehmen</li><li>Letztlich sollte man sich von Gott zeigen lassen, welches \"Geschäftsmodell\" im eigenen Leben das richtige ist</li></ul>"
+            "html": "<h5>Zusammenfassung</h5><ul><li>Leben von Spenden(geldern) ist absolut biblisch</li><li>Der Missionar ist damit kein Schmarotzer, sondern erhält lediglich einen Lohn für seine (oft sehr harte) Arbeit</li><li>Es gibt aber durchaus immer wieder Gründe, keine Spenden anzunehmen</li><li>Letztlich sollte man sich von Gott individuell zeigen lassen, welches Lebensmodell das richtige ist</li></ul>"
         },
         {
             "parent": 1000,
@@ -548,22 +583,28 @@
         {
             "__comment": "begin untrennbar",
             "type": "frame",
-            "frame-id": 2,
+            "frame-id": 20,
             "zoom": 0.28
         },
         {
+            "__comment": "title",
             "type": "frame",
-            "frame-id": 3,
+            "frame-id": 25,
             "zoom": 1
         },
         {
             "type": "frame",
-            "frame-id": 4,
+            "frame-id": 30,
             "zoom": 1
         },
         {
             "type": "frame",
-            "frame-id": 5,
+            "frame-id": 40,
+            "zoom": 1
+        },
+        {
+            "type": "frame",
+            "frame-id": 50,
             "zoom": 1
         },
         {
@@ -572,9 +613,14 @@
             "zoom": 1
         },
         {
+            "type": "frame",
+            "frame-id": 70,
+            "zoom": 1
+        },
+        {
             "__comment": "end untrennbar",
             "type": "frame",
-            "frame-id": 2,
+            "frame-id": 20,
             "zoom": 0.28
         },
         {
@@ -597,6 +643,11 @@
         {
             "type": "frame",
             "frame-id": 218,
+            "zoom": 1
+        },
+        {
+            "type": "frame",
+            "frame-id": 219,
             "zoom": 1
         },
         {
