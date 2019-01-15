@@ -21,14 +21,13 @@ QCanvasWidget::QCanvasWidget(QString filepath, bool edit_mode, int screen_number
     this->resolution_width = 1920;
     this->resolution_height = 1080;
     
-    //this->window()->windowHandle()->screen();
-    QRect geometry = QApplication::desktop()->screenGeometry(this->screen_number);
+    QList<QScreen*> screen_list = QGuiApplication::screens();
+    QScreen *screen = screen_list.at(this->screen_number);
+    QRect geometry = screen->availableGeometry();
     
     if (!this->editMode)
     {
-        QDesktopWidget *desktop = QApplication::desktop();
-        QRect screen_rect = desktop->screenGeometry(this->screen_number);
-        move(screen_rect.left(), screen_rect.top());
+        move(geometry.left(), geometry.top());
     }
     
     double scale_offset_width = geometry.width() / static_cast<double>(this->resolution_width);
@@ -164,6 +163,7 @@ void QCanvasWidget::addHTML(int parent, int id, QString html, double dx, double 
     // calculate absolute position
     int pos_x = 0;
     int pos_y = 0;
+    
     int par_x = 0;
     int par_y = 0;
     // if parent == id, we have no parent. that means: absolute positioning

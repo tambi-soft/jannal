@@ -7,6 +7,7 @@
 #include <QScreen>
 #include <QApplication>
 #include <QDesktopWidget>
+#include <QScreen>
 
 #include <QGraphicsView>
 #include <QGraphicsScene>

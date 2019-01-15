@@ -17,7 +17,9 @@ void QBeamerProxy::initPresentation(QString filepath)
 
 void QBeamerProxy::runPresentation()
 {
-    QCanvasWidget *canvas = new QCanvasWidget(this->filepath, false, 1);
+    QList<QScreen*> screen_list = QGuiApplication::screens();
+    
+    QCanvasWidget *canvas = new QCanvasWidget(this->filepath, false, screen_list.length()-1);
     canvas->showFullScreen();
     
     connect(canvas, &QCanvasWidget::currentAnimationStepCoordinates, this, &QBeamerProxy::moveEditorToPosititon);
