@@ -36,17 +36,12 @@ Config::Config(QObject *parent) : QObject(parent)
                               QFileDevice::WriteOwner);
     }
     
-    QSettings *settings = new QSettings(config_file->fileName(), QSettings::IniFormat);
-    QVariant deckpath_var = settings->value("kulanday/deckpath");
+    this->settings = new QSettings(config_file->fileName(), QSettings::IniFormat);
+    //QVariant deckpath_var = settings->value("kulanday/deckpath");
     
-    deckpath = new QDir(config_dir->absolutePath() + "/jannal");
-    if (! deckpath->exists())
-    {
-        deckpath->mkdir(deckpath->absolutePath());
-    }
 }
 
-QDir *Config::getDecksPath()
+QVariant *Config::getValue(QString selector)
 {
-    return this->deckpath;
+    //return this->settings->value(selector);
 }

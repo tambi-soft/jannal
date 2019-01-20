@@ -9,6 +9,7 @@
 #include <QDebug>
 
 #include "q_canvas_widget.h"
+#include "config.h"
 
 class QBeamerProxy : public QWidget
 {
@@ -27,6 +28,7 @@ public:
     
 private:
     QVBoxLayout *layout;
+    Config *config;
     
 signals:
     

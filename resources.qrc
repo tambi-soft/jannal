@@ -1,5 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        
+        <file alias="default_config">assets/default_config.ini</file>
     </qresource>
 </RCC>

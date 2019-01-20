@@ -8,6 +8,8 @@ QBeamerProxy::QBeamerProxy(QString filepath, QWidget *parent)
     
     setLayout(this->layout);
     layout->setContentsMargins(0, 0, 0, 0);
+    
+    this->config = new Config();
 }
 
 void QBeamerProxy::initPresentation()
@@ -18,9 +20,11 @@ void QBeamerProxy::initPresentation()
 
 void QBeamerProxy::runPresentation()
 {
+    //if (this->config->)
     QList<QScreen*> screen_list = QGuiApplication::screens();
+    int screen = screen_list.length()-1;
     
-    QCanvasWidget *canvas = new QCanvasWidget(this->filepath, false, screen_list.length()-1);
+    QCanvasWidget *canvas = new QCanvasWidget(this->filepath, false, screen);
     canvas->showFullScreen();
     
     connect(canvas, &QCanvasWidget::currentAnimationStepCoordinates, this, &QBeamerProxy::moveEditorToPosititon);

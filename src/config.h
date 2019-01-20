@@ -16,9 +16,10 @@ class Config : public QObject
 public:
     explicit Config(QObject *parent = nullptr);
     
-    QDir *getDecksPath();
+    QVariant *getValue(QString selector);
     
 private:
+    QSettings *settings;
     QDir *deckpath;
 signals:
     

@@ -1,6 +1,6 @@
 #include "menubar.h"
 
-MenuBar::MenuBar(QDir *decks_paths, QMenuBar *parent)
+MenuBar::MenuBar(QMenuBar *parent)
 {
     this->decks_paths = decks_paths;
     

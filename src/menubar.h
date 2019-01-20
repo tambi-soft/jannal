@@ -18,7 +18,7 @@ class MenuBar : public QMenuBar
 {
     Q_OBJECT
 public:
-    explicit MenuBar(QDir *decks_paths, QMenuBar *parent = nullptr);
+    explicit MenuBar(QMenuBar *parent = nullptr);
     
 private:
     QDir *decks_paths;

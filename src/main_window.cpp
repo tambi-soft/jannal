@@ -8,13 +8,12 @@ QJannalMainWindow::QJannalMainWindow(QWidget *parent)
     resize(1800, 1000);
     
     Config *config = new Config();
-    this->deckpath = config->getDecksPath();
     
     setCentralWidget(tab_widget);
     tab_widget->setTabsClosable(true);
     tab_widget->setMovable(true);
     
-    this->menu_bar = new MenuBar(this->deckpath);
+    this->menu_bar = new MenuBar();
     setMenuBar(menu_bar);
     
     connect(tab_widget, &QTabWidget::tabCloseRequested, this, &QJannalMainWindow::closeTab);
