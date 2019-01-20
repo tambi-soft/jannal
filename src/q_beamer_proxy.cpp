@@ -20,9 +20,17 @@ void QBeamerProxy::initPresentation()
 
 void QBeamerProxy::runPresentation()
 {
-    //if (this->config->)
-    QList<QScreen*> screen_list = QGuiApplication::screens();
-    int screen = screen_list.length()-1;
+    int screen = 0;
+    QString screen_str = this->config->getSettings()->value("jannal/beamer_screen").toString();
+    if (screen_str == "auto")
+    {
+        QList<QScreen*> screen_list = QGuiApplication::screens();
+        screen = screen_list.length()-1;
+    }
+    else
+    {
+        screen = screen_str.toInt();
+    }
     
     QCanvasWidget *canvas = new QCanvasWidget(this->filepath, false, screen);
     canvas->showFullScreen();

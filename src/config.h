@@ -16,6 +16,7 @@ class Config : public QObject
 public:
     explicit Config(QObject *parent = nullptr);
     
+    QSettings *getSettings();
     QVariant *getValue(QString selector);
     
 private:

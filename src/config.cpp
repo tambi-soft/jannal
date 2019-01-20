@@ -41,6 +41,11 @@ Config::Config(QObject *parent) : QObject(parent)
     
 }
 
+QSettings *Config::getSettings()
+{
+    return this->settings;
+}
+
 QVariant *Config::getValue(QString selector)
 {
     //return this->settings->value(selector);
