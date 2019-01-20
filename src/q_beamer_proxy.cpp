@@ -10,6 +10,7 @@ QBeamerProxy::QBeamerProxy(QString filepath, QWidget *parent)
     layout->setContentsMargins(0, 0, 0, 0);
     
     this->config = new Config();
+    this->config->getSettings()->setValue("jannal/last_open_path", filepath);
 }
 
 void QBeamerProxy::initPresentation()

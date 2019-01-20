@@ -27,20 +27,21 @@ QJannalMainWindow::QJannalMainWindow(QWidget *parent)
     //tab_bar->setMouseTracking(true);
     //tab_bar->installEventFilter(this);
     
-    //createNewBeamerTab(":test_json");
+    // open the last file if it exists
+    QString last_file = config->getSettings()->value("jannal/last_open_path").toString();
+    if (QFile(last_file).exists())
+    {
+        createNewBeamerTab(last_file);
+    }
 }
 
 void QJannalMainWindow::createNewBeamerTab(QString filepath)
 {
-    /*
-    QCanvasWidget *canvas = new QCanvasWidget(true);
-    tab_widget->addTab(canvas, QString("testtab"));
-    */
-    
     QBeamerProxy *proxy = new QBeamerProxy(filepath);
     proxy->initPresentation();
     
-    tab_widget->addTab(proxy, QString("beamer proxy"));
+    QFileInfo *file = new QFileInfo(filepath);
+    tab_widget->addTab(proxy, file->baseName());
 }
 
 void QJannalMainWindow::runPresentation()
