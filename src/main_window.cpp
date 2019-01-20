@@ -28,8 +28,7 @@ QJannalMainWindow::QJannalMainWindow(QWidget *parent)
     //tab_bar->setMouseTracking(true);
     //tab_bar->installEventFilter(this);
     
-    createNewBeamerTab(":test_json");
-    //runPresentation();
+    //createNewBeamerTab(":test_json");
 }
 
 void QJannalMainWindow::createNewBeamerTab(QString filepath)
@@ -39,8 +38,8 @@ void QJannalMainWindow::createNewBeamerTab(QString filepath)
     tab_widget->addTab(canvas, QString("testtab"));
     */
     
-    QBeamerProxy *proxy = new QBeamerProxy();
-    proxy->initPresentation(filepath);
+    QBeamerProxy *proxy = new QBeamerProxy(filepath);
+    proxy->initPresentation();
     
     tab_widget->addTab(proxy, QString("beamer proxy"));
 }
@@ -51,13 +50,6 @@ void QJannalMainWindow::runPresentation()
     QBeamerProxy *proxy = qobject_cast<QBeamerProxy*>(this->tab_widget->currentWidget());
     
     proxy->runPresentation();
-    
-    /*
-    QCanvasWidget *canvas = new QCanvasWidget(false);
-    canvas->showFullScreen();
-    */
-    
-    
 }
 
 void QJannalMainWindow::activateNewTab()

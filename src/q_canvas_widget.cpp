@@ -79,6 +79,9 @@ QCanvasWidget::QCanvasWidget(QString filepath, bool edit_mode, int screen_number
 
 void QCanvasWidget::addJSON(QString path)
 {
+    this->dir_path = new QDir(path);
+    this->dir_path->cdUp();
+    
     QString json_string;
     QFile file;
     file.setFileName(path);
@@ -143,10 +146,13 @@ void QCanvasWidget::addJSON(QString path)
 
 void QCanvasWidget::addHTML(int parent, int id, QString html, double dx, double dy, int rotate, double scale, QString tree_edge, bool show_scroll_bars)
 {
+    QFile *css_file = new QFile(this->conf_obj.value("css-file").toString());
+    QString css_file_path =  this->dir_path->filePath(css_file->fileName());
+    
     // read the stylesheet
     QString css;
     QFile file;
-    file.setFileName(":test_style");
+    file.setFileName(css_file_path);
     file.open(QIODevice::ReadOnly | QIODevice::Text);
     css = file.readAll();
     file.close();

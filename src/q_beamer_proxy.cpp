@@ -1,17 +1,18 @@
 #include "q_beamer_proxy.h"
 
-QBeamerProxy::QBeamerProxy(QWidget *parent)
+QBeamerProxy::QBeamerProxy(QString filepath, QWidget *parent)
     : QWidget(parent)
     , layout (new QVBoxLayout)
 {
+    this->filepath = filepath;
+    
     setLayout(this->layout);
     layout->setContentsMargins(0, 0, 0, 0);
 }
 
-void QBeamerProxy::initPresentation(QString filepath)
+void QBeamerProxy::initPresentation()
 {
-    this->filepath = filepath;
-    this->canvas_edit = new QCanvasWidget(filepath, true, 0);
+    this->canvas_edit = new QCanvasWidget(this->filepath, true, 0);
     this->layout->addWidget(this->canvas_edit);
 }
 

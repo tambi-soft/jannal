@@ -15,6 +15,7 @@
 #include <QVBoxLayout>
 
 #include <QFile>
+#include <QDir>
 
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -83,6 +84,8 @@ public:
     double animation_speed;
     
     int screen_number = 0;
+    
+    QDir *dir_path;
     
 private:
     int resolution_width;
