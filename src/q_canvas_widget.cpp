@@ -158,8 +158,6 @@ void QCanvasWidget::addHTML(int parent, int id, QString html, double dx, double 
     file.close();
     
     html = html.replace(":DOCUMENTROOT:", "file://" + this->dir_path->path());
-    qDebug() << this->dir_path->path();
-    qDebug() << html;
     
     // build data and stylesheet to a minimal html-document
     QString html_full = "<!doctype html>"

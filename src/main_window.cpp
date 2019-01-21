@@ -46,7 +46,6 @@ void QJannalMainWindow::createNewBeamerTab(QString filepath)
 
 void QJannalMainWindow::runPresentation()
 {
-    //int current_tab_index = this->tab_widget->currentIndex();
     QBeamerProxy *proxy = qobject_cast<QBeamerProxy*>(this->tab_widget->currentWidget());
     
     proxy->runPresentation();
