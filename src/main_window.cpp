@@ -61,64 +61,6 @@ void QJannalMainWindow::closeTab(int tab_id)
     QWidget *tab_to_delete = tab_widget->widget(tab_id);
     tab_widget->removeTab(tab_id);
     tab_to_delete->deleteLater();
-    
-    for (auto k : this->deck_item_widgets.keys())
-    {
-        int value = this->deck_item_widgets[k];
-        // remove key->value pair from the map
-        if (value == tab_id)
-        {
-            this->deck_item_widgets.remove(k);
-        }
-        // adjust the map to match the new tab ids
-        else if (value > tab_id)
-        {
-            this->deck_item_widgets[k] = value -1;
-        }
-    }
-}
-
-void QJannalMainWindow::onTabMoved(int from, int to)
-{
-    // adjust the map to match the new tab ids
-    for (auto k : this->deck_item_widgets.keys())
-    {
-        int value = this->deck_item_widgets[k];
-        
-        if (value == from)
-        {
-            this->deck_item_widgets[k] = to;
-        }
-        if (value == to)
-        {
-            this->deck_item_widgets[k] = from;
-        }
-        
-    }
-}
-
-bool QJannalMainWindow::eventFilter(QObject *watched, QEvent *event)
-{
-    /*
-    if (watched == this->tab_widget->tabBar())
-    {
-        if (event->type() == QEvent::MouseMove)
-        {
-            QMouseEvent* mev = static_cast<QMouseEvent*>(event);
-            int index = this->tab_widget->tabBar()->tabAt(mev->pos());
-            
-            if (index != this->tooltip_last_index)
-            {
-                this->tooltip_last_index = index;
-                QString name = this->tab_widget->tabBar()->tabText(index);
-                
-                QPoint pos = QPoint(mev->x(), -20);
-                QToolTip::showText(this->mapToParent(pos), name);
-            }
-        }
-    }
-    */
-    return QWidget::eventFilter(watched, event);
 }
 
 void QJannalMainWindow::openFile(QString filepath)

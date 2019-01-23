@@ -20,7 +20,6 @@ public:
     void openFile(QString filepath);
     void runPresentation();
     
-    bool eventFilter(QObject *watched, QEvent *event);
 private:
     QTabWidget *tab_widget;
     MenuBar *menu_bar;
@@ -35,14 +34,12 @@ private:
     int DECK_LEARN_INDEX = 3;
     int DECK_DIRTY_DOZEN_INDEX = 4;
     
-    QMap<QString,int> deck_item_widgets; // {deck_name} OR {deck_name}_{item_id} -> tab widget id
-    
     int tooltip_last_index;
     
 private slots:
     void createNewBeamerTab(QString filepath);
     void activateNewTab();
     void closeTab(int tab_id);
-    void onTabMoved(int from, int to);
+    
     
 };
