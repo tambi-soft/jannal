@@ -20,6 +20,8 @@ QJannalMainWindow::QJannalMainWindow(QWidget *parent)
     
     connect(menu_bar, &MenuBar::openFile, this, &QJannalMainWindow::openFile);
     connect(menu_bar, &MenuBar::runPresentation, this, &QJannalMainWindow::runPresentation);
+    connect(menu_bar, &MenuBar::emitAboutTab, this, &QJannalMainWindow::showAboutWidget);
+    
     
     QTabBar *tab_bar = tab_widget->tabBar();
     //connect(tab_bar, &QTabBar::tabMoved, this, &QJannalMainWindow::onTabMoved);
@@ -66,4 +68,15 @@ void QJannalMainWindow::closeTab(int tab_id)
 void QJannalMainWindow::openFile(QString filepath)
 {
     createNewBeamerTab(filepath);
+    
+    activateNewTab();
+}
+
+void QJannalMainWindow::showAboutWidget()
+{
+    AboutWidget *widget = new AboutWidget();
+    
+    this->tab_widget->addTab(widget, "about");
+    
+    activateNewTab();
 }

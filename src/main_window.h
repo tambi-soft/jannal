@@ -9,6 +9,7 @@
 #include "menubar.h"
 #include "config.h"
 #include "q_beamer_proxy.h"
+#include "about_widget.h"
 
 class QJannalMainWindow : public QMainWindow
 {
@@ -41,5 +42,5 @@ private slots:
     void activateNewTab();
     void closeTab(int tab_id);
     
-    
+    void showAboutWidget();
 };

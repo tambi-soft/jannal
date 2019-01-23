@@ -6,6 +6,7 @@ MenuBar::MenuBar(QMenuBar *parent)
     
     addFileMenu();
     addPresentationMenu();
+    addHelpMenu();
 }
 
 void MenuBar::addFileMenu()
@@ -36,6 +37,15 @@ void MenuBar::addPresentationMenu()
     presentationMenu->addAction(presentationAction);
 }
 
+void MenuBar::addHelpMenu()
+{
+    QAction *aboutAction = new QAction(QIcon(":logo"), "About Jannal");
+    connect(aboutAction, &QAction::triggered, this, &MenuBar::emitAboutTab);
+    
+    QMenu *menu = addMenu("&Help");
+    menu->addAction(aboutAction);
+    
+}
 
 void MenuBar::quitApplication()
 {

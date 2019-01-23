@@ -24,11 +24,13 @@ private:
     QDir *decks_paths;
     void addFileMenu();
     void addPresentationMenu();
+    void addHelpMenu();
     
 signals:
     void openFile(QString filepath);
     void newDecksOverviewTab();
     void runPresentation();
+    void emitAboutTab();
     
 public slots:
     void emitOpenFile();

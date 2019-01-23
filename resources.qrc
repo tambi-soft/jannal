@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file alias="default_config">assets/default_config.ini</file>
+        <file alias="gpl">LICENSE</file>
     </qresource>
 </RCC>
