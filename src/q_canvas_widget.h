@@ -81,7 +81,8 @@ public:
     void scaleView(double factor);
     double scale_factor = 1;
     double scale_offset = 1; // for smaller or larger displays than the specified resolution
-    double animation_speed;
+    double animation_speed = 50;
+    double animation_speed_from_config = 50;
     
     int screen_number = 0;
     

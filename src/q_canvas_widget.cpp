@@ -138,6 +138,8 @@ void QCanvasWidget::addJSON(QString path)
     color.setNamedColor(this->conf_obj.value("background-color").toString());
     view->setBackgroundBrush(QBrush(color, Qt::SolidPattern));
     
+    this->animation_speed_from_config = this->conf_obj.value("animation-speed").toDouble();
+    
     if (!this->editMode)
     {
         stepToStart();
@@ -296,7 +298,7 @@ void QCanvasWidget::stepToStart()
     this->animation_speed = 1000;
     this->step_active = -1;
     stepForward();
-    this->animation_speed = 50;
+    this->animation_speed = this->animation_speed_from_config;
 }
 
 void QCanvasWidget::stepForward()
