@@ -197,7 +197,24 @@ void QCanvasWidget::addHTML(int parent, int id, QString html, double dx, double 
     web_view->setHtml(html_full);
     web_view->setFixedSize(this->resolution_width, this->resolution_height);
     //web_view->setZoomFactor(scale);
-    web_view->move(pos_x, pos_y);
+    //web_view->move(pos_x, pos_y);
+    
+    QGraphicsProxyWidget *proxy;
+    if (this->editMode)
+    {
+        QGraphicsEditProxyWidget *edit = new QGraphicsEditProxyWidget();
+        edit->setHtmlWidget(web_view);
+        edit->showHandles();
+        edit->move(pos_x, pos_y);
+        
+        proxy = scene->addWidget(edit);
+    }
+    else
+    {
+        web_view->move(pos_x, pos_y);
+        
+        proxy = scene->addWidget(web_view);
+    }
     
     if (!show_scroll_bars)
     {
@@ -205,7 +222,6 @@ void QCanvasWidget::addHTML(int parent, int id, QString html, double dx, double 
         web_view->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
     }
     
-    QGraphicsProxyWidget *proxy = scene->addWidget(web_view);
     proxy->setRotation(rotate);
     proxy->setScale(scale);
     

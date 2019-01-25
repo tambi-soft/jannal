@@ -52,6 +52,7 @@
 
 #include <QDebug>
 
+#include "q_graphics_edit_proxy_widget.h"
 #include "q_zoomable_graphics_view.h"
 #include "q_step_animator.h"
 
