@@ -460,7 +460,7 @@ bool QCanvasWidget::eventFilter(QObject */*target*/, QEvent *event)
                 stepForward();
                 return true;
             }
-            case Qt::Key_F5:
+            case Qt::Key_F6:
             {
                 emit reloadCanvas();
                 return true;

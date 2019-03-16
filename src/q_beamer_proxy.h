@@ -18,6 +18,7 @@ public:
     explicit QBeamerProxy(QString filepath, QWidget *parent = nullptr);
     
     void initPresentation();
+    void deletePresentation();
     void runPresentation();
     void moveEditorToPosititon(QPoint position, double zoom);
     

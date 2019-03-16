@@ -17,6 +17,15 @@ void QBeamerProxy::initPresentation()
 {
     this->canvas_edit = new QCanvasWidget(this->filepath, true, 0);
     this->layout->addWidget(this->canvas_edit);
+    
+    connect(this->canvas_edit, &QCanvasWidget::reloadCanvas, this, &QBeamerProxy::deletePresentation);
+}
+
+void QBeamerProxy::deletePresentation()
+{
+    this->canvas_edit->deleteLater();
+    
+    this->initPresentation();
 }
 
 void QBeamerProxy::runPresentation()
