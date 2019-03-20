@@ -140,10 +140,10 @@ void QCanvasWidget::addJSON(QString path)
         }
         else if (type == "frame-image")
         {
-            addFrameUrl(
+            addFrameImage(
                 obj.value("parent").toInt(),
                 obj.value("id").toInt(),
-                obj.value("html").toString(),
+                obj.value("image").toString(),
                 obj.value("x").toDouble(),
                 obj.value("y").toDouble(),
                 obj.value("rotate").toInt(),
@@ -201,6 +201,105 @@ void QCanvasWidget::addFrameHTML(int parent, int id, QString html, double dx, do
         "<body><div class=\"abs\"><div class=\"cell\">" + html + "</div></div></body>"
         "</html>";
     
+    QMap<QString, QPoint> positions = calculateFramePos(parent, id, dx, dy);
+    QPoint pos = positions["pos"];
+    QPoint par = positions["parent"];
+    
+    QWebView *web_view = new QWebView();
+    web_view->setHtml(html_full);
+    web_view->setFixedSize(this->resolution_width, this->resolution_height);
+    //web_view->setZoomFactor(scale);
+    //web_view->move(pos_x, pos_y);
+    
+    QGraphicsProxyWidget *proxy;
+    if (this->editMode)
+    {
+        QGraphicsEditProxyWidget *edit = new QGraphicsEditProxyWidget();
+        edit->setHtmlWidget(web_view);
+        edit->showHandles();
+        edit->move(pos);
+        
+        proxy = scene->addWidget(edit);
+    }
+    else
+    {
+        web_view->move(pos);
+        
+        proxy = scene->addWidget(web_view);
+    }
+    
+    if (!show_scroll_bars)
+    {
+        web_view->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal, Qt::ScrollBarAlwaysOff);
+        web_view->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
+    }
+    
+    proxy->setRotation(rotate);
+    proxy->setScale(scale);
+    
+    QMap<QString, QVariant> props;
+    props["pos"] = QPointF(pos);
+    props["parent"] = parent;
+    props["rotate"] = rotate;
+    props["scale"] = scale;
+    props["type"] = "frame-html";
+    props["widget"] = QVariant::fromValue(proxy);
+    props["tree-edge"] = tree_edge;
+    this->nodes_map[id] = props;
+    
+    //qDebug() << qvariant_cast<QGraphicsProxyWidget*>(props["widget"]);
+    
+    if (parent != id)
+    {
+        drawTreeEdge(par.x(), par.y(), pos.x(), pos.y(), id);
+    }
+}
+
+void QCanvasWidget::addFrameUrl(int parent, int id, QString html, double dx, double dy, int rotate, double scale, QString tree_edge, bool show_scroll_bars)
+{
+    
+}
+
+void QCanvasWidget::addFrameImage(int parent, int id, QString image_path, double dx, double dy, int rotate, double scale, QString tree_edge, bool show_scroll_bars)
+{
+    image_path = image_path.replace(":DOCUMENTROOT:", this->dir_path->path());
+    QImage image(image_path);
+    
+    QPixmap pixmap = QPixmap::fromImage(image);
+    pixmap = pixmap.scaled(this->resolution_width, this->resolution_height, Qt::KeepAspectRatio);
+    QGraphicsPixmapItem* item = new QGraphicsPixmapItem(pixmap);
+    
+    this->scene->addItem(item);
+    
+    QMap<QString, QPoint> position = calculateFramePos(parent, id, dx, dy);
+    QPoint pos = position["pos"];
+    QPoint par = position["parent"];
+    
+    int width = pixmap.width();
+    int offset = (this->resolution_width - width) / 2;
+    
+    item->setPos(pos.x() + offset, pos.y());
+    
+    
+    
+    QMap<QString, QVariant> props;
+    props["pos"] = QPointF(pos);
+    props["parent"] = parent;
+    props["rotate"] = rotate;
+    props["scale"] = scale;
+    props["type"] = "frame-image";
+    //props["widget"] = QVariant::fromValue(item);
+    props["tree-edge"] = tree_edge;
+    this->nodes_map[id] = props;
+    
+    if (parent != id)
+    {
+        drawTreeEdge(par.x(), par.y(), pos.x(), pos.y(), id);
+    }
+}
+
+QMap<QString, QPoint> QCanvasWidget::calculateFramePos(int parent, int id, double dx, double dy)
+{
     // calculate absolute position
     int pos_x = 0;
     int pos_y = 0;
@@ -223,69 +322,10 @@ void QCanvasWidget::addFrameHTML(int parent, int id, QString html, double dx, do
         pos_y = int(par_y + dy * this->resolution_height);
     }
     
-    QWebView *web_view = new QWebView();
-    web_view->setHtml(html_full);
-    web_view->setFixedSize(this->resolution_width, this->resolution_height);
-    //web_view->setZoomFactor(scale);
-    //web_view->move(pos_x, pos_y);
-    
-    QGraphicsProxyWidget *proxy;
-    if (this->editMode)
-    {
-        QGraphicsEditProxyWidget *edit = new QGraphicsEditProxyWidget();
-        edit->setHtmlWidget(web_view);
-        edit->showHandles();
-        edit->move(pos_x, pos_y);
-        
-        proxy = scene->addWidget(edit);
-    }
-    else
-    {
-        web_view->move(pos_x, pos_y);
-        
-        proxy = scene->addWidget(web_view);
-    }
-    
-    if (!show_scroll_bars)
-    {
-        web_view->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal, Qt::ScrollBarAlwaysOff);
-        web_view->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
-    }
-    
-    proxy->setRotation(rotate);
-    proxy->setScale(scale);
-    
-    QMap<QString, QVariant> props;
-    props["pos"] = QPointF(pos_x, pos_y);
-    props["parent"] = parent;
-    props["rotate"] = rotate;
-    props["scale"] = scale;
-    props["type"] = "frame-html";
-    props["widget"] = QVariant::fromValue(proxy);
-    props["tree-edge"] = tree_edge;
-    this->nodes_map[id] = props;
-    
-    //qDebug() << qvariant_cast<QGraphicsProxyWidget*>(props["widget"]);
-    
-    if (parent != id)
-    {
-        drawTreeEdge(par_x, par_y, pos_x, pos_y, id);
-    }
-}
-
-void QCanvasWidget::addFrameUrl(int parent, int id, QString html, double dx, double dy, int rotate, double scale, QString tree_edge, bool show_scroll_bars)
-{
-    
-}
-
-void QCanvasWidget::addFrameImage(int parent, int id, QString image_path, double dx, double dy, int rotate, double scale, QString tree_edge, bool show_scroll_bars)
-{
-    
-}
-
-void QCanvasWidget::positionFrame()
-{
-    
+    QMap<QString, QPoint> result;
+    result["pos"] = QPoint(pos_x, pos_y);
+    result["parent"] = QPoint(par_x, par_y);
+    return result;
 }
 
 void QCanvasWidget::drawTreeEdge(int par_x, int par_y, int pos_x, int pos_y, int id)

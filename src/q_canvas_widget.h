@@ -29,6 +29,7 @@
 #include <QUrl>
 #include <QScrollBar>
 #include <QPushButton>
+#include <QPixmap>
 
 #include <QPointF>
 #include <QMap>
@@ -68,7 +69,7 @@ public:
     void addFrameHTML(int parent, int id, QString html, double dx, double dy, int rotate, double scale, QString tree_edge, bool show_scroll_bars);
     void addFrameUrl(int parent, int id, QString html, double dx, double dy, int rotate, double scale, QString tree_edge, bool show_scroll_bars);
     void addFrameImage(int parent, int id, QString image_path, double dx, double dy, int rotate, double scale, QString tree_edge, bool show_scroll_bars);
-    void positionFrame();
+    QMap<QString, QPoint> calculateFramePos(int parent, int id, double dx, double dy);
     void drawTreeEdge(int par_x, int par_y, int pos_x, int pos_y, int id);
     void drawLine(QPoint from, QPoint to, int width, QString color_str);
     void scrollToPosition(int x, int y, double zoom);
