@@ -43,6 +43,15 @@ void QStepAnimator::run()
     
     while (this->halt_thread == false)
     {
+        // speed = 0 is instant jump. 
+        if (this->speed <= 0.1 && this->speed >= -0.1)
+        {
+            emit currentAnimationStepCoordinates(this->pos_to, this->zoom_to);
+            emit currentAnimationStepZoom(this->zoom_to);
+            
+            return;
+        }
+        
         usleep(16666);
         //msleep(17); // for ~60 updates per second
         

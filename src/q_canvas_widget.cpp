@@ -28,6 +28,7 @@ QCanvasWidget::QCanvasWidget(QString filepath, bool edit_mode, int screen_number
     if (!this->editMode)
     {
         move(geometry.left(), geometry.top());
+        //view->setInteractive(false);
     }
     
     double scale_offset_width = geometry.width() / static_cast<double>(this->resolution_width);
@@ -111,7 +112,7 @@ void QCanvasWidget::addJSON(QString path)
         // draw the content
         if (type == "frame-html")
         {
-            addHTML(
+            addFrameHTML(
                 obj.value("parent").toInt(),
                 obj.value("id").toInt(),
                 obj.value("html").toString(),
@@ -121,6 +122,34 @@ void QCanvasWidget::addJSON(QString path)
                 obj.value("scale").toDouble(),
                 obj.value("tree-edge").toString(),
                 obj.value("scroll-bars").toBool()
+            );
+        }
+        else if (type == "frame-url")
+        {
+            addFrameUrl(
+                obj.value("parent").toInt(),
+                obj.value("id").toInt(),
+                obj.value("html").toString(),
+                obj.value("x").toDouble(),
+                obj.value("y").toDouble(),
+                obj.value("rotate").toInt(),
+                obj.value("scale").toDouble(),
+                obj.value("tree-edge").toString(),
+                obj.value("scroll-bars").toBool()          
+            );
+        }
+        else if (type == "frame-image")
+        {
+            addFrameUrl(
+                obj.value("parent").toInt(),
+                obj.value("id").toInt(),
+                obj.value("html").toString(),
+                obj.value("x").toDouble(),
+                obj.value("y").toDouble(),
+                obj.value("rotate").toInt(),
+                obj.value("scale").toDouble(),
+                obj.value("tree-edge").toString(),
+                obj.value("scroll-bars").toBool()          
             );
         }
         else if (type == "line")
@@ -146,7 +175,7 @@ void QCanvasWidget::addJSON(QString path)
     }
 }
 
-void QCanvasWidget::addHTML(int parent, int id, QString html, double dx, double dy, int rotate, double scale, QString tree_edge, bool show_scroll_bars)
+void QCanvasWidget::addFrameHTML(int parent, int id, QString html, double dx, double dy, int rotate, double scale, QString tree_edge, bool show_scroll_bars)
 {
     QFile *css_file = new QFile(this->conf_obj.value("css-file").toString());
     QString css_file_path =  this->dir_path->filePath(css_file->fileName());
@@ -166,6 +195,7 @@ void QCanvasWidget::addHTML(int parent, int id, QString html, double dx, double 
         "<html lang=\"de\">"
         "<head>"
             "<meta charset=\"utf-8\" />"
+            "<meta http-equiv=\"Content-Security-Policy\" content=\"upgrade-insecure-requests\">"
             "<style>" + css + "</style>"
         "</head>"
         "<body><div class=\"abs\"><div class=\"cell\">" + html + "</div></div></body>"
@@ -243,6 +273,21 @@ void QCanvasWidget::addHTML(int parent, int id, QString html, double dx, double 
     }
 }
 
+void QCanvasWidget::addFrameUrl(int parent, int id, QString html, double dx, double dy, int rotate, double scale, QString tree_edge, bool show_scroll_bars)
+{
+    
+}
+
+void QCanvasWidget::addFrameImage(int parent, int id, QString image_path, double dx, double dy, int rotate, double scale, QString tree_edge, bool show_scroll_bars)
+{
+    
+}
+
+void QCanvasWidget::positionFrame()
+{
+    
+}
+
 void QCanvasWidget::drawTreeEdge(int par_x, int par_y, int pos_x, int pos_y, int id)
 {
     // draw a line from parent to child
@@ -310,8 +355,8 @@ void QCanvasWidget::drawControlls()
 
 void QCanvasWidget::stepToStart()
 {
-    // fast-forward to the first step
-    this->animation_speed = 1000;
+    // fast-forward to the first step (speed=0 is instant jump)
+    this->animation_speed = 0;
     this->step_active = -1;
     stepForward();
     this->animation_speed = this->animation_speed_from_config;
