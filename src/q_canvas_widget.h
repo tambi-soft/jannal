@@ -66,7 +66,7 @@ public:
     bool editMode = true;
     
     void addJSON(QString path);
-    void addFrameHTML(int parent, int id, QString html, double dx, double dy, int rotate, double scale, QString tree_edge, bool show_scroll_bars);
+    void addFrameHTML(QJsonObject object, int parent, int id, double dx, double dy, int rotate, double scale, QString tree_edge);
     void addFrameUrl(int parent, int id, QString html, double dx, double dy, int rotate, double scale, QString tree_edge, bool show_scroll_bars);
     void addFrameImage(int parent, int id, QString image_path, double dx, double dy, int rotate, double scale, QString tree_edge, bool show_scroll_bars);
     QMap<QString, QPoint> calculateFramePos(int parent, int id, double dx, double dy);

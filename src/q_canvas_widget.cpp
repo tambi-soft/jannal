@@ -113,15 +113,15 @@ void QCanvasWidget::addJSON(QString path)
         if (type == "frame-html")
         {
             addFrameHTML(
+                obj,
                 obj.value("parent").toInt(),
                 obj.value("id").toInt(),
-                obj.value("html").toString(),
                 obj.value("x").toDouble(),
                 obj.value("y").toDouble(),
                 obj.value("rotate").toInt(),
                 obj.value("scale").toDouble(),
-                obj.value("tree-edge").toString(),
-                obj.value("scroll-bars").toBool()
+                obj.value("tree-edge").toString()
+                //obj.value("scroll-bars").toBool()
             );
         }
         else if (type == "frame-url")
@@ -175,7 +175,7 @@ void QCanvasWidget::addJSON(QString path)
     }
 }
 
-void QCanvasWidget::addFrameHTML(int parent, int id, QString html, double dx, double dy, int rotate, double scale, QString tree_edge, bool show_scroll_bars)
+void QCanvasWidget::addFrameHTML(QJsonObject object, int parent, int id, double dx, double dy, int rotate, double scale, QString tree_edge)
 {
     QFile *css_file = new QFile(this->conf_obj.value("css-file").toString());
     QString css_file_path =  this->dir_path->filePath(css_file->fileName());
@@ -188,7 +188,23 @@ void QCanvasWidget::addFrameHTML(int parent, int id, QString html, double dx, do
     css = file.readAll();
     file.close();
     
-    html = html.replace(":DOCUMENTROOT:", "file://" + this->dir_path->path());
+    QString html;
+    if (object.contains("html"))
+    {
+        html = object.value("html").toString();
+        html = html.replace(":DOCUMENTROOT:", "file://" + this->dir_path->path());
+    }
+    else
+    {
+        QFile *html_file = new QFile(object.value("path").toString());
+        QString html_file_path = this->dir_path->filePath((html_file->fileName()));
+        
+        QFile html_file_;
+        html_file_.setFileName(html_file_path);
+        html_file_.open(QIODevice::ReadOnly | QIODevice::Text);
+        html = html_file_.readAll();
+        html_file_.close();
+    }
     
     // build data and stylesheet to a minimal html-document
     QString html_full = "<!doctype html>"
@@ -228,7 +244,7 @@ void QCanvasWidget::addFrameHTML(int parent, int id, QString html, double dx, do
         proxy = scene->addWidget(web_view);
     }
     
-    if (!show_scroll_bars)
+    if (! object.value("scroll_bars").toBool())
     {
         web_view->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal, Qt::ScrollBarAlwaysOff);
         web_view->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
