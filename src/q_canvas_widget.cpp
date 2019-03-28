@@ -506,8 +506,8 @@ void QCanvasWidget::movePresentationMarker(QPoint position, double scale)
     QBrush greenBrush(Qt::green);
     QBrush blueBrush(Qt::blue);
     QBrush transparentBrush(Qt::transparent);
-    QPen outlinePen(Qt::red);
-    outlinePen.setWidth(50);
+    QPen outlinePen(Qt::green);
+    outlinePen.setWidth(10);
     
     scene->removeItem(this->stepMarker);
     delete this->stepMarker;
@@ -533,32 +533,74 @@ bool QCanvasWidget::eventFilter(QObject */*target*/, QEvent *event)
         {
             case Qt::Key_Left:
             {
-                stepBackward();
+                if (!this->editMode)
+                {
+                    stepBackward();
+                }
+                else
+                {
+                    emit stepBackwardSignal();
+                }
                 return true;
             }
             case Qt::Key_Right:
             {
-                stepForward();
+                if (!this->editMode)
+                {
+                    stepForward();
+                }
+                else
+                {
+                    emit stepForwardSignal();
+                }
                 return true;
             }
             case Qt::Key_Up:
             {
-                stepBackward();
+                if (!this->editMode)
+                {
+                    stepBackward();
+                }
+                else
+                {
+                    emit stepBackwardSignal();
+                }
                 return true;
             }
             case Qt::Key_Down:
             {
-                stepForward();
+                if (!this->editMode)
+                {
+                    stepForward();
+                }
+                else
+                {
+                    emit stepForwardSignal();
+                }
                 return true;
             }
             case Qt::Key_PageUp:
             {
-                stepBackward();
+                if (!this->editMode)
+                {
+                    stepBackward();
+                }
+                else
+                {
+                    emit stepBackwardSignal();
+                }
                 return true;
             }
             case Qt::Key_PageDown:
             {
-                stepForward();
+                if (!this->editMode)
+                {
+                    stepForward();
+                }
+                else
+                {
+                    emit stepForwardSignal();
+                }
                 return true;
             }
             case Qt::Key_F6:

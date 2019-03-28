@@ -118,6 +118,8 @@ signals:
     void deleteBeamerWindow();
     void currentAnimationStepCoordinates(QPoint position, double zoom);
     void currentAnimationStepZoom(double factor);
+    void stepForwardSignal();
+    void stepBackwardSignal();
     
 public slots:
     

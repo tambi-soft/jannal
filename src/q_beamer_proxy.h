@@ -1,6 +1,7 @@
 #ifndef Q_BEAMER_PROXY_H
 #define Q_BEAMER_PROXY_H
 
+#include <QCoreApplication>
 #include <QObject>
 #include <QWidget>
 
@@ -21,6 +22,8 @@ public:
     void deletePresentation();
     void runPresentation();
     void moveEditorToPosititon(QPoint position, double zoom);
+    void presentationStepBackward();
+    void presentationStepForward();
     
     //QCanvasWidget *canvas;
     QString filepath;
@@ -30,10 +33,14 @@ public:
 private:
     QVBoxLayout *layout;
     Config *config;
+    QCanvasWidget *presentation_canvas;
     
 signals:
     
 public slots:
+    
+protected:
+    
 };
 
 #endif // Q_BEAMER_PROXY_H

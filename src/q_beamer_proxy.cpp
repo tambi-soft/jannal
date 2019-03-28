@@ -19,6 +19,8 @@ void QBeamerProxy::initPresentation()
     this->layout->addWidget(this->canvas_edit);
     
     connect(this->canvas_edit, &QCanvasWidget::reloadCanvas, this, &QBeamerProxy::deletePresentation);
+    connect(this->canvas_edit, &QCanvasWidget::stepBackwardSignal, this, &QBeamerProxy::presentationStepBackward);
+    connect(this->canvas_edit, &QCanvasWidget::stepForwardSignal, this, &QBeamerProxy::presentationStepForward);
 }
 
 void QBeamerProxy::deletePresentation()
@@ -42,14 +44,25 @@ void QBeamerProxy::runPresentation()
         screen = screen_str.toInt();
     }
     
-    QCanvasWidget *canvas = new QCanvasWidget(this->filepath, false, screen);
-    canvas->showFullScreen();
+    //this->presentation_canvas->deleteLater();
+    this->presentation_canvas = new QCanvasWidget(this->filepath, false, screen);
+    this->presentation_canvas->showFullScreen();
     
-    connect(canvas, &QCanvasWidget::currentAnimationStepCoordinates, this, &QBeamerProxy::moveEditorToPosititon);
+    connect(this->presentation_canvas, &QCanvasWidget::currentAnimationStepCoordinates, this, &QBeamerProxy::moveEditorToPosititon);
 }
 
 void QBeamerProxy::moveEditorToPosititon(QPoint position, double zoom)
 {
     this->canvas_edit->movePresentationMarker(position, zoom);
     this->canvas_edit->scrollToPosition(position, zoom);
+}
+
+void QBeamerProxy::presentationStepBackward()
+{
+    this->presentation_canvas->stepBackward();
+}
+
+void QBeamerProxy::presentationStepForward()
+{
+    this->presentation_canvas->stepForward();
 }
