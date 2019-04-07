@@ -294,7 +294,7 @@ void QCanvasWidget::addFrameUrl(int parent, int id, QString html, double dx, dou
 
 void QCanvasWidget::addFrameImage(int parent, int id, QString image_path, double dx, double dy, int rotate, double scale, QString tree_edge, bool show_scroll_bars)
 {
-    QImage image(this->dir_path->path() + "/" + image_path);
+    QImage image(this->dir_path->path() + image_path);
     
     QPixmap pixmap = QPixmap::fromImage(image);
     pixmap = pixmap.scaled(this->resolution_width, this->resolution_height, Qt::KeepAspectRatio);
