@@ -28,7 +28,6 @@
 #include <QWebFrame>
 #include <QUrl>
 #include <QScrollBar>
-#include <QPushButton>
 #include <QPixmap>
 
 #include <QPointF>
@@ -62,6 +61,7 @@ class QCanvasWidget : public QWidget
     Q_OBJECT
 public:
     explicit QCanvasWidget(QString filepath, bool edit_mode, int screen_number, QWidget *parent = nullptr);
+    ~QCanvasWidget();
     
     bool editMode = true;
     

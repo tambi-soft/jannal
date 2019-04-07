@@ -17,9 +17,10 @@ class QBeamerProxy : public QWidget
     Q_OBJECT
 public:
     explicit QBeamerProxy(QString filepath, QWidget *parent = nullptr);
+    ~QBeamerProxy();
     
     void initPresentation();
-    void deletePresentation();
+    void reloadPresentation();
     void runPresentation();
     void moveEditorToPosititon(QPoint position, double zoom);
     void presentationStepBackward();

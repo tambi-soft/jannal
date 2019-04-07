@@ -13,19 +13,30 @@ QBeamerProxy::QBeamerProxy(QString filepath, QWidget *parent)
     this->config->getSettings()->setValue("jannal/last_open_path", filepath);
 }
 
+QBeamerProxy::~QBeamerProxy()
+{
+    this->layout->deleteLater();
+    delete this->config;
+    this->canvas_edit->deleteLater();
+    this->presentation_canvas->close();
+    this->presentation_canvas->deleteLater();
+}
+
 void QBeamerProxy::initPresentation()
 {
-    this->canvas_edit = new QCanvasWidget(this->filepath, true, 0);
+    this->canvas_edit = new QCanvasWidget(this->filepath, true, 0, this);
     this->layout->addWidget(this->canvas_edit);
     
-    connect(this->canvas_edit, &QCanvasWidget::reloadCanvas, this, &QBeamerProxy::deletePresentation);
+    connect(this->canvas_edit, &QCanvasWidget::reloadCanvas, this, &QBeamerProxy::reloadPresentation);
     connect(this->canvas_edit, &QCanvasWidget::stepBackwardSignal, this, &QBeamerProxy::presentationStepBackward);
     connect(this->canvas_edit, &QCanvasWidget::stepForwardSignal, this, &QBeamerProxy::presentationStepForward);
 }
 
-void QBeamerProxy::deletePresentation()
+void QBeamerProxy::reloadPresentation()
 {
+    this->layout->removeWidget(this->canvas_edit);
     this->canvas_edit->deleteLater();
+    this->canvas_edit = nullptr;
     
     this->initPresentation();
 }
@@ -45,7 +56,7 @@ void QBeamerProxy::runPresentation()
     }
     
     //this->presentation_canvas->deleteLater();
-    this->presentation_canvas = new QCanvasWidget(this->filepath, false, screen);
+    this->presentation_canvas = new QCanvasWidget(this->filepath, false, screen, this);
     this->presentation_canvas->showFullScreen();
     
     connect(this->presentation_canvas, &QCanvasWidget::currentAnimationStepCoordinates, this, &QBeamerProxy::moveEditorToPosititon);

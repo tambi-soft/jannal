@@ -78,6 +78,17 @@ QCanvasWidget::QCanvasWidget(QString filepath, bool edit_mode, int screen_number
     //qDebug() << scene->items();
 }
 
+QCanvasWidget::~QCanvasWidget()
+{
+    this->view->deleteLater();
+    this->scene->deleteLater();
+    this->layout->deleteLater();
+    this->step_animator->deleteLater();
+    
+    // this does not make anything better
+    this->nodes_map.clear();
+}
+
 void QCanvasWidget::addJSON(QString path)
 {
     this->dir_path = new QDir(path);
@@ -179,6 +190,7 @@ void QCanvasWidget::addFrameHTML(QJsonObject object, int parent, int id, double 
 {
     QFile *css_file = new QFile(this->conf_obj.value("css-file").toString());
     QString css_file_path =  this->dir_path->filePath(css_file->fileName());
+    delete css_file;
     
     // read the stylesheet
     QString css;
@@ -204,6 +216,8 @@ void QCanvasWidget::addFrameHTML(QJsonObject object, int parent, int id, double 
         html_file_.open(QIODevice::ReadOnly | QIODevice::Text);
         html = html_file_.readAll();
         html_file_.close();
+        
+        delete html_file;
     }
     
     // build data and stylesheet to a minimal html-document
@@ -228,6 +242,7 @@ void QCanvasWidget::addFrameHTML(QJsonObject object, int parent, int id, double 
     //web_view->move(pos_x, pos_y);
     
     QGraphicsProxyWidget *proxy;
+    /*
     if (this->editMode)
     {
         QGraphicsEditProxyWidget *edit = new QGraphicsEditProxyWidget();
@@ -239,10 +254,11 @@ void QCanvasWidget::addFrameHTML(QJsonObject object, int parent, int id, double 
     }
     else
     {
+    */
         web_view->move(pos);
         
         proxy = scene->addWidget(web_view);
-    }
+    //}
     
     if (! object.value("scroll_bars").toBool())
     {
@@ -278,8 +294,7 @@ void QCanvasWidget::addFrameUrl(int parent, int id, QString html, double dx, dou
 
 void QCanvasWidget::addFrameImage(int parent, int id, QString image_path, double dx, double dy, int rotate, double scale, QString tree_edge, bool show_scroll_bars)
 {
-    image_path = image_path.replace(":DOCUMENTROOT:", this->dir_path->path());
-    QImage image(image_path);
+    QImage image(this->dir_path->path() + "/" + image_path);
     
     QPixmap pixmap = QPixmap::fromImage(image);
     pixmap = pixmap.scaled(this->resolution_width, this->resolution_height, Qt::KeepAspectRatio);
@@ -613,6 +628,7 @@ bool QCanvasWidget::eventFilter(QObject */*target*/, QEvent *event)
                 if (!this->editMode)
                 {
                     deleteLater();
+                    destroy();
                     emit deleteBeamerWindow();
                 }
                 return true;

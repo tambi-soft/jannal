@@ -12,6 +12,7 @@ class QGraphicsEditProxyWidget : public QWidget
     Q_OBJECT
 public:
     explicit QGraphicsEditProxyWidget(QWidget *parent = nullptr);
+    ~QGraphicsEditProxyWidget();
     
     void setHtmlWidget(QWebView *web);
     void showHandles();

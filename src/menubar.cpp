@@ -2,8 +2,6 @@
 
 MenuBar::MenuBar(QMenuBar *parent)
 {
-    this->decks_paths = decks_paths;
-    
     addFileMenu();
     addPresentationMenu();
     addHelpMenu();

@@ -10,6 +10,11 @@ QGraphicsEditProxyWidget::QGraphicsEditProxyWidget(QWidget *parent)
     
 }
 
+QGraphicsEditProxyWidget::~QGraphicsEditProxyWidget()
+{
+    this->layout->deleteLater();
+}
+
 void QGraphicsEditProxyWidget::setHtmlWidget(QWebView *web)
 {
     this->layout->addWidget(web, 0, 0);
