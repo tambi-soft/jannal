@@ -56,7 +56,7 @@ void QBeamerProxy::runPresentation()
     }
     
     //this->presentation_canvas->deleteLater();
-    this->presentation_canvas = new QCanvasWidget(this->filepath, false, screen, this);
+    this->presentation_canvas = new QCanvasWidget(this->filepath, false, screen);
     this->presentation_canvas->showFullScreen();
     
     connect(this->presentation_canvas, &QCanvasWidget::currentAnimationStepCoordinates, this, &QBeamerProxy::moveEditorToPosititon);
