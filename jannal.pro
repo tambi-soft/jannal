@@ -44,11 +44,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += qt debug #release
 #CONFIG += qt release
+CONFIG += MOBILITY
+
 QT += widgets\
       webkit\
       webkitwidgets
 
-# Input
 HEADERS += \
     src/config.h \
     src/menubar.h \

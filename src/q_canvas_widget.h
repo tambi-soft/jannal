@@ -66,11 +66,11 @@ public:
     bool editMode = true;
     
     void addJSON(QString path);
-    void addFrameHTML(QJsonObject object, int parent, int id, double dx, double dy, int rotate, double scale, QString tree_edge);
-    void addFrameUrl(int parent, int id, QString html, double dx, double dy, int rotate, double scale, QString tree_edge, bool show_scroll_bars);
-    void addFrameImage(int parent, int id, QString image_path, double dx, double dy, int rotate, double scale, QString tree_edge, bool show_scroll_bars);
-    QMap<QString, QPoint> calculateFramePos(int parent, int id, double dx, double dy);
-    void drawTreeEdge(int par_x, int par_y, int pos_x, int pos_y, int id);
+    void addFrameHTML(QJsonObject object, QString parent, QString id, double dx, double dy, int rotate, double scale, QString tree_edge);
+    void addFrameUrl(QString parent, QString id, QString html, double dx, double dy, int rotate, double scale, QString tree_edge, bool show_scroll_bars);
+    void addFrameImage(QString parent, QString id, QString image_path, double dx, double dy, int rotate, double scale, QString tree_edge, bool show_scroll_bars);
+    QMap<QString, QPoint> calculateFramePos(QString parent, QString id, double dx, double dy);
+    void drawTreeEdge(int par_x, int par_y, int pos_x, int pos_y, QString id);
     void drawLine(QPoint from, QPoint to, int width, QString color_str);
     void scrollToPosition(int x, int y, double zoom);
     void scrollToPosition(QPointF pos, double zoom);
@@ -98,7 +98,7 @@ private:
     int resolution_height;
     
     //QMap<int, QPointF> nodes_map;
-    QMap<int, QMap<QString, QVariant>> nodes_map;
+    QMap<QString, QMap<QString, QVariant>> nodes_map;
     //QList<QPointF> steps;
     QJsonArray steps_array;
     QJsonObject conf_obj;

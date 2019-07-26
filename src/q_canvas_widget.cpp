@@ -125,8 +125,8 @@ void QCanvasWidget::addJSON(QString path)
         {
             addFrameHTML(
                 obj,
-                obj.value("parent").toInt(),
-                obj.value("id").toInt(),
+                obj.value("parent").toString(),
+                obj.value("id").toString(),
                 obj.value("x").toDouble(),
                 obj.value("y").toDouble(),
                 obj.value("rotate").toInt(),
@@ -138,8 +138,8 @@ void QCanvasWidget::addJSON(QString path)
         else if (type == "frame-url")
         {
             addFrameUrl(
-                obj.value("parent").toInt(),
-                obj.value("id").toInt(),
+                obj.value("parent").toString(),
+                obj.value("id").toString(),
                 obj.value("html").toString(),
                 obj.value("x").toDouble(),
                 obj.value("y").toDouble(),
@@ -152,8 +152,8 @@ void QCanvasWidget::addJSON(QString path)
         else if (type == "frame-image")
         {
             addFrameImage(
-                obj.value("parent").toInt(),
-                obj.value("id").toInt(),
+                obj.value("parent").toString(),
+                obj.value("id").toString(),
                 obj.value("image").toString(),
                 obj.value("x").toDouble(),
                 obj.value("y").toDouble(),
@@ -186,7 +186,7 @@ void QCanvasWidget::addJSON(QString path)
     }
 }
 
-void QCanvasWidget::addFrameHTML(QJsonObject object, int parent, int id, double dx, double dy, int rotate, double scale, QString tree_edge)
+void QCanvasWidget::addFrameHTML(QJsonObject object, QString parent, QString id, double dx, double dy, int rotate, double scale, QString tree_edge)
 {
     QFile *css_file = new QFile(this->conf_obj.value("css-file").toString());
     QString css_file_path =  this->dir_path->filePath(css_file->fileName());
@@ -287,12 +287,12 @@ void QCanvasWidget::addFrameHTML(QJsonObject object, int parent, int id, double 
     }
 }
 
-void QCanvasWidget::addFrameUrl(int parent, int id, QString html, double dx, double dy, int rotate, double scale, QString tree_edge, bool show_scroll_bars)
+void QCanvasWidget::addFrameUrl(QString parent, QString id, QString html, double dx, double dy, int rotate, double scale, QString tree_edge, bool show_scroll_bars)
 {
     
 }
 
-void QCanvasWidget::addFrameImage(int parent, int id, QString image_path, double dx, double dy, int rotate, double scale, QString tree_edge, bool show_scroll_bars)
+void QCanvasWidget::addFrameImage(QString parent, QString id, QString image_path, double dx, double dy, int rotate, double scale, QString tree_edge, bool show_scroll_bars)
 {
     QImage image(this->dir_path->path() + image_path);
     
@@ -329,7 +329,7 @@ void QCanvasWidget::addFrameImage(int parent, int id, QString image_path, double
     }
 }
 
-QMap<QString, QPoint> QCanvasWidget::calculateFramePos(int parent, int id, double dx, double dy)
+QMap<QString, QPoint> QCanvasWidget::calculateFramePos(QString parent, QString id, double dx, double dy)
 {
     // calculate absolute position
     int pos_x = 0;
@@ -359,7 +359,7 @@ QMap<QString, QPoint> QCanvasWidget::calculateFramePos(int parent, int id, doubl
     return result;
 }
 
-void QCanvasWidget::drawTreeEdge(int par_x, int par_y, int pos_x, int pos_y, int id)
+void QCanvasWidget::drawTreeEdge(int par_x, int par_y, int pos_x, int pos_y, QString id)
 {
     // draw a line from parent to child
     if (this->conf_obj.value("tree-edge-style").toString() == "line" &&
@@ -466,7 +466,7 @@ void QCanvasWidget::stepHelper()
     QPointF pos_to;
     if (type == "frame")
     {
-        int frame_id = obj.value("frame-id").toInt();
+        QString frame_id = obj.value("frame-id").toString();
         pos_to = this->nodes_map[frame_id]["pos"].toPointF();
         
         // maybe there is an offset defined
