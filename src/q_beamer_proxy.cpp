@@ -48,7 +48,9 @@ void QBeamerProxy::runPresentation()
     if (screen_str == "auto")
     {
         QList<QScreen*> screen_list = QGuiApplication::screens();
+        qDebug() << screen_list;
         screen = screen_list.length()-1;
+        qDebug() << screen;
     }
     else
     {
