@@ -23,6 +23,7 @@ public:
 private:
     QDir *decks_paths;
     void addFileMenu();
+    void addEditMenu();
     void addPresentationMenu();
     void addHelpMenu();
     

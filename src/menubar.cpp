@@ -3,6 +3,7 @@
 MenuBar::MenuBar(QMenuBar *parent)
 {
     addFileMenu();
+    addEditMenu();
     addPresentationMenu();
     addHelpMenu();
 }
@@ -22,6 +23,20 @@ void MenuBar::addFileMenu()
     QMenu *fileMenu = addMenu("&File");
     fileMenu->addAction(openAction);
     fileMenu->addAction(exitAction);
+}
+
+void MenuBar::addEditMenu()
+{
+    QAction *importImagesAction = new QAction("Import Images");
+    importImagesAction->setStatusTip("Import multiple Images at once");
+    
+    
+    QAction *generateStepsAction = new QAction("Generate Steps");
+    generateStepsAction->setStatusTip("Generate Steps for all Frames");
+    
+    QMenu *editMenu = addMenu("&Edit");
+    editMenu->addAction(importImagesAction);
+    editMenu->addAction(generateStepsAction);
 }
 
 void MenuBar::addPresentationMenu()
