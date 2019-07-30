@@ -18,8 +18,8 @@ QBeamerProxy::~QBeamerProxy()
     this->layout->deleteLater();
     delete this->config;
     this->canvas_edit->deleteLater();
-    this->presentation_canvas->close();
-    this->presentation_canvas->deleteLater();
+    //this->presentation_canvas->close();
+    //this->presentation_canvas->deleteLater();
 }
 
 void QBeamerProxy::initPresentation()
